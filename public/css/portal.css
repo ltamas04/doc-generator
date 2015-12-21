@@ -1,0 +1,17 @@
+.doc-header p {
+  display: inline-block;
+}
+
+.doc-body h2 {
+  text-transform: uppercase;
+}
+
+.form-container {
+  width: 80%;
+  float: none;
+  margin: 0 auto;
+}
+
+.form-container input {
+  float: right;
+}
