@@ -38,15 +38,20 @@ app.post('/zajos', function(request, response){
     fs=require('fs')
     Docxtemplater = require('docxtemplater');
 
-    //Load the docx file as a binary
     content = fs
-        .readFileSync(__dirname+"/input/imageExample.docx","binary")
+        .readFileSync(__dirname+"/input/23.docx","binary")
 
     doc=new Docxtemplater(content);
 
     //set the templateVariables
     doc.setData({
-        "%image":'/input/image.png'
+        "mintavetel_helyszine":'teszt',
+        "mintavetel_helye":'teszt',
+        "mintavevo_tipusa":'teszt',
+        "mintavetel_modja":'teszt',
+        "levego_terfogata":'teszt',
+        "datum":'teszt',
+        "minta_szama":'teszt'
     });
 
     //apply them (replace all occurences of {first_name} by Hipp, ...)
