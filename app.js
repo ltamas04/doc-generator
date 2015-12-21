@@ -24,8 +24,6 @@ app.get('/zaj', function(req, res){
   res.render('zaj');
 });
 app.get('/download', function(req, res){
-  res.set('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-  res.set('Content-Disposition', 'attachment; filename="output.docx"');
   res.render('download');
 });
 
