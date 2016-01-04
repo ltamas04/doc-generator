@@ -1,0 +1,107 @@
+<img src="/img/header.jpg">
+
+
+<div class="form-container">
+  <h1 class="text-center">Mintavétel szennyvízből</h1>
+  <form method="post" action="/szennyes">
+      <div class="row">
+        <div class="form-group span12">
+          <span>Megbíző neve és címe</span>
+          <input type="text" name="mintavetel_kodja">
+        </div>
+        <div class="form-group">
+          <span>Mintavétel céja</span>
+          <select name="mintavetel_celja">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <span>Mintavétel helye meghatározása</span>
+          <input type="text" name="mintavetel_helye">
+        </div>
+        <div class="form-group">
+          <span>Mintavétel dátuma</span>
+          <input type="date" name="datum">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <span>Mintavétel módszere</span>
+          <select name="mintavetel_modszere">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-left: 2em;">
+          <span>Pontminták</span>
+          <input type="text" name="pontminta">
+        </div>
+        <div class="form-group" style="margin-left: 2em;">
+          <span>Időarányos átlagminta</span>
+          <input type="text" name="ido_atlag">
+        </div>
+        <div class="form-group" style="margin-left: 2em;">
+          <span>Hozamarányos átlagminta</span>
+          <input type="text" name="hozam_atlag">
+        </div>
+        <div class="form-group" style="margin-left: 2em;">
+          <span>Alkalmazott Eszközözök</span>
+          <select name="alkalmazott">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <span>A minták közti időtartam vagy hozam (perc vagy m3)</span>
+          <input type="text" name="mintak_kozott">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <span>A pontminták térfogata(ml)</span>
+          <input type="number" name="minta_terfogat">
+        </div>
+        <div class="form-group">
+          <span>Mintavétel kezdete</span>
+          <input type="date" name="minta_kezdete">
+        </div>
+        <div class="form-group">
+          <span>Mintavétel vége</span>
+          <input type="date" name="minta_vege">
+        </div>
+        <div class="form-group">
+          <span>Minta jele</span>
+          <input type="text" name="minta_jele">
+        </div>
+        <div class="form-group">
+          <span>Vizsgálandó komponensek</span>
+          <input type="text" name="komponensek">
+        </div>
+        <div class="form-group">
+          <span>Vezetőképesség</span>
+          <input type="text" name="vezetokepesseg">
+        </div>
+        <div class="form-group">
+          <span>Vizsgálandó komponensek</span>
+          <input type="text" name="vizhomerseklet">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <span>Megjegyzések </span>
+          <textarea type="text" name="megjegyzesek"></textarea>
+        </div>
+      </div>
+    </div>
+      <button type="submit" class="btn">Generálás</button>
+  </form>
+</div>

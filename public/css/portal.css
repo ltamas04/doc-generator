@@ -7,11 +7,14 @@
 }
 
 .form-container {
-  width: 80%;
-  float: none;
-  margin: 0 auto;
+  position: relative;
+  top: -20px;
+  padding-left: 35px;
+  padding-top: 20px;
+  border: 1px solid black;
+  width: 780px;
 }
 
-.form-container input {
-  float: right;
+.container-fluid-full {
+  min-height: 1200px;
 }
