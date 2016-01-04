@@ -11,7 +11,7 @@ db.once('open', function() {
   console.log('hello');
 });
 
-mongoose.connect('mongodb://localhost/korker');
+mongoose.connect('mongodb://korker:Asdfasdf1@ds035975.mongolab.com:35975/korker');
 
 var docSchema = new mongoose.Schema({
   mintavetel_kodja: String,
