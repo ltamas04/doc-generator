@@ -13,14 +13,28 @@ db.once('open', function() {
 
 mongoose.connect('mongodb://localhost/korker');
 
-var movieSchema = new mongoose.Schema({
-  title: { type: String }
-, rating: String
-, releaseYear: Number
-, hasCreditCookie: Boolean
+var docSchema = new mongoose.Schema({
+  mintavetel_kodja: String,
+  mintavetel_celja: String,
+  mintavetel_hely: String,
+  datum: String,
+  mintavetel_modszere: String,
+  pontminta: String,
+  ido_atlag: String,
+  hozam_atlag: String,
+  alkalmazott: String,
+  mintak_kozott: String,
+  minta_terfogata: String,
+  minta_kezdete: String,
+  minta_vege: String,
+  minta_jele: String,
+  komponensek: String,
+  vezetokepesseg: String,
+  vizhomerseklet: String,
+  megjegyzesek: String
 });
 
-var Movie = mongoose.model('Movie', movieSchema);
+var Doc = mongoose.model('Doc', docSchema);
 
 app.engine('hbs', hbs({extName: 'hbs', defaultLayout:'main.hbs'}));
 app.set('view engine', 'hbs');
@@ -50,6 +64,17 @@ app.get('/szenny', function(req, res){
   res.render('szenny');
 });
 
+app.get('/szures', function(req, res){
+  Doc.find({}, function(err,docs) {
+    if(err) {
+      res.json(err);
+    } else {
+      console.log('->>>>' + docs);
+      res.render('szures', {docs: docs});
+    }  
+  });
+});
+
 app.use(bodyParser());
 
 app.post('/zajos', function(request, response){
@@ -77,7 +102,6 @@ app.post('/zajos', function(request, response){
         "idotartam": request.body.idotartam
     });
 
-    //apply them (replace all occurences of {first_name} by Hipp, ...)
     doc.render();
 
     var buf = doc.getZip()
@@ -119,19 +143,32 @@ app.post('/szennyes', function(request, response){
     });
 
 
-    var thor = new Movie({
-      title: request.body.mintavetel_kodja
-    , rating: 'PG-13'
-    , releaseYear: '2011'  // Notice the use of a String rather than a Number - Mongoose will automatically convert this for us.
-    , hasCreditCookie: true
+    var szenny = new Doc({
+      mintavetel_kodja: request.body.mintavetel_kodja,
+      mintavetel_celja: request.body.mintavetel_celja,
+      mintavetel_hely: request.body.mintavetel_helye,
+      datum: request.body.datum,
+      mintavetel_modszere: request.body.mintavetel_modszere,
+      pontminta: request.body.pontminta,
+      ido_atlag: request.body.ido_atlag,
+      hozam_atlag: request.body.hozam_atlag,
+      alkalmazott: request.body.alkalmazott,
+      mintak_kozott: request.body.mintak_kozott,
+      minta_terfogata: request.body.minta_terfogat,
+      minta_kezdete: request.body.minta_kezdete,
+      minta_vege: request.body.minta_vege,
+      minta_jele: request.body.minta_jele,
+      komponensek: request.body.komponensek,
+      vezetokepesseg: request.body.vezetokepesseg,
+      vizhomerseklet: request.body.vizhomerseklet,
+      megjegyzesek: request.body.megjegyzesek
     });
 
-    thor.save(function(err, thor) {
+    szenny.save(function(err, thor) {
       if (err) return console.error(err);
       console.dir("juhhu");
     });
 
-    //apply them (replace all occurences of {first_name} by Hipp, ...)
     doc.render();
 
     var buf = doc.getZip()

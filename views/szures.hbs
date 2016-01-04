@@ -1,0 +1,27 @@
+<select id="filterSelect">
+  <option value="-">Kerlek valassz</option>
+  <option value="opel">Opel</option>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+<button class="btn" id="filterButton">Szures</button>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Gép</th>
+			<th>Hol</th>
+			<th>Mikor</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each docs}}
+		<tr>
+			<td data-gep="{{alkalmazott}}">{{alkalmazott}}</td>
+			<td>{{mintavetel_hely}}</td>
+			<td>{{datum}}</td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
