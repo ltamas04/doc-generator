@@ -5,13 +5,11 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var db = mongoose.connection;
+mongoose.connect('mongodb://127.0.0.1:27017/korker');
 
 db.on('error', console.error);
-db.once('open', function() {
-  console.log('hello');
-});
+db.once('open', function() {});
 
-mongoose.connect('mongodb://korker:Asdfasdf1@ds035975.mongolab.com:35975/korker');
 
 var docSchema = new mongoose.Schema({
   mintavetel_kodja: String,
@@ -74,6 +72,11 @@ app.get('/szures', function(req, res){
     }  
   });
 });
+
+
+app.get('/modify', function(req, res) {
+  res.render('modify');
+})
 
 app.use(bodyParser());
 

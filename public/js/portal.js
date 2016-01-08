@@ -8,3 +8,8 @@ $('#filterButton').on('click', function(){
 		}
 	});
 });
+
+$('#modifypicker').on('click', function() {
+  var val = $( "#filterSelect option:selected" ).val();
+  console.log('>>' + val);
+}
