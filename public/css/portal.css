@@ -16,5 +16,32 @@
 }
 
 .container-fluid-full {
-  min-height: 1200px;
+  min-height: 3000px;
+}
+
+.form-container .table {
+  width: 819px !important;
+}
+
+.form-container .table input {
+  width: 70px;
+}
+
+.form-container .table th {
+  font-size: 12px !important;
+}
+
+.table input {display: block; padding: 0; margin: 0; border: 0; width: 100%;}
+.table td {margin: 0; padding: 0;}
+
+.table .selectize-input {
+  width: 80px;
+}
+
+.span12 {
+  margin: 0 !important;
+}
+
+.input-append.mintavetel-ido {
+  margin-bottom: -10px;
 }
