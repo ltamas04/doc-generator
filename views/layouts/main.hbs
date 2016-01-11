@@ -4,8 +4,11 @@
     <link href="/css/selectize.css" rel="stylesheet" type="text/css">
     <link href="/css/selectize.default.css" rel="stylesheet" type="text/css">
     <link href="/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css">
+    <link href="/css/datatables.css" rel="stylesheet" type="text/css">
     <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <title>Kör-ker dokumentum-generátor</title>
     <meta name="description" content="Bootstrap Metro Dashboard">
@@ -30,6 +33,8 @@
     <!--[if IE 9]>
       <link id="ie9style" href="/css/ie9.css" rel="stylesheet">
     <![endif]-->      
+    <META HTTP-EQUIV="Content-Type" Content="text/html; Charset=iso-8859-2">
+<META HTTP-EQUIV="Content-Language" Content="hu">
     <link rel="shortcut icon" href="img/favicon.ico">
   </head>
   <body>
@@ -47,7 +52,6 @@
         <div id="sidebar-left" class="span2">
         <div class="nav-collapse sidebar-nav">
           <ul class="nav nav-tabs nav-stacked main-menu">
-            <li><a href="/zaj"><span class="hidden-tablet"> Zajmérés</span></a></li> 
             <li><a href="/szallorost"><span class="">Szálló rost koncentráció vizsgálata</span></a></li>
             <li><a href="/felszinalatt"><span class="">Mintavétel felszín alatti vizekből</span></a></li>
             <li><a href="/szallorostkonc"><span class="">Szálló rost koncentráció vizsgálata</span></a></li>
@@ -55,12 +59,10 @@
             <li><a href="/szallopor"><span class="">Munkahelyi szálló por koncentráció vizsgálata</span></a></li>
             <li><a href="/adabem"><span class="">Adszorpciós/abszorpciós mintavétel (emissziómérés)</span></a></li>
             <li><a href="/adabmun"><span class="">Adszorpciós/abszorpciós mintavétel (munkahelyi mérés)</span></a></li>
-            <li><a href="calendar.html"><span class="">Füstgáz mintavétel (emissziómérés)</span></a></li>
-            <li><a href="file-manager.html"><span class="">Mintavétel ivóvízből</span></a></li>
-            <li><a href="icon.html"><span class="">Mintavétel felszín alatti vizekből</span></a></li>
+            <li><a href="/fustgaz"><span class="">Füstgáz mintavétel (emissziómérés)</span></a></li>
+            <li><a href="/ivoviz"><span class="">Mintavétel ivóvízből</span></a></li>
             <li><a href="/szenny"><span class="">Mintavétel szennyvízből</span></a></li>
             <li><a href="/szures"><span class="">Szűrés</span></a></li>
-            <li><a href="/modify"><span class="">Módosítás</span></a></li>
           </ul>
         </div>
       </div>
@@ -129,6 +131,10 @@
 
     <script src="/js/portal.js"></script>
     <script src="/js/selectize.min.js" defer></script>
-    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/tableExport.js"></script>
+    <script src="/js/jquery.base64.js"></script>
+    <script src="/js/jquery.table2excel.js"></script>
+
   </body>
 </html>

@@ -1,0 +1,22 @@
+<table class="table modositas">
+  <thead>
+    <th>ID</th>
+    <th>Mintavétel dátuma</th>
+    <th>Mintavétel helye</th>
+    <th>Minta jele</th>
+    <th>Minta bemérés</th>
+    <th>Minta visszamérés</th>
+    <th>Mentés</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="docId">{{docs._id}}</td>
+      <td class="mintavetel-datuma">{{docs.mintavetel_datuma}}</td>
+      <td class="mintavetel-helye" id="name">{{docs.mintavetel_helye}}</td>
+      <td class="minta-jele">{{docs.minta_jele}}</td>
+      <td><input type="text" id="mintaBemeres"/></td>
+      <td><input type="text" id="mintaVisszameres"/></td>
+      <td><a id="szilardSave" class="btn" href="/szures-szilard">Mentés</a></td>
+    </tr>
+  </tbody>
+</table>

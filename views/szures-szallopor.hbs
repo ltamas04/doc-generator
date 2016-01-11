@@ -1,0 +1,31 @@
+<table class="table table-striped szures-tabla" id="szures-tabla">
+  <thead>
+    <tr>
+      <th>Sorszám</th>
+      <th>Mintavétel dátuma</th>
+      <th>Mintavétel helye</th>
+      <th>Minta jele</th>
+      <th>Respirábilis frakció bemérés</th>
+      <th>Respirábilis frakció visszamérés</th>
+      <th>Durva frakció bemérés</th>
+      <th>Durva frakció visszamérés</th>
+      <th>Szerkesztés</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each docs}}
+    <tr>
+      <td></td>
+      <td>{{mintavetel_datuma}}</td>
+      <td>{{mintavetel_helye}}</td>
+      <td>{{minta_jele}}</td>
+      <td>{{respir_bemeres}}</td>
+      <td>{{respir_visszameres}}</td>
+      <td>{{durva_bemeres}}</td>
+      <td>{{durva_visszameres}}</td>
+      <td><a href="" id={{_id}} class="btn link-to-doc">Szerkesztés</a> </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<button id="tableExport">Export</button>

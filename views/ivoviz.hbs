@@ -228,7 +228,12 @@
         <div class="row">
           <div class="form-group span6">
             <span>A tartósítás módja</span>
-            <input name="tartositas_modja" type="text"/>
+            <select name="tartositas_modja" class="combobox">
+              <option value="">Kérlek válassz</option>
+              <option value="hűtőtáskában, illetve az elemző laboratórium által előkészített mintavevő edényekbe tett tartósítószer">hűtőtáskában, illetve az elemző laboratórium által előkészített mintavevő edényekbe tett tartósítószer</option>
+              <option value="hűtés">hűtés</option>
+              <option value="Egyéb (beírás)">Egyéb (beírás)</option>
+            </select>
           </div>
         </div>
       <h2>Helyszíni adatok</h2>
@@ -240,8 +245,32 @@
       </div>
       <div class="row">
         <div class="form-group span6">
-          <span>Minták jele</span>
+          <span>Minta jele</span>
           <input name="mintak_jele" type="text"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span10">
+          <span>Vizsgáló laboratórium</span>
+          <select name="vizsgalo_lab1" class="combobox">
+              <option value="">Válassz</option>
+              <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+              <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+              <option value="KVI Plus kft.">KVI plus kft.</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span10">
+          <span>Vizsgált komponensek</span>
+          <select name="vizsgalt_komponensek1" class="combobox">
+            <option value="">Kérlek válassz</option>
+            <option value="szerves anyagok">Szerves anyagok</option>
+            <option value="fémek">Fémek</option>
+            <option value="Sósav">Sósav</option>
+            <option value="Kénsav">Kénsav</option>
+            <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+          </select>
         </div>
       </div>
       <div class="row">

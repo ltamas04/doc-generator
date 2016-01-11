@@ -3,6 +3,8 @@ var app = express();
 var hbs = require('express3-handlebars');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var handlebars = require('handlebars');
+handlebars.registerHelper('concat', require('helper-concat'));
 
 var db = mongoose.connection;
 mongoose.connect('mongodb://127.0.0.1:27017/korker');
@@ -10,6 +12,57 @@ mongoose.connect('mongodb://127.0.0.1:27017/korker');
 db.on('error', console.error);
 db.once('open', function() {});
 
+var szalloPor = new mongoose.Schema ({
+    mintavetel_datuma: String,
+    mintavetel_helye: String,
+    minta_jele: String,
+    mintak_szama: {type: Number, default: 1},
+    respir_bemeres: String,
+    respir_visszameres: String,
+    durva_bemeres: String,
+    durva_visszameres: String
+}); 
+
+var szilardAnyag = new mongoose.Schema ({
+    mintavetel_datuma: String,
+    mintavetel_helye: String,
+    minta_jele: String,
+    minta_bemerese: {type: String, default: "nincs"},
+    minta_visszamerese: {type: String, default: "nincs"}
+}); 
+
+var szalloRost = new mongoose.Schema ({
+    mintavetel_datuma: String,
+    mintavetel_helye: String,
+    minta_jele: String,
+    mintak_szama: {type: Number, default: 1},
+    ellenorzott_mintak: String
+});
+
+var atadottMintak = new mongoose.Schema ({
+    mintavetel_datuma: String,
+    mintavetel_helye: String,
+    minta_jele: String,
+    vizsgalo_laboratorium: String,
+    vizsgalt_komponensek: String
+}); 
+
+var nedvessegMintak = new mongoose.Schema ({
+    mintavetel_datuma: String,
+    mintavetel_helye: String,
+    minta_jele: String,
+    minta_bemerese: {type: String, default: "nincs"},
+    minta_visszamerese: {type: String, default: "nincs"}
+}); 
+
+var gepNaplo = new mongoose.Schema ({
+    mintavetel_gep: String,
+    sorszam: String,
+    mintavetel_datuma: String,
+    mintavetel_helye: String,
+    karbantartva: {type: String, default: "karbantartva"},
+    alairas: String
+}); 
 
 var docSchema = new mongoose.Schema({
   mintavetel_kodja: String,
@@ -32,7 +85,13 @@ var docSchema = new mongoose.Schema({
   megjegyzesek: String
 });
 
+var NedvessegMintak = mongoose.model('NedvessegMintak', nedvessegMintak);
+var SzalloPor = mongoose.model('SzalloPor', szalloPor);
 var Doc = mongoose.model('Doc', docSchema);
+var SzilardAnyag = mongoose.model('SzilardAnyag', szilardAnyag)
+var SzalloRost = mongoose.model('SzalloRost', szalloRost)
+var AtadottMintak = mongoose.model('AtadottMintak', atadottMintak)
+var GepNaplo = mongoose.model('GepNaplo', gepNaplo)
 
 app.engine('hbs', hbs({extName: 'hbs', defaultLayout:'main.hbs'}));
 app.set('view engine', 'hbs');
@@ -76,14 +135,67 @@ app.get('/ivoviz', function(req,res){
 });
 
 app.get('/szures', function(req, res){
-  Doc.find({}, function(err,docs) {
-    if(err) {
-      res.json(err);
-    } else {
-      console.log('->>>>' + docs);
-      res.render('szures', {docs: docs});
-    }  
-  });
+  res.render('szures');
+});
+
+app.get('/szures-szallopor', function(req, res) {
+    SzalloPor.find({}, function(err, docs) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.render('szures-szallopor', {docs: docs});
+        }
+    });
+});
+
+app.get('/szures-szilard', function(req, res) {
+    SzilardAnyag.find({}, function(err, docs) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.render('szures-szilard', {docs: docs});
+        }
+    });
+});
+
+app.get('/szures-szallorost', function(req, res) {
+    SzalloRost.find({}, function(err, docs) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.render('szures-szallorost', {docs: docs});
+        }
+    });
+});
+
+app.get('/szures-vizsgalat', function(req, res) {
+    AtadottMintak.find({}, function(err, docs) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.render('szures-vizsgalat', {docs: docs});
+        }
+    });
+});
+
+app.get('/szures-nedvesseg', function(req, res) {
+    NedvessegMintak.find({}, function(err, docs) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.render('szures-nedvesseg', {docs: docs});
+        }
+    });
+});
+
+app.get('/szures-gepnaplo', function(req, res) {
+    GepNaplo.find({}, function(err, docs) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.render('szures-gepnaplo', {docs: docs});
+        }
+    });
 });
 
 app.get('/felszinalatt', function(request, response) {
@@ -110,7 +222,61 @@ app.get('/fustgaz', function(req, res) {
     res.render('fustgaz');
 })
 
+app.get('/szallorost-modositas', function(req, res) {
+     SzalloPor.find({}, function(err, docs) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.render('szallorost-modositas', {docs: docs});
+        }
+    });
+})
+
+app.post('/szallorost-document', function(req, res) {
+    SzalloPor.findOne({mintavetel_helye: 'Teses'}, function(err,obj) { 
+        console.log(obj);
+        res.contentType('json');
+        res.send(obj);
+    });
+});
+
 app.use(bodyParser());
+
+
+app.post('/szallorost-save', function(req, res) {
+    console.log(req.body.resp_be);
+    SzalloPor.findOne({_id:req.body.azon}, function(err, doc){
+      if (err) { return next(err); }
+      doc.respir_bemeres  = req.body.resp_be;
+      doc.respir_visszameres  = req.body.resp_ki;
+      doc.durva_bemeres  = req.body.durva_be;
+      doc.durva_visszameres  = req.body.durva_ki;
+      doc.save(function(err) {
+        if (err) { return next(err); }
+      });
+    });
+});
+app.post('/szilard-save', function(req, res) {
+    SzilardAnyag.findOne({_id:req.body.azon}, function(err, doc){
+      if (err) { return next(err); }
+      doc.minta_bemerese  = req.body.mintabe;
+      doc.minta_visszamerese  = req.body.mintaki;
+      doc.save(function(err) {
+        if (err) { return next(err); }
+      });
+    });
+});
+
+app.post('/nedvesseg-save', function(req, res) {
+    NedvessegMintak.findOne({_id:req.body.azon}, function(err, doc){
+      if (err) { return next(err); }
+      doc.minta_bemerese  = req.body.mintabe;
+      doc.minta_visszamerese  = req.body.mintaki;
+      doc.save(function(err) {
+        if (err) { return next(err); }
+      });
+    });
+});
 
 app.post('/szallorostkonc', function(request, response){
     fs=require('fs')
@@ -163,6 +329,18 @@ app.post('/szallorostkonc', function(request, response){
         "uzemviteli": request.body.uzemviteli,
         "mellekletek": request.body.mellekletek,
         "keszitette_nev": request.body.keszitette_nev
+    });
+
+    var szallorost = new SzalloRost({
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        minta_jele: request.body.minta_szama,
+        ellenorzott_mintak: request.body.ellenorzott_minta
+    });
+
+    szallorost.save(function(err, thor) {
+      if (err) return console.error(err);
+      console.dir("juhhu");
     });
 
     doc.render();
@@ -224,6 +402,36 @@ app.post('/szallopor', function(request, response){
         "uzemviteli": request.body.uzemviteli,
         "mellekletek": request.body.mellekletek,
         "keszitette_nev": request.body.keszitette_keszitette
+    });
+
+    if(request.body.minta_szama) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_szama,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab1,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek1
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    var szallopor = new SzalloPor({
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        minta_jele: request.body.minta_szama,
+        respir_bemeres: request.body.respir_bemeres,
+        respir_visszameres: request.body.respir_visszameres,
+        durva_bemeres: request.body.durva_bemeres,
+        durva_visszameres: request.body.durva_visszameres
+    });
+
+    szallopor.save(function(err, thor) {
+      if (err) return console.error(err);
+      console.dir("juhhu");
     });
 
     doc.render();
@@ -327,6 +535,378 @@ app.post('/szallor', function(request, response){
         "keszitette_nev": request.body.keszitette
     });
 
+    if(request.body.minta_szama_1) {
+        var szallo = new SzalloRost({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_szama_1,
+            ellenorzott_mintak: request.body.ellenorzott1
+        });
+
+        szallo.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+    if(request.body.minta_szama_2) {
+        var szallo = new SzalloRost({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_szama_2,
+            ellenorzott_mintak: request.body.ellenorzott2
+        });
+
+        szallo.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+    if(request.body.minta_szama_3) {
+        var szallo = new SzalloRost({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_szama_3,
+            ellenorzott_mintak: request.body.ellenorzott3
+        });
+
+        szallo.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+    if(request.body.minta_szama_4) {
+        var szallo = new SzalloRost({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_szama_4,
+            ellenorzott_mintak: request.body.ellenorzott4
+        });
+
+        szallo.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+    if(request.body.minta_szama_5) {
+        var szallo = new SzalloRost({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_szama_5,
+            ellenorzott_mintak: request.body.ellenorzott5
+        });
+
+        szallo.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+    if(request.body.minta_szama_6) {
+        var szallo = new SzalloRost({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_szama_6,
+            ellenorzott_mintak: request.body.ellenorzott6
+        });
+
+        szallo.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+    if(request.body.minta_szama_7) {
+        var szallo = new SzalloRost({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_szama_7,
+            ellenorzott_mintak: request.body.ellenorzott7
+        });
+
+        szallo.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep1) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep1,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam1
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep2) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep2,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam2
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep3) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep3,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam3
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep4) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep4,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam4
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep5) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep5,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam5
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep6) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep6,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam6
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep7) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep7,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam7
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep8) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep8,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam8
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep9) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep9,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam9
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep10) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep10,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam10
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep11) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep11,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam11
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep12) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep12,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam12
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep13) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep13,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam13
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep14) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep14,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam14
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep15) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep15,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam15
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep16) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep16,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam16
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep17) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep17,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam17
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep18) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep18,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam18
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep19) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep19,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam19
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep20) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep20,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam20
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
     doc.render();
 
     var buf = doc.getZip()
@@ -384,6 +964,21 @@ app.post('/felszina', function(request, response){
         "keszitette_nev": request.body.keszitette
     });
 
+    if(request.body.vizmintakod) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.vizmintakod,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab1,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek1
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
     doc.render();
 
     var buf = doc.getZip()
@@ -414,6 +1009,21 @@ app.post('/ivoviz', function(request, response){
         "vizhomersek": request.body.vizhomersek,
         "keszitette_nev": request.body.keszitette
     });
+
+    if(request.body.mintak_jele) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.mintak_jele,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab1,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek1
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
 
     doc.render();
 
@@ -456,31 +1066,20 @@ app.post('/szennyes', function(request, response){
     });
 
 
-    var szenny = new Doc({
-      mintavetel_kodja: request.body.mintavetel_kodja,
-      mintavetel_celja: request.body.mintavetel_celja,
-      mintavetel_hely: request.body.mintavetel_helye,
-      datum: request.body.datum,
-      mintavetel_modszere: request.body.mintavetel_modszere,
-      pontminta: request.body.pontminta,
-      ido_atlag: request.body.ido_atlag,
-      hozam_atlag: request.body.hozam_atlag,
-      alkalmazott: request.body.alkalmazott,
-      mintak_kozott: request.body.mintak_kozott,
-      minta_terfogata: request.body.minta_terfogat,
-      minta_kezdete: request.body.minta_kezdete,
-      minta_vege: request.body.minta_vege,
-      minta_jele: request.body.minta_jele,
-      komponensek: request.body.komponensek,
-      vezetokepesseg: request.body.vezetokepesseg,
-      vizhomerseklet: request.body.vizhomerseklet,
-      megjegyzesek: request.body.megjegyzesek
-    });
+    if(request.body.minta_jele) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_kodja,
+            minta_jele: request.body.minta_jele,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab1,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek1
+        });
 
-    szenny.save(function(err, thor) {
-      if (err) return console.error(err);
-      console.dir("juhhu");
-    });
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
 
     doc.render();
 
@@ -666,6 +1265,127 @@ app.post('/szilard', function(request, response){
         "keszitette_nev": request.body.keszitette,
         "alkalmazott_eszkozok": request.body.alkalmazott_eszkozok
     });
+    
+    if(request.body.n_minta_jele) {
+        var nedvesseg = new NedvessegMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.n_minta_jele,
+        });
+
+        nedvesseg.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+    if(request.body.minta_jele2) {
+        var nedvesseg = new NedvessegMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.minta_jele2,
+        });
+
+        nedvesseg.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+    if(request.body.minta_jele3) {
+        var nedvesseg = new NedvessegMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.minta_jele3,
+        });
+
+        nedvesseg.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.minta_jele1) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.minta_jele1,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab1,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek1
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.minta_jele2) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.minta_jele2,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab2,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek2
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.minta_jele3) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.minta_jele3,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab3,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek3
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.minta_jele1) {
+        var szilard = new SzilardAnyag({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.minta_jele1
+        });
+
+        szilard.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.minta_jele2) {
+        var szilard = new SzilardAnyag({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.minta_jele2
+        });
+
+        szilard.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.minta_jele3) {
+        var szilard = new SzilardAnyag({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.minta_jele3
+        });
+
+        szilard.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
 
     doc.render();
 
@@ -842,6 +1562,64 @@ app.post('/adabem', function(request, response){
         "alkalmazott_eszkozok": request.body.alkalmazott_eszkozok
     });
 
+    if(request.body.n_minta_jele) {
+        var nedvesseg = new NedvessegMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.n_minta_jele,
+        });
+
+        nedvesseg.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.minta_jele1) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_jele1,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab1,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek1
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.minta_jele2) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_jele2,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab2,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek2
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.minta_jele3) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_jele3,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab3,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek3
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
     doc.render();
 
     var buf = doc.getZip()
@@ -935,6 +1713,331 @@ app.post('/adabmun', function(request, response){
         "keszitette_nev": request.body.keszitette_keszitette,
         "alkalmazott_eszkozok": request.body.alkalmazott_eszkozok
     });
+    
+    if(request.body.mintavetel_gep1) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep1,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam1
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep2) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep2,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam2
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep3) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep3,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam3
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep4) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep4,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam4
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep5) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep5,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam5
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep6) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep6,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam6
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep7) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep7,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam7
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep8) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep8,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam8
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep9) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep9,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam9
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep10) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep10,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam10
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep11) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep11,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam11
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep12) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep12,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam12
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep13) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep13,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam13
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep14) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep14,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam14
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep15) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep15,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam15
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep16) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep16,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam16
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep17) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep17,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam17
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep18) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep18,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam18
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep19) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep19,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam19
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+
+    if(request.body.mintavetel_gep20) {
+      var gep = new GepNaplo({
+        mintavetel_gep: request.body.mintavetel_gep20,
+        mintavetel_datuma: request.body.datum,
+        mintavetel_helye: request.body.mintavetel_helyszine,
+        sorszam: request.body.sorszam20
+      });
+
+        gep.save(function(err, thor) {
+            if (err) return console.error(err);
+            console.dir("juhhu");
+        });
+    }
+    
+     if(request.body.minta_jele1) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_jele1,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab1,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek1
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.minta_jele2) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_jele2,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab2,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek2
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.minta_jele3) {
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.mintavetel_helyszine,
+            minta_jele: request.body.minta_jele3,
+            vizsgalo_laboratorium: request.body.vizsgalo_lab3,
+            vizsgalt_komponensek: request.body.vizsgalt_komponensek3
+        });
+
+        atadott.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
 
     doc.render();
 
@@ -1105,6 +2208,45 @@ app.post('/fustgaz', function(request, response){
         "alkalmazott_eszkozok": request.body.alkalmazott_eszkozok
     });
 
+    if(request.body.n_minta_jele1) {
+        var nedvesseg = new NedvessegMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.n_minta_jele1,
+        });
+
+        nedvesseg.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.n_minta_jele2) {
+        var nedvesseg = new NedvessegMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.n_minta_jele2,
+        });
+
+        nedvesseg.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
+    if(request.body.n_minta_jele3) {
+        var nedvesseg = new NedvessegMintak({
+            mintavetel_datuma: request.body.datum,
+            mintavetel_helye: request.body.ceg_neve,
+            minta_jele: request.body.n_minta_jele3,
+        });
+
+        nedvesseg.save(function(err, thor) {
+          if (err) return console.error(err);
+          console.dir("juhhu");
+        });
+    }
+
     doc.render();
 
     var buf = doc.getZip()
@@ -1113,5 +2255,56 @@ app.post('/fustgaz', function(request, response){
     fs.writeFileSync(__dirname+"/output/output.docx",buf);
     response.redirect('/download');
 })
+
+app.route('/szallopor/:Id').get(function(req, res) {
+  res.render('doc-vegoldal', {docs: req.doc});
+});
+
+app.param('Id', function(req, res, next, id) {
+  SzalloPor.findOne({
+    _id:id
+  }, function(err, doc) {
+    if(err) {
+      return next(err);
+    } else {
+      req.doc = doc;
+      next();
+    }
+  });
+});
+
+app.route('/szilard/:Id').get(function(req, res) {
+  res.render('szilard-vegoldal', {docs: req.doc});
+});
+
+app.param('Id', function(req, res, next, id) {
+  SzilardAnyag.findOne({
+    _id:id
+  }, function(err, doc) {
+    if(err) {
+      return next(err);
+    } else {
+      req.doc = doc;
+      next();
+    }
+  });
+});
+
+app.route('/nedvesseg/:Id').get(function(req, res) {
+  res.render('nedves-vegoldal', {docs: req.doc});
+});
+
+app.param('Id', function(req, res, next, id) {
+  NedvessegMintak.findOne({
+    _id:id
+  }, function(err, doc) {
+    if(err) {
+      return next(err);
+    } else {
+      req.doc = doc;
+      next();
+    }
+  });
+});
 
 var server = app.listen(3001, 'localhost');

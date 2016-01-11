@@ -1,0 +1,25 @@
+<table class="table table-striped szures-tabla" id="szures-tabla">
+  <thead>
+    <tr>
+      <th>Mintavétel dátuma</th>
+      <th>Mintavétel helye</th>
+      <th>Gép neve</th>
+      <th>Gép sorszáma</th>
+      <th>Karbantartva</th>
+      <th>Aláírás</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each docs}}
+    <tr>
+      <td>{{mintavetel_datuma}}</td>
+      <td>{{mintavetel_helye}}</td>
+      <td>{{mintavetel_gep}}</td>
+      <td>{{sorszam}}</td>
+      <td>{{karbantartva}}</td>
+      <td>{{alairas}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<button id="tableExport">Export</button>
