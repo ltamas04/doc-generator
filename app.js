@@ -3,7 +3,6 @@ var app = express();
 var hbs = require('express3-handlebars');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var busboyBodyParser = require('busboy-body-parser');
 
 var db = mongoose.connection;
 mongoose.connect('mongodb://127.0.0.1:27017/korker');
