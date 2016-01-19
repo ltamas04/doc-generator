@@ -3,6 +3,7 @@ var app = express();
 var hbs = require('express3-handlebars');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var busboyBodyParser = require('busboy-body-parser');
 
 var db = mongoose.connection;
 mongoose.connect('mongodb://127.0.0.1:27017/korker');
@@ -220,6 +221,11 @@ app.get('/fustgaz', function(req, res) {
     res.render('fustgaz');
 })
 
+app.get('/upload-image', function(req, res) {
+    res.render('upload-image');
+})
+
+
 app.get('/szallorost-modositas', function(req, res) {
      SzalloPor.find({}, function(err, docs) {
         if(err) {
@@ -255,7 +261,7 @@ app.post('/szallorost-save', function(req, res) {
     });
 });
 app.post('/szilard-save', function(req, res) {
-    SzilardAnyag.findOne({_id:req.body.azon}, function(err, doc){
+    StringzilardAnyag.findOne({_id:req.body.azon}, function(err, doc){
       if (err) { return next(err); }
       doc.minta_bemerese  = req.body.mintabe;
       doc.minta_visszamerese  = req.body.mintaki;
@@ -276,28 +282,98 @@ app.post('/nedvesseg-save', function(req, res) {
     });
 });
 
+var multer  =   require('multer');
+var storage =   multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './uploads');
+  },
+  filename: function (req, file, callback) {
+    callback(null, file.fieldname +'.jpeg');
+  }
+});
+var upload = multer({ storage : storage}).single('userPhoto');
+
+app.post('/upload-image', function(request,response) {
+    upload(request,response,function(err) {
+        if(err) {
+            console.log('done');
+        }
+
+    setTimeout(function() {
+        var ImageModule=require('docxtemplater-image-module'),
+        DocxGen = require('docxtemplater')
+        fs=require('fs')
+
+        var opts = {}
+        opts.centered = false;
+        opts.getImage=function(tagValue, tagName) {
+            return fs.readFileSync(tagValue,'binary');
+        }
+
+        opts.getSize=function(img,tagValue, tagName) {
+            return [900,700];
+        }
+
+        var imageModule=new ImageModule(opts);
+
+         content = fs
+                .readFileSync(__dirname+"/output/output.docx","binary")
+
+
+
+        var docx=new DocxGen()
+            .attachModule(imageModule)
+            .load(content)
+            .setData({image:'uploads/userPhoto.jpeg'})
+            .render()
+
+        var buffer= docx
+                .getZip()
+                .generate({type:"nodebuffer"})
+
+        fs.writeFile("output/output.docx",buffer);
+        response.redirect('/download');
+
+    },10000);
+  });
+
+})
+
 app.post('/szallorostkonc', function(request, response){
-    fs=require('fs')
-    Docxtemplater = require('docxtemplater');
+    var fs=require('fs'),
+    Docxtemplater = require('docxtemplater'),
+    ImageModule=require('docxtemplater-image-module');
 
     content = fs
         .readFileSync(__dirname+"/input/23.docx","binary")
 
-    doc=new Docxtemplater(content);
+    var opts = {}
+    opts.centered = false;
+    opts.getImage=function(tagValue, tagName) {
+        return fs.readFileSync(tagValue,'binary');
+    }
 
+    opts.getSize=function(img,tagValue, tagName) {
+        return [900,700];
+    }
+
+    doc=new Docxtemplater()
+        .load(content);
+
+    console.log(request.body);
     //set the templateVariables
     doc.setData({
-        "mintavetel_helyszine": request.body.mintavetel_helyszine + "   ",
-        "mintavetel_helye": request.body.mintavetel_helye + "   ",
-        "mintavevo_tipusa": request.body.mintavevo_tipusa + "   ",
-        "mintavetel_modja": request.body.mintavetel_modja + "   ",
+        "mintavetel_helye": request.body.mintavetel_helye,
+        "datum": request.body.datum,
+        "mintavetel_helyszine": request.body.mintavetel_helyszine,
+        "meresi_hely": request.body.meresi_hely,
+        "minta_szama": request.body.minta_szama,
+        "mintavevo_tipusa": request.body.mintavevo_tipusa,
+        "vevo_sz": request.body.mintavevo_szama,
+        "mintavetel_modja": request.body.mintavetel_modja,
         "levego_terfogata": request.body.levego_terfogata,
         "mintavetel_kezdete":  request.body.mintavetel_kezdete, 
         "mintavetel_vege":  request.body.mintavetel_vege, 
-        "datum": request.body.datum,
-        "minta_szama": request.body.minta_szama,
-        "mintavevo_szama": request.body.mintavevo_szama,
-        "idotartam": request.body.idotartam,
         "ido1": request.body.meterologia_ido_1,
         "ido2": request.body.meterologia_ido_2,
         "ido3": request.body.meterologia_ido_3,
@@ -326,7 +402,8 @@ app.post('/szallorostkonc', function(request, response){
         "megjegyzes": request.body.megjegyzes,
         "uzemviteli": request.body.uzemviteli,
         "mellekletek": request.body.mellekletek,
-        "keszitette_nev": request.body.keszitette_nev
+        "keszitette_nev": request.body.keszitette_nev,
+        "image": "{%image}"
     });
 
     var szallorost = new SzalloRost({
@@ -347,7 +424,7 @@ app.post('/szallorostkonc', function(request, response){
                  .generate({type:"nodebuffer"});
 
     fs.writeFileSync(__dirname+"/output/output.docx",buf);
-    response.redirect('/download');
+    response.redirect('/upload-image');
 });
 
 app.post('/szallopor', function(request, response){
