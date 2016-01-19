@@ -336,15 +336,16 @@ app.post('/szallorostkonc', function(request, response){
     content = fs
         .readFileSync(__dirname+"/input/23.docx","binary")
 
-    var opts = {}
+    var opts = {};
     opts.centered = false;
+    
     opts.getImage=function(tagValue, tagName) {
         return fs.readFileSync(tagValue,'binary');
-    }
+    };
 
     opts.getSize=function(img,tagValue, tagName) {
-        return [900,700];
-    }
+        return [1500,1500];
+    };
 
     doc=new Docxtemplater()
         .load(content);
@@ -361,8 +362,8 @@ app.post('/szallorostkonc', function(request, response){
         "vevo_sz": request.body.mintavevo_szama,
         "mintavetel_modja": request.body.mintavetel_modja,
         "levego_terfogata": request.body.levego_terfogata,
-        "mintavetel_kezdete":  request.body.mintavetel_kezdete, 
-        "mintavetel_vege":  request.body.mintavetel_vege, 
+        "kezd":  request.body.mintavetel_kezdete, 
+        "vege":  request.body.mintavetel_vege, 
         "ido1": request.body.meterologia_ido_1,
         "ido2": request.body.meterologia_ido_2,
         "ido3": request.body.meterologia_ido_3,
