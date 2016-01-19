@@ -281,22 +281,9 @@ app.post('/nedvesseg-save', function(req, res) {
     });
 });
 
-var multer  =   require('multer');
-var storage =   multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, './uploads');
-  },
-  filename: function (req, file, callback) {
-    callback(null, file.fieldname +'.jpeg');
-  }
-});
-var upload = multer({ storage : storage}).single('userPhoto');
-
 app.post('/upload-image', function(request,response) {
-    upload(request,response,function(err) {
-        if(err) {
-            console.log('done');
-        }
+    var fs = require('fs');
+    fs.writeFile("uploads/out.jpg", new Buffer(request.body.mydata, "base64"), function(err) {});
 
     setTimeout(function() {
         var ImageModule=require('docxtemplater-image-module'),
@@ -323,7 +310,7 @@ app.post('/upload-image', function(request,response) {
         var docx=new DocxGen()
             .attachModule(imageModule)
             .load(content)
-            .setData({image:'uploads/userPhoto.jpeg'})
+            .setData({image:'uploads/out.jpg'})
             .render()
 
         var buffer= docx
@@ -333,11 +320,14 @@ app.post('/upload-image', function(request,response) {
         fs.writeFile("output/output.docx",buffer);
         response.redirect('/download');
 
-    },10000);
-  });
-
-})
-
+    },5000);
+});
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser());
+app.post('/captureImage', function(req, res, next) {
+    //console.log("FormData "+ req.body.base64);
+        console.log(req.body);
+});
 app.post('/szallorostkonc', function(request, response){
     var fs=require('fs'),
     Docxtemplater = require('docxtemplater'),

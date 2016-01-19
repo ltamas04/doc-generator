@@ -1,8 +1,26 @@
-<form id="uploadForm"
-         enctype="multipart/form-data"
-         action="/upload-image"
-         method="post">
-      <input type="file" name="userPhoto"  accept="image/*;" capture="camera" />
-      <input type="submit" value="Upload Image" name="submit">
-      <span id = "status"></span>
+
+    <script src="/js/webcam.js"></script>
+
+    <div id="my_camera" style="width:320px; height:240px;"></div>
+    <div id="my_result"></div>
+
+    <script language="JavaScript">
+        Webcam.attach( '#my_camera' );
+
+        function take_snapshot() {
+            Webcam.snap( function(data_uri) {
+                document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+
+               var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+
+              document.getElementById('mydata').value = raw_image_data;
+              document.getElementById('myform').submit();
+            } );
+        }
+    </script>
+
+    <a href="javascript:void(take_snapshot())">Take Snapshot</a>
+
+    <form id="myform" method="post" action="/upload-image">
+        <input id="mydata" type="hidden" name="mydata" value=""/>
     </form>
