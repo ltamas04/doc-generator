@@ -8,7 +8,6 @@
 
 .form-container {
   position: relative;
-  top: -20px;
   padding-left: 35px;
   padding-top: 20px;
   border: 1px solid black;
@@ -44,4 +43,56 @@
 
 .input-append.mintavetel-ido {
   margin-bottom: -10px;
+}
+
+.form-type,
+.doc-type {
+  display: none;
+}
+
+.document-header table {
+  width: 700px;
+  margin: 0 auto;
+}
+.document-header table {
+  font-family: aria;
+  color: black;
+}
+
+.document-header table h1 {
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.document-header table strong {
+  font-size: 19px;
+}
+
+.document-header > p {
+  font-size: 19px;
+  font-family: aria;
+  color: black;
+}
+
+.document-header .bordered {
+  position: relative;
+  font-size: 17px;
+}
+
+.document-header .bordered:before,
+.document-header .bordered:after {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 1px;
+  top: 0;
+  left: 230px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.document-header .bordered:after {
+  bottom: 0;
+  top: 17px;
 }

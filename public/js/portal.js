@@ -1,3 +1,5 @@
+var formCounter = 0;
+
 $('#filterButton').on('click', function(){
 	var val = $( "#filterSelect option:selected" ).val();
 	$('td:first-child').each(function() {
@@ -37,6 +39,8 @@ $('#modal-save').on('click', function(){
 	$('.label-input').val(labelNames);
 	valueNames = valueNames.substring(0, valueNames.length - 2);
 	$('.value-input').val(valueNames);
+  $('.label-input').trigger('change');
+  $('.value-input').trigger('change');
 });
 
 $(function() {
@@ -99,6 +103,24 @@ $('#nedvessegSave').on('click', function(e) {
         dataType: 'json',
         contentType: "application/json"
     });
+});
+
+$('body').on('change', '.korker-form input, .korker-form select, .korker-form textarea', function () {
+  var dataSel = $(this).closest('.korker-form').data('form');
+  var selector = $(this).attr('name');
+  console.log('[data-form = \"' + dataSel + '\"]');
+  $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.' + selector).text($(this).val());
+});
+
+$('#form-adder').on('click', function() {
+  $('.korker-form-container').append('<div class="korker-form" data-form=\"form-' + formCounter + '\"></div>');
+  var content = $('.form-type[data-type=' + $('#form-select').val() + ']').clone().css('display', 'block');
+  $('.korker-form[data-form=\"form-' + formCounter + '\"]').html(content.get(0));
+
+  $('#korkerContent').append('<div class="korker-doc" data-form=\"form-' + formCounter + '\"></div>');
+  var doccontent = $('.doc-type[data-doc-type=' + $('#form-select').val() + ']').clone().css('display', 'block');
+  $('.korker-doc[data-form=\"form-' + formCounter + '\"]').html(doccontent.get(0));
+  formCounter++;
 });
 
 if ($('.szures-tabla').length) {
@@ -171,4 +193,10 @@ function fnExcelReport()
 
 $('#tableExport').on('click', function() {
 	$('#szures-tabla').table2excel();
+});
+
+$(document).ready(function($) {
+    $("a.jquery-word-export").click(function(event) {
+        $("#korkerContent").wordExport();
+    });
 });

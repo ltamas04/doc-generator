@@ -1,0 +1,390 @@
+<div>
+
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#newDoc" aria-controls="newDoc" role="tab" data-toggle="tab">Új dokumentum</a></li>
+    <li role="presentation"><a href="#preview" aria-controls="preview" role="tab" data-toggle="tab">Előnézet</a></li>
+    <li role="presentation"><a href="#save" aria-controls="save" role="tab" data-toggle="tab">Mentés</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="newDoc">
+      <div class="korker-form-container">
+      </div>
+      <select id="form-select">
+          <option value="ivoviz">ivoviz</option>
+          <option value="szennyviz">szennyviz</option>
+        </select>
+        <button id="form-adder">Add</button>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="preview">
+      <div id="korkerContent">
+        <img src="img/header.png"> 
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="save">
+      <a class="btn jquery-word-export" href="javascript:void(0)">
+                    <span class="word-icon">W</span>
+                    Export as .doc
+                </a>
+
+        <h1 style="text-align: left">Mentésre kerülő adatok</h1>
+        <a href="#" id="convert">Convert</a>
+        <div id="download-area"></div>
+    </div>
+  </div>
+</div>
+
+<div class="form-type" data-type="ivoviz">
+  <div class="form-container">
+          <h1 class="text-center">Ivóvíz</h1>
+          <form method="post" action="/ivoviz">
+          <div class="row">
+            <div class="form-group span12">  
+              <span>Mintavétel helye(név): </span>
+              <input type="text" name="mintavetel_helye">
+            </div>
+            <div class="form-group span12">
+              <span>Mintavétel helyszíne(cím): </span>
+              <input type="text" name="mintavetel_helyszine">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group span12">
+              <span>Mérési hely: </span>
+              <input type="text" name="meresi_hely">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group span12">
+              <span>Vizsgálandó komponensek</span>
+                <input type="text" name="komponensek_label" class="label-input">
+              <input type="text" name="komponensek" class="value-input">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Vizsgalando komponensek</button>
+            </div>
+          </div>
+          <div class="modal fade modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Vizsgálandó komponensek</h4>
+                </div>
+                <div class="modal-body text-center">
+                  <div class="row">
+                    <div class="form-group span6">
+                      <select name="mintavetel_celja" class="component-label">
+                        <option value=''>Kérem válasszon</option>
+                        <option value="bakter">Bakter.</option>
+                        <option value="kemiai">Kémiai</option>
+                      </select>
+                    </div>
+                    <div class="form-group span6 component-value">
+                      <select>
+                       <option value=''>Kérem válasszon</option>
+                        <option value="Escherichia coli (E.coli)" class="bakter">Escherichia coli (E.coli)</option>
+                        <option value="Enterococcus" class="bakter">Enterococcus</option>
+                        <option value="Clostridium perfringens" class="bakter">Clostridium perfringens</option>    
+                        <option value="Telepszám 22 ˚ C  - on" class="bakter">Telepszám 22 ˚ C  - on</option>
+                        <option value="Telepszám   37 ˚ C – on " class="bakter">Telepszám  37 ˚ C – on </option>
+                        <option value="Coliform baktériumok" class="bakter">Coliform baktériumok </option>
+                        <option value="Pseudomonas aeruginosa" class="bakter">Pseudomonas aeruginosa</option>
+                        <option value="Mikroszkópos biológia" class="bakter">Mikroszkópos biológia</option>
+                        <option value="Legionella" class="bakter">Legionella</option>
+                        <option class="kemiai" val="Antimon">Antimon</option>
+                        <option class="kemiai" val="Arzén">Arzén</option>
+                        <option class="kemiai" val="Benzol">Benzol</option>
+                        <option class="kemiai" val="Benz(a)pirén*">Benz(a)pirén*</option>
+                        <option class="kemiai" val="Bór">Bór</option>
+                        <option class="kemiai" val="Kadmium">Kadmium</option>
+                        <option class="kemiai" val="Króm">Króm</option>
+                        <option class="kemiai" val="Réz">Réz</option>
+                        <option class="kemiai" val="Összes cianid">Összes cianid</option>
+                        <option class="kemiai" val="1,2-diklór-etán**">1,2-diklór-etán**</option>
+                        <option class="kemiai" val="Fluorid">Fluorid</option>
+                        <option class="kemiai" val="Ólom">Ólom</option>
+                        <option class="kemiai" val="Higany">Higany</option>
+                        <option class="kemiai" val="Nikkel">Nikkel</option>
+                        <option class="kemiai" val="Nitrát">Nitrát</option>
+                        <option class="kemiai" val="Nitrit">Nitrit</option>
+                        <option class="kemiai" val="Peszticidek  (10 db)">Peszticidek  (10 db)</option>
+                        <option class="kemiai" val="Policiklikus aromás szénhidrogének (4 db)*">Policiklikus aromás szénhidrogének (4 db)*</option>
+                        <option class="kemiai" val="Szelén">Szelén</option>
+                        <option class="kemiai" val="Tetraklór-etilén és triklór –etilén**">Tetraklór-etilén és triklór –etilén**</option>
+                        <option class="kemiai" val="Összes trihalo-metán**">Összes trihalo-metán**</option>
+                        <option class="kemiai" val="Cisz-1,2-diklór-etilén**">Cisz-1,2-diklór-etilén**</option>
+                        <option class="kemiai" val="Kötött aktív klór">Kötött aktív klór</option>
+                        <option class="kemiai" val="Alumínium">Alumínium</option>
+                        <option class="kemiai" val="Ammónium">Ammónium</option>
+                        <option class="kemiai" val="Klorid">Klorid</option>
+                        <option class="kemiai" val="Fajl.el. vez.kép.">Fajl.el. vez.kép.</option>
+                        <option class="kemiai" val="pH">pH</option>
+                        <option class="kemiai" val="Vas">Vas</option>
+                        <option class="kemiai" val="Mangán">Mangán</option>
+                        <option class="kemiai" val="Kémiai oxigénigény(ps)">Kémiai oxigénigény(ps)</option>
+                        <option class="kemiai" val="Szulfát">Szulfát</option>
+                        <option class="kemiai" val="Lúgoság">Lúgoság</option>
+                        <option class="kemiai" val="Nátrium">Nátrium</option>
+                        <option class="kemiai" val="Összes szerves szén TOC">Összes szerves szén TOC</option>
+                        <option class="kemiai" val="Zavarosság">Zavarosság</option>
+                        <option class="kemiai" val="Össz.keménység">Össz.keménység</option>
+                        <option class="kemiai" val="Fenol index">Fenol index</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="modal-save"  data-dismiss="modal">Mentés</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group span6">
+              <span>A tartósítás módja</span>
+              <select name="tartositas_modja" class="combobox">
+                <option value="">Kérlek válassz</option>
+                <option value="hűtőtáskában, illetve az elemző laboratórium által előkészített mintavevő edényekbe tett tartósítószer">hűtőtáskában, illetve az elemző laboratórium által előkészített mintavevő edényekbe tett tartósítószer</option>
+                <option value="hűtés">hűtés</option>
+                <option value="Egyéb (beírás)">Egyéb (beírás)</option>
+              </select>
+            </div>
+          </div>
+        <h2>Helyszíni adatok</h2>
+        <div class="row">
+          <div class="form-group span6">
+            <span>Dátum</span>
+            <input name="datum" type="date"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span6">
+            <span>Minta jele</span>
+            <input name="mintak_jele" type="text"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span10">
+            <span>Vizsgált komponensek</span>
+            <select name="vizsgalt_komponensek1" class="combobox">
+              <option value="">Kérlek válassz</option>
+              <option value="szerves anyagok">Szerves anyagok</option>
+              <option value="fémek">Fémek</option>
+              <option value="Sósav">Sósav</option>
+              <option value="Kénsav">Kénsav</option>
+              <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span12">
+            <span>pH (MSZ 1484-22:2009):</span>
+            <input name="ph" type="text"/>
+          </div>
+          <div class="form-group span12">
+            <span>Vezetőképesség (MSZ EN 27888:1998) (µS/cm):</span>
+            <input name="vezetokep" type="text"/>
+          </div>
+          <div class="form-group span12">
+            <span>Vízhőmérséklet (MSZ 448-2:1967 (visszavont szabvány)) (°C): </span>
+            <input name="vizhomersek" type="text"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span12">
+            <p>Üzemviteli és mintavételi körülmények, megjegyzések</p>
+            <textarea name="uzemviteli"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span12">
+            <p>Alkalmazott eszközök</p>
+            <p><span>Barométer</span><input name="barometer"></input></p>
+            <p><span>Rotaméter</span><input name="rotameter"></input></p>
+            <p><span>Hőmérséklet, páratartalom és légsebesség mérő:</span><input name="homerseklet_paratartalom"></input></p>
+            <p><span>Mikroszkóp</span><input name="mikroszkop"></input></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span6">
+            <span>Készítette</span>
+            <select class="combobox" name="keszitette">
+              <option value="">Válassz</option>
+              <option value="Szenyán Zoltán">Szenyán Zoltán</option>
+              <option value="Czap Zoltán">Czap Zoltán</option>
+              <option value="Czap Gergely">Czap Gergely</option>
+              <option value="Lovas Péter">Lovas Péter</option>
+              <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+              <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
+            </select>
+          </div>
+        </div>
+      </form>
+     </div>
+</div>
+
+
+<div class="form-type" data-type="szennyviz">
+  <div class="form-container">
+          <h1 class="text-center">Szennyvíz</h1>
+          <form method="post" action="/ivoviz">
+          <div class="row">
+            <div class="form-group span12">  
+              <span>Mintavétel helye(név): </span>
+              <input type="text" name="mintavetel_helye">
+            </div>
+            <div class="form-group span12">
+              <span>Mintavétel helyszíne(cím): </span>
+              <input type="text" name="mintavetel_helyszine">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group span12">
+              <span>Mérési hely: </span>
+              <input type="text" name="meresi_hely">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group span6">
+              <span>Mintavetel dátum</span>
+              <input name="datum" type="date"/>
+            </div>
+          </div>
+        <div class="row">
+          <div class="form-group span6">
+            <span>Mintavétel célja</span>
+            <input name="mintavetel_celja" type="text"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span12">
+            <span>Mintavétel módszere</span>
+            <input name="mintavetel_modszere" type="text"/>
+          </div>
+          <div class="form-group span12">
+            <span>pontminta</span>
+            <input name="pontminta" type="text"/>
+          </div>
+          <div class="form-group span12">
+            <span>időarányos átlagminta: </span>
+            <input name="ido_atlag" type="text"/>
+          </div>
+          <div class="form-group span12">
+            <span>hozamarányos átlagminta: </span>
+            <input name="hozam_atlag" type="text"/>
+          </div>
+          <div class="form-group span12">
+            <span>Alkalmazott eszköz: </span>
+            <input name="alkalmazott" type="text"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span12">
+            <span>A minták közti időtartam vagy hozam (perc vagy m3):  </span>
+            <input name="mintak_kozott" type="text"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span12">
+            <span>A pontminták térfogata (ml): </span>
+            <input name="minta_terfogata" type="text"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span12">
+            <span>A mintavétel kezdete::  </span>
+            <input name="minta_kezdete" type="text"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span12">
+            <span>A minták közti időtartam vagy hozam (perc vagy m3):  </span>
+            <input name="mintak_kozott" type="text"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span12">
+            <span>A minták közti időtartam vagy hozam (perc vagy m3):  </span>
+            <input name="mintak_kozott" type="text"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span12">
+            <span>A minták közti időtartam vagy hozam (perc vagy m3):  </span>
+            <input name="mintak_kozott" type="text"/>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="form-group span12">
+            <p>Üzemviteli és mintavételi körülmények, megjegyzések</p>
+            <textarea name="uzemviteli"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span12">
+            <p>Alkalmazott eszközök</p>
+            <p><span>Barométer</span><input name="barometer"></input></p>
+            <p><span>Rotaméter</span><input name="rotameter"></input></p>
+            <p><span>Hőmérséklet, páratartalom és légsebesség mérő:</span><input name="homerseklet_paratartalom"></input></p>
+            <p><span>Mikroszkóp</span><input name="mikroszkop"></input></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span6">
+            <span>Készítette</span>
+            <select class="combobox" name="keszitette">
+              <option value="">Válassz</option>
+              <option value="Szenyán Zoltán">Szenyán Zoltán</option>
+              <option value="Czap Zoltán">Czap Zoltán</option>
+              <option value="Czap Gergely">Czap Gergely</option>
+              <option value="Lovas Péter">Lovas Péter</option>
+              <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+              <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
+            </select>
+          </div>
+        </div>
+      </form>
+     </div>
+</div>
+
+
+<div class="doc-type" data-doc-type="ivoviz">
+<h2 style="text-align: center;">Mintavétel ivóvízből</h2>
+        <p>Mintavétel helye: <span class="mintavetel_helye"></span></p>
+        <p>Helység: <span class="mintavetel_helyszine"></span></p>
+        <p>Mérési hely: <span class="meresi_hely"></span></p>
+        <table>
+          <tr>
+            <td style="vertical-align: top;">Mintavételi szabvány száma:</td>
+            <td style="padding-left: 20px;">MSZ EN ISO 5667-1:2007<br>
+            MSZ EN ISO 5667-16:2000 3., 4., 5. fejezet<br>
+            MSZ EN ISO 19458:2007 <br>
+            MSZ 22902-1:1989 3. fejezet <br>
+            MSZ 448-36:1985 3. fejezet <br>
+            MSZ 448-44:1990 3.1. szakasz <br>
+            MSZ 448-36:1985 3. fejezet</td>
+          </tr>
+        </table>
+        <p>Vizsgálandó komponensek: <span class="komponensek_label" style="padding-right: 20px;"></span><span class="komponensek"> </span></p>
+        <p>A tartósításra vonatkozó szabvány száma:  MSZ EN ISO 5667-3:2004 (visszavont szabvány)</p>
+        <p>A tartósítás módja: <span class="tartositas_modja"></span></p>
+        <p>Minták jele: <span class="mintak_jele"></span></p>
+        <p>pH (MSZ 1484-22:2009): <span class="ph"></span></p>
+        <p>Vezetőképesség (MSZ EN 27888:1998) (µS/cm): <span class="vezetokep"></span></p>
+        <p>Vízhőmérséklet (MSZ 448-2:1967 (visszavont szabvány)) (°C):<span class="vizhomersek"></span></p>
+        <br style="page-break-before: always">
+        <div><strong>Üzemviteli és mintavételi körülmények, megjegyzések</strong><p class="uzemviteli"></p></div>
+        <div>
+          <strong>Alkalmazott eszközök:</strong>
+          <p>Rotaméter:<span class="rotameter"></span></p>
+          <p>Barométer:<span class="barometer"></span></p>
+          <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
+          <p>Mikroszkóp:<span class="mikroszkop"></span></p>
+          <p>A mintavétel ideje: <span class="datum"></span></p>
+          <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+        </div>
+        <br style="page-break-before: always">
+        <script type="text/javascript">
+    
+    </script>
+</div>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Kör-ker dokumentum-generátor</title>
     <meta name="description" content="Bootstrap Metro Dashboard">
     <meta name="author" content="Dennis Ji">
@@ -33,7 +33,6 @@
     <!--[if IE 9]>
       <link id="ie9style" href="/css/ie9.css" rel="stylesheet">
     <![endif]-->      
-    <META HTTP-EQUIV="Content-Type" Content="text/html; Charset=iso-8859-2">
 <META HTTP-EQUIV="Content-Language" Content="hu">
     <link rel="shortcut icon" href="img/favicon.ico">
   </head>
@@ -42,7 +41,7 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="brand" href="index.html"><span>Kör-ker</span></a>
+          <a class="brand" href="/"><span>Kör-ker</span></a>
         </div>
       </div>
     </div>
@@ -52,16 +51,7 @@
         <div id="sidebar-left" class="span2">
         <div class="nav-collapse sidebar-nav">
           <ul class="nav nav-tabs nav-stacked main-menu">
-            <li><a href="/szallorost"><span class="">Szálló rost koncentráció vizsgálata</span></a></li>
-            <li><a href="/felszinalatt"><span class="">Mintavétel felszín alatti vizekből</span></a></li>
-            <li><a href="/szallorostkonc"><span class="">Szálló rost koncentráció vizsgálata</span></a></li>
-            <li><a href="/szilard"><span class="">Szilárd anyag mintavétel</span></a></li>
-            <li><a href="/szallopor"><span class="">Munkahelyi szálló por koncentráció vizsgálata</span></a></li>
-            <li><a href="/adabem"><span class="">Adszorpciós/abszorpciós mintavétel (emissziómérés)</span></a></li>
-            <li><a href="/adabmun"><span class="">Adszorpciós/abszorpciós mintavétel (munkahelyi mérés)</span></a></li>
-            <li><a href="/fustgaz"><span class="">Füstgáz mintavétel (emissziómérés)</span></a></li>
-            <li><a href="/ivoviz"><span class="">Mintavétel ivóvízből</span></a></li>
-            <li><a href="/szenny"><span class="">Mintavétel szennyvízből</span></a></li>
+            <li><a href="/document"><span class="">Új dokumentum</span></a></li>
             <li><a href="/szures"><span class="">Szűrés</span></a></li>
           </ul>
         </div>
@@ -135,6 +125,9 @@
     <script src="/js/tableExport.js"></script>
     <script src="/js/jquery.base64.js"></script>
     <script src="/js/jquery.table2excel.js"></script>
+    <script src="/js/docx.js"></script>
+    <script src="/js/filesaver.js"></script>
+    <script src="/js/wordexport.js"></script>
 
   </body>
 </html>
