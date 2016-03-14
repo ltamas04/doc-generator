@@ -1,3 +1,28 @@
+body {
+  position: relative;
+}
+
+.left-menu {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 114, 45, 0.9);
+}
+
+.left-menu .nav.main-menu a {
+  display: block;
+  color: white;
+  border-bottom: 1px solid white;
+  transition: all 0.5s;
+}
+
+.left-menu .nav.main-menu a:hover {
+  background: rgba(0, 114, 45, 1);
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-top: 1px solid transparent;
+}
+
 .doc-header p {
   display: inline-block;
 }
@@ -6,17 +31,6 @@
   text-transform: uppercase;
 }
 
-.form-container {
-  position: relative;
-  padding-left: 35px;
-  padding-top: 20px;
-  border: 1px solid black;
-  width: 780px;
-}
-
-.container-fluid-full {
-  min-height: 3000px;
-}
 
 .form-container .table {
   width: 819px !important;

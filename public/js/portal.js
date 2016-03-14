@@ -110,7 +110,7 @@ $('body').on('change', '.korker-form input, .korker-form select, .korker-form te
   var selector = $(this).attr('name');
   console.log('[data-form = \"' + dataSel + '\"]');
   $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.' + selector).text($(this).val());
-});
+}); 
 
 $('#form-adder').on('click', function() {
   $('.korker-form-container').append('<div class="korker-form" data-form=\"form-' + formCounter + '\"></div>');
@@ -121,6 +121,18 @@ $('#form-adder').on('click', function() {
   var doccontent = $('.doc-type[data-doc-type=' + $('#form-select').val() + ']').clone().css('display', 'block');
   $('.korker-doc[data-form=\"form-' + formCounter + '\"]').html(doccontent.get(0));
   formCounter++;
+
+
+  $('.korker-form-container .pre-combobox').each(function(index, elem) {
+    $(elem).selectize({
+      create: true,
+      sortField: Text  
+    });
+    $(elem).parent().find('.pre-combobox').removeClass('pre-combobox');
+    console.log('>>', $(elem));
+  });
+
+  return false;
 });
 
 if ($('.szures-tabla').length) {
@@ -196,7 +208,8 @@ $('#tableExport').on('click', function() {
 });
 
 $(document).ready(function($) {
-    $("a.jquery-word-export").click(function(event) {
-        $("#korkerContent").wordExport();
-    });
+  $("a.jquery-word-export").click(function(event) {
+      $("#korkerContent").wordExport();
+  });
+
 });

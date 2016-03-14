@@ -1,3 +1,13 @@
+<span>Készítette</span>
+            <select class="pre-combobox" name="keszitette">
+              <option value="">Válassz</option>
+              <option value="Szenyán Zoltán">Szenyán Zoltán</option>
+              <option value="Czap Zoltán">Czap Zoltán</option>
+              <option value="Czap Gergely">Czap Gergely</option>
+              <option value="Lovas Péter">Lovas Péter</option>
+              <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+              <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
+            </select>
 <div>
 
   <ul class="nav nav-tabs" role="tablist">
@@ -22,14 +32,10 @@
       </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="save">
-      <a class="btn jquery-word-export" href="javascript:void(0)">
-                    <span class="word-icon">W</span>
-                    Export as .doc
-                </a>
-
         <h1 style="text-align: left">Mentésre kerülő adatok</h1>
-        <a href="#" id="convert">Convert</a>
-        <div id="download-area"></div>
+        <a class="btn jquery-word-export" href="javascript:void(0)">
+          Export as .doc
+        </a>
     </div>
   </div>
 </div>
@@ -39,28 +45,34 @@
           <h1 class="text-center">Ivóvíz</h1>
           <form method="post" action="/ivoviz">
           <div class="row">
-            <div class="form-group span12">  
-              <span>Mintavétel helye(név): </span>
-              <input type="text" name="mintavetel_helye">
+            <div class="form-group col-sm-12">  
+              <label>Mintavétel helye(név): </label>
+              <input class="form-control" type="text" name="mintavetel_helye">
             </div>
-            <div class="form-group span12">
-              <span>Mintavétel helyszíne(cím): </span>
-              <input type="text" name="mintavetel_helyszine">
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group span12">
-              <span>Mérési hely: </span>
-              <input type="text" name="meresi_hely">
+            <div class="form-group col-sm-12">
+              <label>Mintavétel helyszíne(cím): </label>
+              <input class="form-control" type="text" name="mintavetel_helyszine">
             </div>
           </div>
           <div class="row">
-            <div class="form-group span12">
-              <span>Vizsgálandó komponensek</span>
-                <input type="text" name="komponensek_label" class="label-input">
-              <input type="text" name="komponensek" class="value-input">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Vizsgalando komponensek</button>
+            <div class="form-group col-sm-12">
+              <label>Mérési hely: </label>
+              <input class="form-control" type="text" name="meresi_hely">
             </div>
+          </div>
+          <div class="form-group">
+            <label>Vizsgálandó komponensek</label>
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="text" name="komponensek_label" class="form-control label-input">
+              </div>
+              <div class="col-sm-6">
+                <input type="text" name="komponensek" class="form-control value-input">
+              </div>
+              <div class="col-sm-6 col-sm-offset-3">
+                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Vizsgalando komponensek</button>
+              </div>
+          </div>
           </div>
           <div class="modal fade modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -71,15 +83,15 @@
                 </div>
                 <div class="modal-body text-center">
                   <div class="row">
-                    <div class="form-group span6">
-                      <select name="mintavetel_celja" class="component-label">
+                    <div class="form-group col-md-6">
+                      <select name="mintavetel_celja" class="form-control component-label">
                         <option value=''>Kérem válasszon</option>
                         <option value="bakter">Bakter.</option>
                         <option value="kemiai">Kémiai</option>
                       </select>
                     </div>
-                    <div class="form-group span6 component-value">
-                      <select>
+                    <div class="form-group col-md-6 component-value">
+                      <select class="form-control">
                        <option value=''>Kérem válasszon</option>
                         <option value="Escherichia coli (E.coli)" class="bakter">Escherichia coli (E.coli)</option>
                         <option value="Enterococcus" class="bakter">Enterococcus</option>
@@ -139,9 +151,9 @@
             </div>
           </div>
           <div class="row">
-            <div class="form-group span6">
-              <span>A tartósítás módja</span>
-              <select name="tartositas_modja" class="combobox">
+            <div class="form-group">
+              <label>A tartósítás módja</label>
+              <select name="tartositas_modja" class="pre-combobox">
                 <option value="">Kérlek válassz</option>
                 <option value="hűtőtáskában, illetve az elemző laboratórium által előkészített mintavevő edényekbe tett tartósítószer">hűtőtáskában, illetve az elemző laboratórium által előkészített mintavevő edényekbe tett tartósítószer</option>
                 <option value="hűtés">hűtés</option>
@@ -165,7 +177,7 @@
         <div class="row">
           <div class="span10">
             <span>Vizsgált komponensek</span>
-            <select name="vizsgalt_komponensek1" class="combobox">
+            <select name="vizsgalt_komponensek1" class="pre-combobox">
               <option value="">Kérlek válassz</option>
               <option value="szerves anyagok">Szerves anyagok</option>
               <option value="fémek">Fémek</option>
@@ -207,7 +219,7 @@
         <div class="row">
           <div class="span6">
             <span>Készítette</span>
-            <select class="combobox" name="keszitette">
+            <select class="pre-combobox" name="keszitette">
               <option value="">Válassz</option>
               <option value="Szenyán Zoltán">Szenyán Zoltán</option>
               <option value="Czap Zoltán">Czap Zoltán</option>
@@ -332,7 +344,7 @@
         <div class="row">
           <div class="span6">
             <span>Készítette</span>
-            <select class="combobox" name="keszitette">
+            <select class="pre-combobox" name="keszitette">
               <option value="">Válassz</option>
               <option value="Szenyán Zoltán">Szenyán Zoltán</option>
               <option value="Czap Zoltán">Czap Zoltán</option>
