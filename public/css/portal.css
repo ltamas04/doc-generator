@@ -2,6 +2,10 @@ body {
   position: relative;
 }
 
+#content {
+  padding: 0 30px;
+}
+
 .left-menu {
   position: absolute;
   bottom: 0;
@@ -44,7 +48,7 @@ body {
   font-size: 12px !important;
 }
 
-.table input {display: block; padding: 0; margin: 0; border: 0; width: 100%;}
+.table input {padding: 0; margin: 0;}
 .table td {margin: 0; padding: 0;}
 
 .table .selectize-input {
@@ -109,4 +113,8 @@ body {
 .document-header .bordered:after {
   bottom: 0;
   top: 17px;
+}
+
+.has-padding {
+  padding-left: 50px;
 }

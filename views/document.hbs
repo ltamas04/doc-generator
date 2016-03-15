@@ -1,15 +1,3 @@
-<span>Készítette</span>
-            <select class="pre-combobox" name="keszitette">
-              <option value="">Válassz</option>
-              <option value="Szenyán Zoltán">Szenyán Zoltán</option>
-              <option value="Czap Zoltán">Czap Zoltán</option>
-              <option value="Czap Gergely">Czap Gergely</option>
-              <option value="Lovas Péter">Lovas Péter</option>
-              <option value="Gyuricza Zsolt">Gyuricza Úr</option>
-              <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
-            </select>
-<div>
-
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#newDoc" aria-controls="newDoc" role="tab" data-toggle="tab">Új dokumentum</a></li>
     <li role="presentation"><a href="#preview" aria-controls="preview" role="tab" data-toggle="tab">Előnézet</a></li>
@@ -20,11 +8,16 @@
     <div role="tabpanel" class="tab-pane active" id="newDoc">
       <div class="korker-form-container">
       </div>
-      <select id="form-select">
-          <option value="ivoviz">ivoviz</option>
-          <option value="szennyviz">szennyviz</option>
+      <hr />
+      <label>Nyomtatvány hozzáadása</label>
+      <select class="form-control" id="form-select">
+          <option value="ivoviz">Mintavétel ivóvízből</option>
+          <option value="szennyviz">Mintavétel szennyvízből</option>
+          <option value="felszinalatt">Mintavétel felszínalatti vízekből</option>
+          <option value="szallorost">Szállórost koncentráció vizsgálata</option>
+          <option value="szallorostkonc">Szállórost koncentráció vizsgálata (egy minta)</option>
         </select>
-        <button id="form-adder">Add</button>
+        <button class="btn btn-success" id="form-adder">Add</button>
     </div>
     <div role="tabpanel" class="tab-pane" id="preview">
       <div id="korkerContent">
@@ -33,9 +26,8 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="save">
         <h1 style="text-align: left">Mentésre kerülő adatok</h1>
-        <a class="btn jquery-word-export" href="javascript:void(0)">
-          Export as .doc
-        </a>
+        <a href="#" class="btn jquery-word-export">Convert</a>
+        <div id="download-area"></div>
     </div>
   </div>
 </div>
@@ -45,34 +37,34 @@
           <h1 class="text-center">Ivóvíz</h1>
           <form method="post" action="/ivoviz">
           <div class="row">
-            <div class="form-group col-sm-12">  
+            <div class="form-group">  
               <label>Mintavétel helye(név): </label>
               <input class="form-control" type="text" name="mintavetel_helye">
             </div>
-            <div class="form-group col-sm-12">
+            <div class="form-group">
               <label>Mintavétel helyszíne(cím): </label>
               <input class="form-control" type="text" name="mintavetel_helyszine">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-sm-12">
+            <div class="form-group">
               <label>Mérési hely: </label>
               <input class="form-control" type="text" name="meresi_hely">
             </div>
           </div>
-          <div class="form-group">
-            <label>Vizsgálandó komponensek</label>
-            <div class="row">
-              <div class="col-sm-6">
-                <input type="text" name="komponensek_label" class="form-control label-input">
+          <div class="row">
+            <div class="form-group">
+              <label>Vizsgálandó komponensek</label>
+              <div class="row">
+                <div class="col-sm-6">
+                  <input class="form-control label-input" type="text" name="komponensek_label">
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control value-input" type="text" name="komponensek">
+                </div>
               </div>
-              <div class="col-sm-6">
-                <input type="text" name="komponensek" class="form-control value-input">
-              </div>
-              <div class="col-sm-6 col-sm-offset-3">
-                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Vizsgalando komponensek</button>
-              </div>
-          </div>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-mark="#myModal">Vizsgalando komponensek</button>
+            </div>
           </div>
           <div class="modal fade modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -83,15 +75,15 @@
                 </div>
                 <div class="modal-body text-center">
                   <div class="row">
-                    <div class="form-group col-md-6">
-                      <select name="mintavetel_celja" class="form-control component-label">
+                    <div class="form-group">
+                      <select name="mintavetel_celja" class="component-label">
                         <option value=''>Kérem válasszon</option>
                         <option value="bakter">Bakter.</option>
                         <option value="kemiai">Kémiai</option>
                       </select>
                     </div>
-                    <div class="form-group col-md-6 component-value">
-                      <select class="form-control">
+                    <div class="form-group component-value">
+                      <select>
                        <option value=''>Kérem válasszon</option>
                         <option value="Escherichia coli (E.coli)" class="bakter">Escherichia coli (E.coli)</option>
                         <option value="Enterococcus" class="bakter">Enterococcus</option>
@@ -153,7 +145,7 @@
           <div class="row">
             <div class="form-group">
               <label>A tartósítás módja</label>
-              <select name="tartositas_modja" class="pre-combobox">
+              <select name="tartositas_modja" class="combobox">
                 <option value="">Kérlek válassz</option>
                 <option value="hűtőtáskában, illetve az elemző laboratórium által előkészített mintavevő edényekbe tett tartósítószer">hűtőtáskában, illetve az elemző laboratórium által előkészített mintavevő edényekbe tett tartósítószer</option>
                 <option value="hűtés">hűtés</option>
@@ -161,23 +153,23 @@
               </select>
             </div>
           </div>
-        <h2>Helyszíni adatok</h2>
         <div class="row">
-          <div class="form-group span6">
-            <span>Dátum</span>
-            <input name="datum" type="date"/>
+          <h2>Helyszíni adatok</h2>
+          <div class="form-group">
+            <label>Dátum</label>
+            <input class="form-control" name="datum" type="date"/>
           </div>
         </div>
         <div class="row">
-          <div class="form-group span6">
-            <span>Minta jele</span>
-            <input name="mintak_jele" type="text"/>
+          <div class="form-group">
+            <label>Minta jele</label>
+            <input class="form-control" name="mintak_jele" type="text"/>
           </div>
         </div>
         <div class="row">
           <div class="span10">
-            <span>Vizsgált komponensek</span>
-            <select name="vizsgalt_komponensek1" class="pre-combobox">
+            <label>Vizsgált komponensek</label>
+            <select name="vizsgalt_komponensek1" class="combobox">
               <option value="">Kérlek válassz</option>
               <option value="szerves anyagok">Szerves anyagok</option>
               <option value="fémek">Fémek</option>
@@ -188,47 +180,70 @@
           </div>
         </div>
         <div class="row">
-          <div class="form-group span12">
-            <span>pH (MSZ 1484-22:2009):</span>
-            <input name="ph" type="text"/>
+          <div class="form-group">
+            <label>pH (MSZ 1484-22:2009):</label>
+            <input class="form-control" name="ph" type="text"/>
           </div>
-          <div class="form-group span12">
-            <span>Vezetőképesség (MSZ EN 27888:1998) (µS/cm):</span>
-            <input name="vezetokep" type="text"/>
+          <div class="form-group">
+            <label>Vezetőképesség (MSZ EN 27888:1998) (µS/cm):</label>
+            <input class="form-control" name="vezetokep" type="text"/>
           </div>
-          <div class="form-group span12">
-            <span>Vízhőmérséklet (MSZ 448-2:1967 (visszavont szabvány)) (°C): </span>
-            <input name="vizhomersek" type="text"/>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group span12">
-            <p>Üzemviteli és mintavételi körülmények, megjegyzések</p>
-            <textarea name="uzemviteli"></textarea>
+          <div class="form-group">
+            <label>Vízhőmérséklet (MSZ 448-2:1967 (visszavont szabvány)) (°C): </label>
+            <input class="form-control" name="vizhomersek" type="text"/>
           </div>
         </div>
         <div class="row">
-          <div class="form-group span12">
-            <p>Alkalmazott eszközök</p>
-            <p><span>Barométer</span><input name="barometer"></input></p>
-            <p><span>Rotaméter</span><input name="rotameter"></input></p>
-            <p><span>Hőmérséklet, páratartalom és légsebesség mérő:</span><input name="homerseklet_paratartalom"></input></p>
-            <p><span>Mikroszkóp</span><input name="mikroszkop"></input></p>
+          <div class="form-group">
+            <label>Üzemviteli és mintavételi körülmények, megjegyzések</label>
+            <textarea class="form-control" name="uzemviteli"></textarea>
           </div>
         </div>
         <div class="row">
-          <div class="span6">
-            <span>Készítette</span>
-            <select class="pre-combobox" name="keszitette">
+          <div class="form-group">
+            <p><strong>Alkalmazott eszközök</strong></p>
+            <label>Barométer</label>
+              <select class="combobox" name="mikroszkop">
+                <option value="">Válassz</option>
+                <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
+                <option value="Olympus; 15069">Olympus; 15069</option>
+                <option value="Leica DM 2700P">Leica DM 2700P</option>
+              </select>
+            <label>Rotaméter</label>
+            <select class="combobox" name="rotameter">
               <option value="">Válassz</option>
-              <option value="Szenyán Zoltán">Szenyán Zoltán</option>
-              <option value="Czap Zoltán">Czap Zoltán</option>
-              <option value="Czap Gergely">Czap Gergely</option>
-              <option value="Lovas Péter">Lovas Péter</option>
-              <option value="Gyuricza Zsolt">Gyuricza Úr</option>
-              <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
+              <option value="94-168-1838">94-168-1838</option>
+              <option value="10-323-339">10-323-339</option>
+              <option value="11-130-141">11-130-141</option>
+              <option value="13-146-1">13-146-1</option>
+            </select>
+            <label>Hőmérséklet, páratartalom és légsebesség mérő:</label>
+            <select class="combobox" name="paratartalom_mero">
+              <option value="">Válassz</option>
+              <option value="testo_645_143190">Testo 645;143190</option>
+              <option value="testo_435_1559658">Testo 435; 1559658</option>
+              <option value="testo_405_V1">Testo 405-V1</option>
+            </select>
+            <label>Mikroszkóp</label>
+            <select class="combobox" name="mikroszkop">
+              <option value="">Válassz</option>
+              <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
+              <option value="Olympus; 15069">Olympus; 15069</option>
+              <option value="Leica DM 2700P">Leica DM 2700P</option>
             </select>
           </div>
+        </div>
+        <div class="row">
+          <label>Készítette</label>
+          <select class="combobox" name="keszitette">
+            <option value="">Válassz</option>
+            <option value="Szenyán Zoltán">Szenyán Zoltán</option>
+            <option value="Czap Zoltán">Czap Zoltán</option>
+            <option value="Czap Gergely">Czap Gergely</option>
+            <option value="Lovas Péter">Lovas Péter</option>
+            <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+            <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
+          </select>
         </div>
       </form>
      </div>
@@ -240,120 +255,226 @@
           <h1 class="text-center">Szennyvíz</h1>
           <form method="post" action="/ivoviz">
           <div class="row">
-            <div class="form-group span12">  
-              <span>Mintavétel helye(név): </span>
-              <input type="text" name="mintavetel_helye">
+            <div class="form-group">  
+              <label>Mintavétel helye(név): </label>
+              <input class="form-control" type="text" name="mintavetel_helye">
             </div>
-            <div class="form-group span12">
-              <span>Mintavétel helyszíne(cím): </span>
-              <input type="text" name="mintavetel_helyszine">
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group span12">
-              <span>Mérési hely: </span>
-              <input type="text" name="meresi_hely">
+            <div class="form-group">
+              <label>Mintavétel helyszíne(cím): </label>
+              <input class="form-control" type="text" name="mintavetel_helyszine">
             </div>
           </div>
           <div class="row">
-            <div class="form-group span6">
-              <span>Mintavetel dátum</span>
-              <input name="datum" type="date"/>
+            <div class="form-group">
+              <label>Mérési hely: </label>
+              <input class="form-control" type="text" name="meresi_hely">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label>Mintavetel dátum</label>
+              <input class="form-control" name="datum" type="date"/>
             </div>
           </div>
         <div class="row">
-          <div class="form-group span6">
-            <span>Mintavétel célja</span>
-            <input name="mintavetel_celja" type="text"/>
+          <div class="form-group">
+            <label>Mintavétel célja</label>
+            <input class="form-control" name="mintavetel_celja" type="text"/>
           </div>
         </div>
         <div class="row">
-          <div class="form-group span12">
-            <span>Mintavétel módszere</span>
-            <input name="mintavetel_modszere" type="text"/>
+          <div class="form-group">
+            <label>Mintavétel módszere</label>
+            <input class="form-control" name="mintavetel_modszere" type="text"/>
           </div>
-          <div class="form-group span12">
-            <span>pontminta</span>
-            <input name="pontminta" type="text"/>
-          </div>
-          <div class="form-group span12">
-            <span>időarányos átlagminta: </span>
-            <input name="ido_atlag" type="text"/>
-          </div>
-          <div class="form-group span12">
-            <span>hozamarányos átlagminta: </span>
-            <input name="hozam_atlag" type="text"/>
-          </div>
-          <div class="form-group span12">
-            <span>Alkalmazott eszköz: </span>
-            <input name="alkalmazott" type="text"/>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group span12">
-            <span>A minták közti időtartam vagy hozam (perc vagy m3):  </span>
-            <input name="mintak_kozott" type="text"/>
+          <div class="has-padding">
+            <div class="form-group">
+              <label>pontminta</label>
+              <input class="form-control" name="pontminta" type="text"/>
+            </div>
+            <div class="form-group">
+              <label>időarányos átlagminta: </label>
+              <input class="form-control" name="ido_atlag" type="text"/>
+            </div>
+            <div class="form-group">
+              <label>hozamarányos átlagminta: </label>
+              <input class="form-control" name="hozam_atlag" type="text"/>
+            </div>
+            <div class="form-group">
+              <label>Alkalmazott eszköz: </label>
+              <input class="form-control" name="alkalmazott" type="text"/>
+            </div>
           </div>
         </div>
         <div class="row">
-          <div class="form-group span12">
-            <span>A pontminták térfogata (ml): </span>
-            <input name="minta_terfogata" type="text"/>
+          <div class="form-group">
+            <label>A minták közti időtartam vagy hozam (perc vagy m3):  </label>
+            <input class="form-control" name="mintak_kozott" type="text"/>
           </div>
         </div>
         <div class="row">
-          <div class="form-group span12">
-            <span>A mintavétel kezdete::  </span>
-            <input name="minta_kezdete" type="text"/>
+          <div class="form-group">
+            <label>A pontminták térfogata (ml): </label>
+            <input class="form-control" name="minta_terfogata" type="text"/>
           </div>
         </div>
         <div class="row">
-          <div class="form-group span12">
-            <span>A minták közti időtartam vagy hozam (perc vagy m3):  </span>
-            <input name="mintak_kozott" type="text"/>
+          <div class="form-group">
+            <label>Mv kezd.: </label>
+            <input class="form-control" name="minta_kezdete" type="text"/>
           </div>
         </div>
         <div class="row">
-          <div class="form-group span12">
-            <span>A minták közti időtartam vagy hozam (perc vagy m3):  </span>
-            <input name="mintak_kozott" type="text"/>
+          <div class="form-group">
+            <label>Mv. vége: </label>
+            <input class="form-control" name="minta_vege" type="text"/>
           </div>
         </div>
         <div class="row">
-          <div class="form-group span12">
-            <span>A minták közti időtartam vagy hozam (perc vagy m3):  </span>
-            <input name="mintak_kozott" type="text"/>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="form-group span12">
-            <p>Üzemviteli és mintavételi körülmények, megjegyzések</p>
-            <textarea name="uzemviteli"></textarea>
+          <div class="form-group">
+            <label>A minták közti időtartam vagy hozam (perc vagy m3):  </label>
+            <input class="form-control" name="mintak_kozott" type="text"/>
           </div>
         </div>
         <div class="row">
-          <div class="form-group span12">
-            <p>Alkalmazott eszközök</p>
-            <p><span>Barométer</span><input name="barometer"></input></p>
-            <p><span>Rotaméter</span><input name="rotameter"></input></p>
-            <p><span>Hőmérséklet, páratartalom és légsebesség mérő:</span><input name="homerseklet_paratartalom"></input></p>
-            <p><span>Mikroszkóp</span><input name="mikroszkop"></input></p>
+          <div class="form-group">
+            <label>A minta jele: </label>
+            <input class="form-control" name="minta_jele" type="text"/>
           </div>
         </div>
         <div class="row">
-          <div class="span6">
-            <span>Készítette</span>
-            <select class="pre-combobox" name="keszitette">
-              <option value="">Válassz</option>
-              <option value="Szenyán Zoltán">Szenyán Zoltán</option>
-              <option value="Czap Zoltán">Czap Zoltán</option>
-              <option value="Czap Gergely">Czap Gergely</option>
-              <option value="Lovas Péter">Lovas Péter</option>
-              <option value="Gyuricza Zsolt">Gyuricza Úr</option>
-              <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
-            </select>
+            <div class="form-group">
+              <label>Vizsgálandó komponensek</label>
+              <div class="row">
+                <div class="col-sm-6">
+                  <input class="form-control label-input" type="text" name="komponensek_label" class="">
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control value-input" type="text" name="komponensek">
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-mark="#myModal">Vizsgalando komponensek</button>
+            </div>
           </div>
+          <div class="modal fade modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Vizsgálandó komponensek</h4>
+                </div>
+                <div class="modal-body text-center">
+                  <div class="row">
+                    <div class="form-group">
+                      <select name="mintavetel_celja" class="component-label">
+                        <option value=''>Kérem válasszon</option>
+                        <option value="bakter">Bakter.</option>
+                        <option value="kemiai">Kémiai</option>
+                      </select>
+                    </div>
+                    <div class="form-group component-value">
+                      <select>
+                       <option value=''>Kérem válasszon</option>
+                        <option value="Escherichia coli (E.coli)" class="bakter">Escherichia coli (E.coli)</option>
+                        <option value="Enterococcus" class="bakter">Enterococcus</option>
+                        <option value="Clostridium perfringens" class="bakter">Clostridium perfringens</option>    
+                        <option value="Telepszám 22 ˚ C  - on" class="bakter">Telepszám 22 ˚ C  - on</option>
+                        <option value="Telepszám   37 ˚ C – on " class="bakter">Telepszám  37 ˚ C – on </option>
+                        <option value="Coliform baktériumok" class="bakter">Coliform baktériumok </option>
+                        <option value="Pseudomonas aeruginosa" class="bakter">Pseudomonas aeruginosa</option>
+                        <option value="Mikroszkópos biológia" class="bakter">Mikroszkópos biológia</option>
+                        <option value="Legionella" class="bakter">Legionella</option>
+                        <option class="kemiai" val="Antimon">Antimon</option>
+                        <option class="kemiai" val="Arzén">Arzén</option>
+                        <option class="kemiai" val="Benzol">Benzol</option>
+                        <option class="kemiai" val="Benz(a)pirén*">Benz(a)pirén*</option>
+                        <option class="kemiai" val="Bór">Bór</option>
+                        <option class="kemiai" val="Kadmium">Kadmium</option>
+                        <option class="kemiai" val="Króm">Króm</option>
+                        <option class="kemiai" val="Réz">Réz</option>
+                        <option class="kemiai" val="Összes cianid">Összes cianid</option>
+                        <option class="kemiai" val="1,2-diklór-etán**">1,2-diklór-etán**</option>
+                        <option class="kemiai" val="Fluorid">Fluorid</option>
+                        <option class="kemiai" val="Ólom">Ólom</option>
+                        <option class="kemiai" val="Higany">Higany</option>
+                        <option class="kemiai" val="Nikkel">Nikkel</option>
+                        <option class="kemiai" val="Nitrát">Nitrát</option>
+                        <option class="kemiai" val="Nitrit">Nitrit</option>
+                        <option class="kemiai" val="Peszticidek  (10 db)">Peszticidek  (10 db)</option>
+                        <option class="kemiai" val="Policiklikus aromás szénhidrogének (4 db)*">Policiklikus aromás szénhidrogének (4 db)*</option>
+                        <option class="kemiai" val="Szelén">Szelén</option>
+                        <option class="kemiai" val="Tetraklór-etilén és triklór –etilén**">Tetraklór-etilén és triklór –etilén**</option>
+                        <option class="kemiai" val="Összes trihalo-metán**">Összes trihalo-metán**</option>
+                        <option class="kemiai" val="Cisz-1,2-diklór-etilén**">Cisz-1,2-diklór-etilén**</option>
+                        <option class="kemiai" val="Kötött aktív klór">Kötött aktív klór</option>
+                        <option class="kemiai" val="Alumínium">Alumínium</option>
+                        <option class="kemiai" val="Ammónium">Ammónium</option>
+                        <option class="kemiai" val="Klorid">Klorid</option>
+                        <option class="kemiai" val="Fajl.el. vez.kép.">Fajl.el. vez.kép.</option>
+                        <option class="kemiai" val="pH">pH</option>
+                        <option class="kemiai" val="Vas">Vas</option>
+                        <option class="kemiai" val="Mangán">Mangán</option>
+                        <option class="kemiai" val="Kémiai oxigénigény(ps)">Kémiai oxigénigény(ps)</option>
+                        <option class="kemiai" val="Szulfát">Szulfát</option>
+                        <option class="kemiai" val="Lúgoság">Lúgoság</option>
+                        <option class="kemiai" val="Nátrium">Nátrium</option>
+                        <option class="kemiai" val="Összes szerves szén TOC">Összes szerves szén TOC</option>
+                        <option class="kemiai" val="Zavarosság">Zavarosság</option>
+                        <option class="kemiai" val="Össz.keménység">Össz.keménység</option>
+                        <option class="kemiai" val="Fenol index">Fenol index</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="modal-save"  data-dismiss="modal">Mentés</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Vezetőképesség (MSZ EN 27888:1998) (µS/cm): </label>
+            <input class="form-control" name="vezetokepesseg" type="text"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Vízhőmérséklet (MSZ 260-2:1955) (°C): </label>
+            <input class="form-control" name="vizhomerseklet" type="text"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Üzemviteli és mintavételi körülmények, megjegyzések</label>
+            <textarea name="uzemviteli" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <p><strong>Alkalmazott eszközök</strong></p>
+            <div class="has-padding">
+              <label>Barométer</label>
+              <input class="form-control" name="barometer"></input>
+              <label>Rotaméter</label>
+              <input class="form-control" name="rotameter"></input>
+              <label>Hőmérséklet, páratartalom és légsebesség mérő:</label>
+              <input class="form-control" name="homerseklet_paratartalom"></input>
+              <label>Mikroszkóp</label>
+              <input class="form-control" name="mikroszkop"></input>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <label>Készítette</label>
+          <select class="combobox" name="keszitette">
+            <option value="">Válassz</option>
+            <option value="Szenyán Zoltán">Szenyán Zoltán</option>
+            <option value="Czap Zoltán">Czap Zoltán</option>
+            <option value="Lovas Péter">Lovas Péter</option>
+            <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+            <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
+          </select>
         </div>
       </form>
      </div>
@@ -361,42 +482,1554 @@
 
 
 <div class="doc-type" data-doc-type="ivoviz">
-<h2 style="text-align: center;">Mintavétel ivóvízből</h2>
-        <p>Mintavétel helye: <span class="mintavetel_helye"></span></p>
-        <p>Helység: <span class="mintavetel_helyszine"></span></p>
-        <p>Mérési hely: <span class="meresi_hely"></span></p>
-        <table>
-          <tr>
-            <td style="vertical-align: top;">Mintavételi szabvány száma:</td>
-            <td style="padding-left: 20px;">MSZ EN ISO 5667-1:2007<br>
-            MSZ EN ISO 5667-16:2000 3., 4., 5. fejezet<br>
-            MSZ EN ISO 19458:2007 <br>
-            MSZ 22902-1:1989 3. fejezet <br>
-            MSZ 448-36:1985 3. fejezet <br>
-            MSZ 448-44:1990 3.1. szakasz <br>
-            MSZ 448-36:1985 3. fejezet</td>
-          </tr>
-        </table>
-        <p>Vizsgálandó komponensek: <span class="komponensek_label" style="padding-right: 20px;"></span><span class="komponensek"> </span></p>
-        <p>A tartósításra vonatkozó szabvány száma:  MSZ EN ISO 5667-3:2004 (visszavont szabvány)</p>
-        <p>A tartósítás módja: <span class="tartositas_modja"></span></p>
-        <p>Minták jele: <span class="mintak_jele"></span></p>
-        <p>pH (MSZ 1484-22:2009): <span class="ph"></span></p>
-        <p>Vezetőképesség (MSZ EN 27888:1998) (µS/cm): <span class="vezetokep"></span></p>
-        <p>Vízhőmérséklet (MSZ 448-2:1967 (visszavont szabvány)) (°C):<span class="vizhomersek"></span></p>
-        <br style="page-break-before: always">
-        <div><strong>Üzemviteli és mintavételi körülmények, megjegyzések</strong><p class="uzemviteli"></p></div>
-        <div>
-          <strong>Alkalmazott eszközök:</strong>
-          <p>Rotaméter:<span class="rotameter"></span></p>
-          <p>Barométer:<span class="barometer"></span></p>
-          <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
-          <p>Mikroszkóp:<span class="mikroszkop"></span></p>
-          <p>A mintavétel ideje: <span class="datum"></span></p>
-          <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+  <h2 style="text-align: center;">Mintavétel ivóvízből</h2>
+  <p>Mintavétel helye: <span class="mintavetel_helye"></span></p>
+  <p>Helység: <span class="mintavetel_helyszine"></span></p>
+  <p>Mérési hely: <span class="meresi_hely"></span></p>
+  <table>
+    <tr>
+      <td style="vertical-align: top;">Mintavételi szabvány száma:</td>
+      <td style="padding-left: 20px;">MSZ EN ISO 5667-1:2007<br>
+      MSZ EN ISO 5667-16:2000 3., 4., 5. fejezet<br>
+      MSZ EN ISO 19458:2007 <br>
+      MSZ 22902-1:1989 3. fejezet <br>
+      MSZ 448-36:1985 3. fejezet <br>
+      MSZ 448-44:1990 3.1. szakasz <br>
+      MSZ 448-36:1985 3. fejezet</td>
+    </tr>
+  </table>
+  <p>Vizsgálandó komponensek: <span class="komponensek_label" style="padding-right: 20px;"></span><span class="komponensek"> </span></p>
+  <p>A tartósításra vonatkozó szabvány száma:  MSZ EN ISO 5667-3:2004 (visszavont szabvány)</p>
+  <p>A tartósítás módja: <span class="tartositas_modja"></span></p>
+  <p>Minták jele: <span class="mintak_jele"></span></p>
+  <p>pH (MSZ 1484-22:2009): <span class="ph"></span></p>
+  <p>Vezetőképesség (MSZ EN 27888:1998) (µS/cm): <span class="vezetokep"></span></p>
+  <p>Vízhőmérséklet (MSZ 448-2:1967 (visszavont szabvány)) (°C):<span class="vizhomersek"></span></p>
+  <br style="page-break-before: always">
+  <div><strong>Üzemviteli és mintavételi körülmények, megjegyzések</strong><p class="uzemviteli"></p></div>
+  <div>
+    <strong>Alkalmazott eszközök:</strong>
+    <p>Rotaméter:<span class="rotameter"></span></p>
+    <p>Barométer:<span class="barometer"></span></p>
+    <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
+    <p>Mikroszkóp:<span class="mikroszkop"></span></p>
+    <p>A mintavétel ideje: <span class="datum"></span></p>
+    <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+</div>
+<div class="doc-type" data-doc-type="szennyviz">
+  <h2 style="text-align: center;">Mintavétel szennyvízből</h2>
+  <p>Mintavétel helye: <span class="mintavetel_helye"></span></p>
+  <p>Helység: <span class="mintavetel_helyszine"></span></p>
+  <p>Mérési hely: <span class="meresi_hely"></span></p>
+  <p>Mintavétel dátuma: <span class="datum"></span></p>
+  <p>Mintavétel célja: <span class="mintavetel_celja"></span></p>
+  <p>Mintavételi szabvány száma: MSZ ISO 5667-10:1995</p>
+  <p>Mintavétel módszere: <span class="mintavetel_modszere"></span></p>
+  <p style="margin-left: 20pt;">pontminta: <span class="pontminta"></span></p>
+  <p style="margin-left: 20pt;">időarányos átlagminta: <span class="ido_atlag"></span></p>
+  <p style="margin-left: 20pt;">hozamarányos átlagminta: <span class="hozam_atlag"></span></p>
+  <p style="margin-left: 20pt;">Alkalmazott eszközök: <span class="alkalmazott"></span></p>
+  <p>Vizsgálandó komponensek: <span class="komponensek_label" style="padding-right: 20px;"></span><span class="komponensek"> </span></p>
+  <p>A tartósításra vonatkozó szabvány száma:  MSZ EN ISO 5667-3:2004 (visszavont szabvány)</p>
+  <p>A tartósítás módja: <span class="tartositas_modja"></span></p>
+  <p>Minták jele: <span class="mintak_jele"></span></p>
+  <p>pH (MSZ 1484-22:2009): <span class="ph"></span></p>
+  <p>Vezetőképesség (MSZ EN 27888:1998) (µS/cm): <span class="vezetokep"></span></p>
+  <p>Vízhőmérséklet (MSZ 448-2:1967 (visszavont szabvány)) (°C):<span class="vizhomersek"></span></p>
+  <div><strong>Üzemviteli és mintavételi körülmények, megjegyzések</strong><p class="uzemviteli"></p></div>
+  <div>
+    <strong>Alkalmazott eszközök:</strong>
+    <p>Rotaméter:<span class="rotameter"></span></p>
+    <p>Barométer:<span class="barometer"></span></p>
+    <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
+    <p>Mikroszkóp:<span class="mikroszkop"></span></p>
+    <p>A mintavétel ideje: <span class="datum"></span></p>
+    <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+</div>
+
+<div class="form-type" data-type="felszinalatt">
+  <h1 class="text-center">Mintavétel felszínalatti vizekből</h1>
+  <form method="post" action="/felszina">
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavétel helye(név): </label>
+            <input class="form-control" type="text" name="mintavetel_helyszine">
+          </div>
+          <div class="form-group">
+            <label>Helység</label>
+            <input class="form-control" type="text" name="mintavetel_helye">
+          </div>
         </div>
-        <br style="page-break-before: always">
-        <script type="text/javascript">
-    
-    </script>
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavételi hely meghatározása</label>
+            <input class="form-control" type="text" name="mintaveteli_hely">
+          </div>
+          <div class="form-group">
+            <label>A szűrőzés adatai</label>
+            <input class="form-control" type="text" name="szurozes_adatai">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Kútanyag</label>
+            <input class="form-control" type="text" name="kutanyag">
+          </div>
+          <div class="form-group">
+            <label>Talpmélység</label>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-10">
+                    <input class="form-control" type="text" name="talpmelyseg">
+                  </div>
+                  <div class="col-sm-2">
+                    <span>mbf</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-10">
+                    <input class="form-control" type="text" name="mbf">
+                  </div>
+                  <div class="col-sm-2">
+                    <span>m</span>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label>Vizsgálandó komponensek</label>
+              <div class="row">
+                <div class="col-sm-6">
+                  <input class="form-control label-input" type="text" name="komponensek_label">
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control value-input" type="text" name="komponensek">
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-mark="#myModal">Vizsgalando komponensek</button>
+            </div>
+          </div>
+          <div class="modal fade modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Vizsgálandó komponensek</h4>
+                </div>
+                <div class="modal-body text-center">
+                  <div class="row">
+                    <div class="form-group">
+                      <select name="mintavetel_celja" class="component-label">
+                        <option value=''>Kérem válasszon</option>
+                        <option value="bakter">Bakter.</option>
+                        <option value="kemiai">Kémiai</option>
+                      </select>
+                    </div>
+                    <div class="form-group component-value">
+                      <select>
+                       <option value=''>Kérem válasszon</option>
+                        <option value="Escherichia coli (E.coli)" class="bakter">Escherichia coli (E.coli)</option>
+                        <option value="Enterococcus" class="bakter">Enterococcus</option>
+                        <option value="Clostridium perfringens" class="bakter">Clostridium perfringens</option>    
+                        <option value="Telepszám 22 ˚ C  - on" class="bakter">Telepszám 22 ˚ C  - on</option>
+                        <option value="Telepszám   37 ˚ C – on " class="bakter">Telepszám  37 ˚ C – on </option>
+                        <option value="Coliform baktériumok" class="bakter">Coliform baktériumok </option>
+                        <option value="Pseudomonas aeruginosa" class="bakter">Pseudomonas aeruginosa</option>
+                        <option value="Mikroszkópos biológia" class="bakter">Mikroszkópos biológia</option>
+                        <option value="Legionella" class="bakter">Legionella</option>
+                        <option class="kemiai" val="Antimon">Antimon</option>
+                        <option class="kemiai" val="Arzén">Arzén</option>
+                        <option class="kemiai" val="Benzol">Benzol</option>
+                        <option class="kemiai" val="Benz(a)pirén*">Benz(a)pirén*</option>
+                        <option class="kemiai" val="Bór">Bór</option>
+                        <option class="kemiai" val="Kadmium">Kadmium</option>
+                        <option class="kemiai" val="Króm">Króm</option>
+                        <option class="kemiai" val="Réz">Réz</option>
+                        <option class="kemiai" val="Összes cianid">Összes cianid</option>
+                        <option class="kemiai" val="1,2-diklór-etán**">1,2-diklór-etán**</option>
+                        <option class="kemiai" val="Fluorid">Fluorid</option>
+                        <option class="kemiai" val="Ólom">Ólom</option>
+                        <option class="kemiai" val="Higany">Higany</option>
+                        <option class="kemiai" val="Nikkel">Nikkel</option>
+                        <option class="kemiai" val="Nitrát">Nitrát</option>
+                        <option class="kemiai" val="Nitrit">Nitrit</option>
+                        <option class="kemiai" val="Peszticidek  (10 db)">Peszticidek  (10 db)</option>
+                        <option class="kemiai" val="Policiklikus aromás szénhidrogének (4 db)*">Policiklikus aromás szénhidrogének (4 db)*</option>
+                        <option class="kemiai" val="Szelén">Szelén</option>
+                        <option class="kemiai" val="Tetraklór-etilén és triklór –etilén**">Tetraklór-etilén és triklór –etilén**</option>
+                        <option class="kemiai" val="Összes trihalo-metán**">Összes trihalo-metán**</option>
+                        <option class="kemiai" val="Cisz-1,2-diklór-etilén**">Cisz-1,2-diklór-etilén**</option>
+                        <option class="kemiai" val="Kötött aktív klór">Kötött aktív klór</option>
+                        <option class="kemiai" val="Alumínium">Alumínium</option>
+                        <option class="kemiai" val="Ammónium">Ammónium</option>
+                        <option class="kemiai" val="Klorid">Klorid</option>
+                        <option class="kemiai" val="Fajl.el. vez.kép.">Fajl.el. vez.kép.</option>
+                        <option class="kemiai" val="pH">pH</option>
+                        <option class="kemiai" val="Vas">Vas</option>
+                        <option class="kemiai" val="Mangán">Mangán</option>
+                        <option class="kemiai" val="Kémiai oxigénigény(ps)">Kémiai oxigénigény(ps)</option>
+                        <option class="kemiai" val="Szulfát">Szulfát</option>
+                        <option class="kemiai" val="Lúgoság">Lúgoság</option>
+                        <option class="kemiai" val="Nátrium">Nátrium</option>
+                        <option class="kemiai" val="Összes szerves szén TOC">Összes szerves szén TOC</option>
+                        <option class="kemiai" val="Zavarosság">Zavarosság</option>
+                        <option class="kemiai" val="Össz.keménység">Össz.keménység</option>
+                        <option class="kemiai" val="Fenol index">Fenol index</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="modal-save"  data-dismiss="modal">Mentés</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="row">
+          <div class="form-group">
+            <label>A tartósítás módja</label>
+            <input class="form-control" name="tartositas_modja" type="text"/>
+          </div>
+        </div>
+      <h2>Helyszíni adatok</h2>
+      <div class="row">
+        <div class="form-group">
+          <label>Mintavetel ideje</label>
+          <input class="form-control" name="datum" type="date"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label>Vizmintakód</label>
+          <input class="form-control" name="vizmintakod" type="text"/>
+        </div>
+      </div>
+      <div class="row">
+        <label>Vizsgáló laboratórium</label>
+        <select name="vizsgalo_lab1" class="combobox">
+            <option value="">Válassz</option>
+            <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+            <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+            <option value="KVI Plus kft.">KVI plus kft.</option>
+        </select>
+      </div>
+      <div class="row">
+        <label>Vizsgált komponensek</label>
+        <select name="vizsgalt_komponensek1" class="combobox">
+          <option value="">Kérlek válassz</option>
+          <option value="szerves anyagok">Szerves anyagok</option>
+          <option value="fémek">Fémek</option>
+          <option value="Sósav">Sósav</option>
+          <option value="Kénsav">Kénsav</option>
+          <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <label>Szivattyúzás előtti vízszint</label>
+          <input class="form-control" type="text" name="szivattyuzas" />
+        </div>
+        <div class="col-sm-6">
+          <label>Talpmélység:</label>
+          <input class="form-control" type="text" name="talpmelyseg" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <label>Vízoszlop</label>
+          <input class="form-control" type="text" name="vizoszlop" />
+        </div>
+        <div class="col-sm-6">
+          <label>Csőátmérő:</label>
+          <input class="form-control" type="text" name="csoatmero" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <label>A számítással meghatározott háromszoros térfogat:</label>
+          <input class="form-control" type="text" name="szamitassal_meghatarozott" />
+        </div>
+      </div> 
+      <div class="row">
+        <div class="col-sm-12">
+          <label>Kitermelt víz térfogata (L):</label>
+          <input class="form-control" type="text" name="kitermelt_viz" />
+        </div>
+      </div>
+      <h2>Tisztító szivattyúzás adatai</h2>
+      <div class="row">
+        <table class="table">
+          <thead>
+            <th>Időpont</th>
+            <th>Hozam</th>
+            <th>Vízszint</th>
+            <th>Vezetőképesség</th>
+            <th>Vízhőmérséklet</th>
+            <th>ph</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="mintavetel-ido input-append">
+                  <input class="form-control" data-format="hh:mm:ss" type="text" name="ido1"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" / name="hozam1"></td>
+              <td><input type="text" class="form-control" / name="vizszint1"></td>
+              <td><input type="text" class="form-control" / name="vezeto1"></td>
+              <td><input type="text" class="form-control" / name="vizho1"></td>
+              <td><input type="text" class="form-control" / name="ph1"></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="mintavetel-ido input-append">
+                  <input class="form-control" data-format="hh:mm:ss" type="text" name="ido2"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" / name="hozam2"></td>
+              <td><input type="text" class="form-control" / name="vizszint2"></td>
+              <td><input type="text" class="form-control" / name="vezeto2"></td>
+              <td><input type="text" class="form-control" / name="vizho2"></td>
+              <td><input type="text" class="form-control" / name="ph2"></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="mintavetel-ido input-append">
+                  <input class="form-control" data-format="hh:mm:ss" type="text" name="ido3"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" / name="hozam3"></td>
+              <td><input type="text" class="form-control" / name="vizszint3"></td>
+              <td><input type="text" class="form-control" / name="vezeto3"></td>
+              <td><input type="text" class="form-control" / name="vizho3"></td>
+              <td><input type="text" class="form-control" / name="ph3"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <span>Készítette</span>
+          <select class="combobox" name="keszitette">
+            <option value="">Válassz</option>
+            <option value="Szenyán Zoltán">Szenyán Zoltán</option>
+            <option value="Czap Zoltán">Czap Zoltán</option>
+            <option value="Czap Gergely">Czap Gergely</option>
+            <option value="Lovas Péter">Lovas Péter</option>
+            <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+            <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
+          </select>
+        </div>
+      </div>
+    </form>
+</div>
+<div class="doc-type" data-doc-type="felszinalatt">
+  <h2 style="text-align: center;">Mintavétel felszín alatti vizekből</h2>
+  <p>Mintavétel helye: <span class="mintavetel_helye"></span></p>
+  <p>Mintavétel helyszíne: <span class="mintavetel_helyszine"></span></p>
+  <p>Mérési hely: <span class="meresi_hely"></span></p>
+  <p>Mintavétel dátuma: <span class="datum"></span></p>
+  <p>Szűrőzés adatai: <span class="szurozes_adatai"></span></p>
+  <p>Kútanyag: <span class="kutanyag"></span></p>
+  <p>Talpmélység: <span class="talpmelyseg"></span> mbf <span class="mbf"></span> m</p>
+  <table>
+    <tr>
+      <td style="vertical-align: top;">Mintavételi szabvány száma:</td>
+      <td style="padding-left: 20px;">MSZ ISO 5667-11:2009 2. (visszavont szabvány),<br />
+      MSZ EN ISO 19458:2007, MSZ 22902-1:1989 3. fejezet<br>
+    </tr>
+  </table>
+  <p>Vizsgálandó komponensek: <span class="komponensek_label" style="padding-right: 20px;"></span><span class="komponensek"> </span></p>
+  <p>A tartósításra vonatkozó szabvány száma: MSZ EN ISO 5667-3:2004 (visszavont szabvány)</p>
+  <p>A tartósítás módja: <span class="tartositas_modja"></span></p>
+  <strong>Helyszíni adatok</strong>
+  <p>A mintavétel ideje: <span class="datum"></span></p>
+  <p>Vízmintakód: <span class="vizmintakod"></span></p>
+  <p>Tisztító szivattyúzásra vonatkozó adatok:</p>
+  <table style="margin-left: 30px;">
+    <tr>
+      <td>Szivattyúzás előtti vízszint: <span class="szivattyuzas"></span> m</td>
+      <td>Talpmélység: <span class="talpmelyseg"></span> m</td>
+    </tr>
+    <tr>
+      <td>Vízoszlop: <span class="vizoszlop"></span> m</td>
+      <td>Csőátmérő: <span class="csoatmero"></span> mm</td>
+    </tr> 
+    <tr>
+      <td>A számítással meghatározott háromszoros térfogat: <span class="szamitassal_meghatarozott"></span></td>
+    </tr>
+    <tr>
+      <td>Kitermelt víz térfogata (L): <span class="kitermelt_viz_terfogata"></span> m</td>
+    </tr>
+  </table>
+  <p>Tisztító szivattyúzás adatai: </p>
+  <table style="border: 1px solid black; border-collapse: collapse; border-bottom: 0">
+    <tr>
+      <td style="border: 1px solid black; text-align: center;">időpont</td>
+      <td style="border: 1px solid black; text-align: center;">hozam <br>L/min</td>
+      <td style="border: 1px solid black; text-align: center;">vízszint <br>cm</td>
+      <td style="border: 1px solid black; text-align: center;">vezetőképesség<br>(MSZ EN 27888:1998)<br>µS/cm</td>
+      <td style="border: 1px solid black; text-align: center;">vízhőmérséklet <br>(MSZ 448-2:1967<br>(visszavont szabvány))<br>°C</td>
+      <td style="border: 1px solid black; text-align: center;">pH <br>(MSZ 1484-22:2009)</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="ido1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="hozam1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="vizszint1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="vezeto1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="vizho1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ph1">-</span></td>
+    <tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="ido2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="hozam2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="vizszint2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="vezeto2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="vizho2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ph2">-</span></td>
+    <tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="ido3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="hozam3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="vizszint3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="vezeto3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="vizho3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ph3">-</span></td>
+    <tr>
+  </table>
+  <div><strong>Üzemviteli és mintavételi körülmények, megjegyzések</strong><p class="uzemviteli"></p></div>
+    <strong>Alkalmazott eszközök:</strong>
+    <p>Rotaméter:<span class="rotameter"></span></p>
+    <p>Barométer:<span class="barometer"></span></p>
+    <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
+    <p>Mikroszkóp:<span class="mikroszkop"></span></p>
+    <p>A mintavétel ideje: <span class="datum"></span></p>
+    <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+</div>
+<div class="form-type" data-type="szallorost">
+  <h1 class="text-center">Szállórost koncentráció vizsgálata</h1>
+  <form method="post" action="/szallor">
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavétel helye(név): </label>
+            <input class="form-control" type="text" name="mintavetel_helye">
+          </div>
+          <div class="form-group">
+            <label>Dátum</label>
+            <input class="form-control" type="date" name="datum">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavétel helyszíne (cím): </label>
+            <input class="form-control" type="text" name="mintavetel_helyszine">
+          </div>
+          <div class="form-group">
+            <label>Minták száma</label>
+            <input class="form-control" type="text" name="mintak_szama">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavevő(k) típusa</label>
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="text" name="mintavevo_tipusa" class="label-input form-control">
+              </div>
+              <div class="col-sm-6">
+                <input type="text" name="mintavevo_szama" class="form-control value-input">
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-mark="#myModal">
+            Hozzáadás
+            </button>
+          </div>
+        </div>
+        <div class="modal fade modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Mintavevők típusa</h4>
+              </div>
+              <div class="modal-body text-center">
+                <div class="row">
+                  <div class="form-group col-sm-6">
+                    <select name="mintavetel_gep1" class="component-label">
+                      <option value=''>Kérem válasszon</option>
+                      <option value="casella">Casella Apex</option>
+                      <option value="wortex">Wortex Ultra Flow</option>
+                      <option value="ggy">GGY</option>
+                      <option value="sidekick">SIDEKICK ’T’</option>
+                      <option value="skc-flite">SKC Flite3</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-sm-6 component-value">
+                    <select name="sorszam1">
+                      <option class="none" value=''>Kérem válasszon</option>
+                      <option value="1239544" class="casella">1239544</option>
+                      <option value="1239545" class="casella">1239545</option>
+                      <option value="1239547" class="casella">1239547</option>
+                      <option value="1156811" class="casella">1156811</option>
+                      <option value="1156813" class="casella">1156813</option>
+                      <option value="1156844" class="casella">1156844</option>
+                      <option value="1156852" class="casella">1156852</option>
+                      <option value="1156860"class="casella">1156860</option>
+                      <option value="1156864"class="casella">1156864</option>
+                      <option value="1156866"class="casella">1156866</option>
+                      <option value="1156886"class="casella">1156886</option>
+                      <option value="1156889"class="casella">1156889</option>
+                      <option value="1156892"class="casella">1156892</option>
+                      <option value="4-70" class="wortex">4-70</option>
+                      <option value="4-71" class="wortex">4-71</option>
+                      <option value="4-72" class="wortex">4-72</option>
+                      <option value="4-73" class="wortex">4-73</option>
+                      <option value="4-74" class="wortex">4-74</option>
+                      <option value="4-75" class="wortex">4-75</option>
+                      <option value="4-76" class="wortex">4-76</option>
+                      <option value="0677895" class="wortex">0677895</option>
+                      <option value="0677896" class="wortex">0677896</option>
+                      <option value="0677897" class="wortex">0677897</option>
+                      <option value="0878324" class="wortex">0878324</option>
+                      <option value="0878546" class="wortex">0878546</option>
+                      <option value="037604" class="wortex">037604</option>
+                      <option value="01" class="ggy">01</option>
+                      <option value="02" class="ggy">02</option>
+                      <option value="03" class="ggy">03</option>
+                      <option value="04" class="ggy">04</option>
+                      <option value="509695" class="sidekick">509695</option>
+                      <option value="15533748" class="skc-flite">15533748</option>
+                      <option value="15533749" class="skc-flite">15533749</option>
+                      <option value="15533750" class="skc-flite">15533750</option>
+                      <option value="15533751" class="skc-flite">15533751</option>
+                      <option value="15533752" class="skc-flite">15533752</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal-save"  data-dismiss="modal">Mentés</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavétel módja</label>
+            <select name="mintavetel_modja" class="form-control">
+              <option value=''>Kérem válasszon</option>
+              <option value="stacionarius">stacionárius (rögzített ponton 1,5 m magasságban) </option>
+              <option value="szemelyi">személyi mintavétel</option>
+            </select>
+            </div>
+        </div>
+      <div class="row">
+        <table class="table">
+          <thead>
+            <th>Minta száma</th>
+            <th>Ellenőrzött minta (0/1)</th>
+            <th>Mintavételi hely</th>
+            <th>Mintavétel kezdete</th>
+            <th>Mintavétel vége</th>
+            <th>Térfogatáram (cm3/min)</th>
+            <th>Munkafolyamat</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" class="form-control" name="minta_szama_1" /></td>
+              <td><input class="form-control" type="text" name="ellenorzott1"></td>
+              <td><input type="text" class="form-control" / name="mintavetel_hely_1"></td>
+              <td>
+                <div class="mintavetel-ido input-append">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_kezdete_1"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div id="" class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_vege_1"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <select name="terfogataram_1" class="combobox">
+                  <option value="">Válassz</option>
+                  <option value="8000">8000</option>
+                  <option value="1000">1000</option>
+                </select>
+              </td>
+              <td><textarea class="form-control" name="munkafolyamat_1" placeholder="munkafolyamat"></textarea></td>
+            </tr>
+             <tr>
+              <td><input type="text" class="form-control" name="minta_szama_2" /></td>
+              <td><input type="text" name="ellenorzott2" class="form-control"></td>
+              <td><input type="text" class="form-control" / name="mintavetel_hely_2"></td>
+              <td>
+                <div class="mintavetel-ido input-append">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_kezdete_2"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div id="" class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_vege_2"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <select name="terfogataram_2" class="combobox">
+                  <option value="">Válassz</option>
+                  <option value="8000">8000</option>
+                  <option value="1000">1000</option>
+                </select>
+              </td>
+              <td><textarea class="form-control" name="munkafolyamat_2" placeholder="munkafolyamat"></textarea></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="form-control" name="minta_szama_3" /></td>
+              <td><input type="text" name="ellenorzott3" class="form-control"></td>
+              <td><input type="text" class="form-control" / name="mintavetel_hely_3"></td>
+              <td>
+                <div class="mintavetel-ido input-append">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_kezdete_3"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div id="" class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_vege_3"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <select name="terfogataram_3" class="combobox">
+                  <option value="">Válassz</option>
+                  <option value="8000">8000</option>
+                  <option value="1000">1000</option>
+                </select>
+              </td>
+              <td><textarea class="form-control" name="munkafolyamat_3" placeholder="munkafolyamat"></textarea></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="form-control" name="minta_szama_4" /></td>
+              <td><input type="text" name="ellenorzott4" class="form-control"></td>
+              <td><input type="text" class="form-control" / name="mintavetel_hely_4"></td>
+              <td>
+                <div class="mintavetel-ido input-append">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_kezdete_4"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div id="" class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_vege_4"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <select name="terfogataram_4" class="combobox">
+                  <option value="">Válassz</option>
+                  <option value="8000">8000</option>
+                  <option value="1000">1000</option>
+                </select>
+              </td>
+              <td><textarea class="form-control" name="munkafolyamat_4" placeholder="munkafolyamat"></textarea></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="form-control" name="minta_szama_5" /></td>
+              <td><input type="text" name="ellenorzott5" class="form-control"></td>
+              <td><input type="text" class="form-control" / name="mintavetel_hely_5"></td>
+              <td>
+                <div class="mintavetel-ido input-append">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_kezdete_5"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div id="" class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_vege_5"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <select name="terfogataram_5" class="combobox">
+                  <option value="">Válassz</option>
+                  <option value="8000">8000</option>
+                  <option value="1000">1000</option>
+                </select>
+              </td>
+              <td><textarea class="form-control" name="munkafolyamat_5" placeholder="munkafolyamat"></textarea></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="form-control" name="minta_szama_6" /></td>
+              <td><input type="text" name="ellenorzott6" class="form-control"></td>
+              <td><input type="text" class="form-control" / name="mintavetel_hely_6"></td>
+              <td>
+                <div class="mintavetel-ido input-append">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_kezdete_6"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div id="" class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_vege_6"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <select name="terfogataram_6" class="combobox">
+                  <option value="">Válassz</option>
+                  <option value="8000">8000</option>
+                  <option value="1000">1000</option>
+                </select>
+              </td>
+              <td><textarea class="form-control" name="munkafolyamat_6" placeholder="munkafolyamat"></textarea></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="form-control" name="minta_szama_7" /></td>
+              <td><input type="text" name="ellenorzott7" class="form-control"></td>
+              <td><input type="text" class="form-control" / name="mintavetel_hely_7"></td>
+              <td>
+                <div class="mintavetel-ido input-append">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_kezdete_7"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div id="" class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="mintavetel_vege_7"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td>
+                <select name="terfogataram_7" class="combobox">
+                  <option value="">Válassz</option>
+                  <option value="8000">8000</option>
+                  <option value="1000">1000</option>
+                </select>
+              </td>
+              <td><textarea class="form-control" name="munkafolyamat_7" placeholder="munkafolyamat"></textarea></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <h2>Meterológiai paraméterek</h2>
+        <table class="table">
+          <thead>
+            <th>Idő</th>
+            <th>Légnyomás (mbar)</th>
+            <th>Hőmérséklet</th>
+            <th>Páratartalom</th>
+            <th>Légsebesség</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_1"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_1" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_1" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_1" /></td>
+              <td>
+                <select name="legsebesseg_1" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_2"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_2" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_2" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_2" /></td>
+              <td>
+                <select name="legsebesseg_2" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_3"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_3" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_3" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_3" /></td>
+              <td>
+                <select name="legsebesseg_3" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_4"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_4" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_4" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_4" /></td>
+              <td>
+                <select name="legsebesseg_4" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="form-group span12">
+          <label>Behatás más területről</label>
+          <input type="text" name="behatas" class="form-control" />
+        </div>
+      </div>
+      <div class="row">
+          <div class="form-group">
+            <label>Üzemviteli és mintavételi körülmények, megjegyzések</label>
+            <textarea class="form-control" name="uzemviteli"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <p><strong>Alkalmazott eszközök</strong></p>
+            <label>Barométer</label>
+              <select class="form-control" name="mikroszkop">
+                <option value="">Válassz</option>
+                <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
+                <option value="Olympus; 15069">Olympus; 15069</option>
+                <option value="Leica DM 2700P">Leica DM 2700P</option>
+              </select>
+            <label>Rotaméter</label>
+            <select class="form-control" name="rotameter">
+              <option value="">Válassz</option>
+              <option value="94-168-1838">94-168-1838</option>
+              <option value="10-323-339">10-323-339</option>
+              <option value="11-130-141">11-130-141</option>
+              <option value="13-146-1">13-146-1</option>
+            </select>
+            <label>Hőmérséklet, páratartalom és légsebesség mérő:</label>
+            <select class="form-control" name="paratartalom_mero">
+              <option value="">Válassz</option>
+              <option value="testo_645_143190">Testo 645;143190</option>
+              <option value="testo_435_1559658">Testo 435; 1559658</option>
+              <option value="testo_405_V1">Testo 405-V1</option>
+            </select>
+            <label>Mikroszkóp</label>
+            <select class="form-control" name="mikroszkop">
+              <option value="">Válassz</option>
+              <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
+              <option value="Olympus; 15069">Olympus; 15069</option>
+              <option value="Leica DM 2700P">Leica DM 2700P</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <label>Készítette</label>
+          <select class="combobox" name="keszitette">
+            <option value="">Válassz</option>
+            <option value="Szenyán Zoltán">Szenyán Zoltán</option>
+            <option value="Czap Zoltán">Czap Zoltán</option>
+            <option value="Czap Gergely">Czap Gergely</option>
+            <option value="Lovas Péter">Lovas Péter</option>
+            <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+            <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="doc-type" data-doc-type="szallorost">
+  <h2 style="text-align: center;">Szállórost koncentráció vizsgálata</h2>
+  <table style="width: 100%; margin-bottom: 20px;">
+    <tr>
+      <td><strong>Mintavétel helye(név):</strong> <span class="mintavetel_helyszine"></span></td>
+      <td><strong>Dátum:</strong> <span class="datum"></span></td>
+    </tr>
+    <tr>
+      <td><strong>Mintavétel helyszíne(cím):</strong> <span class="mintavetel_helyszine"></span></td>
+      <td><strong>Minták száma:</strong> <span class="mintak_szama"></span></td>
+    </tr>
+    <tr>
+      <td><strong>Mintavevők típusa:</strong> <span class="mintavevok_tipusa"></span></td>
+      <td><strong>Mintavevők száma:</strong> <span class="mintavevok_szama"></span></td>
+    </tr>
+  </table>
+  <p><strong>Mintavétel módja:</strong> <span class="mintavetel_modja"></span></p>
+  <table style="width: 100%; border: 1px solid black; margin-bottom: 20px; border-collapse: collapse; border-bottom: 0">
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Minta száma</p></strong> </td>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Mintavételi hely </p></strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Mv. kezd. </p></strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Mv. vége </p></strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Térfogatáram <br> (cm/min)</p></strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Munkafolyamat</p></strong></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_1">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott1">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_1">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_1">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_1">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_1"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_2">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott2">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_2">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_2">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_2">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_2"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_3">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott3">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_3">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_3">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_3">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_3"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_4">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott4">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_4">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_4">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_4">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_4"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_5">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott5">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_5">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_5">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_5">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_5"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_6">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott6">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_6">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_6">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_6">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_6"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_7">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott7">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_7">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_7">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_7">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_7"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_8">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott8">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_8">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_8">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_8">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_8"></span></td>
+    </tr>
+  </table>
+  <p><strong>Meterolgiai paraméterek: </strong></p>
+  <table style="width:100%; border-collapse: collapse; border-bottom: 0">
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><strong>Idő</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Légnyomás (mbar)</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Hőmérséklet (°C)</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Páratartalom (%)</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Légsebesség (m/s)</strong></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_1">-</span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_2">-</span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_3">-</span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_4">-</span></td>
+    </tr>
+  </table>
+  <p><strong>Behatás más területről: </strong><span class="behatas"></span></p> 
+  <div><strong>Üzemviteli és mintavételi körülmények, megjegyzések</strong><p class="uzemviteli"></p></div>
+    <strong>Alkalmazott eszközök:</strong>
+    <p>Rotaméter:<span class="rotameter"></span></p>
+    <p>Barométer:<span class="barometer"></span></p>
+    <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
+    <p>Mikroszkóp:<span class="mikroszkop"></span></p>
+    <p>A mintavétel ideje: <span class="datum"></span></p>
+    <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+</div>
+
+<div class="form-type" data-type="szallorostkonc">
+    <h1 class="text-center">Szállórost koncentráció vizsgálata</h1>
+  <form method="post" action="/szallorostkonc" id="szallorostkonc">
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavétel helye(név): </label>
+            <input class="form-control" type="text" name="mintavetel_helye">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavétel helyszíne(cím): </label>
+            <input class="form-control" type="text" name="mintavetel_helyszine">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Dátum</label>
+            <input class="form-control" type="date" name="datum">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Mérési hely:</label>
+            <input class="form-control" type="text" name="meresi_hely">
+          </div>
+          <div class="form-group">
+            <label>Minta száma</label>
+            <input class="form-control" type="text" name="minta_szama">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label>Mintavevő típusa</label>
+                <input type="text" name="mintavevo_tipusa" class="form-control label-input">
+              </div>
+              <div class="col-sm-6">
+                <label>Mintavevő száma</label>
+                <input type="text" name="mintavevo_szama" class="form-control value-input">
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-mark="#myModal">
+            Hozzáadás
+            </button>
+          </div>
+          <div class="form-group">
+          </div>
+        </div>
+        <div class="modal fade modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Mintavevők típusa</h4>
+              </div>
+              <div class="modal-body text-center">
+                <div class="row">
+                  <div class="form-group">
+                    <select name="mintavetel_celja" class="component-label">
+                      <option value=''>Kérem válasszon</option>
+                      <option value="casella">Casella Apex</option>
+                      <option value="wortex">Wortex Ultra Flow</option>
+                      <option value="ggy">GGY</option>
+                      <option value="sidekick">SIDEKICK ’T’</option>
+                      <option value="skc-flite">SKC Flite3</option>
+                    </select>
+                  </div>
+                  <div class="form-group span6 component-value">
+                    <select name="sorszam">
+                      <option class="none" value=''>Kérem válasszon</option>
+                      <option value="1239544" class="casella">1239544</option>
+                      <option value="1239545" class="casella">1239545</option>
+                      <option value="1239547" class="casella">1239547</option>
+                      <option value="1156811" class="casella">1156811</option>
+                      <option value="1156813" class="casella">1156813</option>
+                      <option value="1156844" class="casella">1156844</option>
+                      <option value="1156852" class="casella">1156852</option>
+                      <option value="1156860"class="casella">1156860</option>
+                      <option value="1156864"class="casella">1156864</option>
+                      <option value="1156866"class="casella">1156866</option>
+                      <option value="1156886"class="casella">1156886</option>
+                      <option value="1156889"class="casella">1156889</option>
+                      <option value="1156892"class="casella">1156892</option>
+                      <option value="4-70" class="wortex">4-70</option>
+                      <option value="4-71" class="wortex">4-71</option>
+                      <option value="4-72" class="wortex">4-72</option>
+                      <option value="4-73" class="wortex">4-73</option>
+                      <option value="4-74" class="wortex">4-74</option>
+                      <option value="4-75" class="wortex">4-75</option>
+                      <option value="4-76" class="wortex">4-76</option>
+                      <option value="0677895" class="wortex">0677895</option>
+                      <option value="0677896" class="wortex">0677896</option>
+                      <option value="0677897" class="wortex">0677897</option>
+                      <option value="0878324" class="wortex">0878324</option>
+                      <option value="0878546" class="wortex">0878546</option>
+                      <option value="037604" class="wortex">037604</option>
+                      <option value="01" class="ggy">01</option>
+                      <option value="02" class="ggy">02</option>
+                      <option value="03" class="ggy">03</option>
+                      <option value="04" class="ggy">04</option>
+                      <option value="509695" class="sidekick">509695</option>
+                      <option value="15533748" class="skc-flite">15533748</option>
+                      <option value="15533749" class="skc-flite">15533749</option>
+                      <option value="15533750" class="skc-flite">15533750</option>
+                      <option value="15533751" class="skc-flite">15533751</option>
+                      <option value="15533752" class="skc-flite">15533752</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal-save"  data-dismiss="modal">Mentés</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavétel módja</label>
+            <select name="mintavetel_modja" class="form-control">
+              <option value=''>Kérem válasszon</option>
+              <option value="stacionarius">stacionárius (rögzített ponton </option>
+              <option value="szemelyi">1,5 m magasságban) személyi mintavétel</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-12">
+            <label>Mintavetel kezdete</label>
+            <div class="mintavetel-ido input-append">
+              <input data-format="hh:mm" type="text" name="mintavetel_kezdete"></input>
+              <span class="add-on">
+                <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                </i>
+              </span>
+            </div>
+          </div>
+        </div>
+      <div class="row">
+        <div class="form-group col-sm-12">
+            <label>Mintán átáramló levegő térfogata: </label>
+            <input class="form-control" type="text" name="levego_terfogata">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <label>Mintavetel vége</label>
+          <div class="mintavetel-ido input-append">
+            <input data-format="hh:mm" type="text" name="mintavetel_vege"></input>
+            <span class="add-on">
+              <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+              </i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <span>Kép</span>
+        </div>
+      </div>
+      <div class="row">
+        <h2>Meterológiai paraméterek</h2>
+        <table class="table">
+          <thead>
+            <th>Idő</th>
+            <th>Légnyomás (mbar)</th>
+            <th>Hőmérséklet</th>
+            <th>Páratartalom</th>
+            <th>Légsebesség</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_1"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_1" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_1" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_1" /></td>
+              <td>
+                <select name="legsebesseg_1" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_2"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_2" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_2" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_2" /></td>
+              <td>
+                <select name="legsebesseg_2" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_3"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_3" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_3" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_3" /></td>
+              <td>
+                <select name="legsebesseg_3" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_4"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_4" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_4" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_4" /></td>
+              <td>
+                <select name="legsebesseg_4" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="form-group span12">
+          <label>Behatás más területről</label>
+          <input class="form-control" type="text" name="behatas">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group span6">
+          <span>Rotaméter</span>
+          <select class="combobox" name="rotameter">
+            <option value="">Válassz</option>
+            <option value="94-168-1838">94-168-1838</option>
+            <option value="10-323-339">10-323-339</option>
+            <option value="11-130-141">11-130-141</option>
+            <option value="13-146-1">13-146-1</option>
+          </select>
+          <span>Mikroszkóp</span>
+          <select class="combobox" name="mikroszkop">
+            <option value="">Válassz</option>
+            <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
+            <option value="Olympus; 15069">Olympus; 15069</option>
+            <option value="Leica DM 2700P">Leica DM 2700P</option>
+          </select>
+          <span>Hőmérséklet, páratartalom mérő:</span>
+          <select class="combobox" name="paratartalom_mero">
+            <option value="">Válassz</option>
+            <option value="testo_645_143190">Testo 645;143190</option>
+            <option value="testo_435_1559658">Testo 435; 1559658</option>
+            <option value="testo_405_V1">Testo 405-V1</option>
+          </select>
+          <span>Barométer</span>
+          <select class="combobox" name="barometer">
+            <option value="">Válassz</option>
+            <option value="Stieber_DM_120B/M_1149">Stieber DM 120B/M; 1149</option>
+            <option value="FEINGERATEBAU FISCHER 104; 943224182438">FEINGERATEBAU FISCHER 104; 943224182438</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <span>Megjegyzés</span><br>
+        <textarea name="megjegyzes"></textarea>
+      </div>
+      <div class="row">
+        <span>Üzemviteli és mintavételi körülmények:</span><br>
+        <textarea name="uzemviteli"></textarea>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <span>Mellékletek </span><br>
+          <textarea type="text" name="mellekletek"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <span>Készítette</span>
+          <select class="combobox" name="keszitette_nev">
+            <option value="">Válassz</option>
+            <option value="Szenyán Zoltán">Szenyán Zoltán</option>
+            <option value="Czap Zoltán">Czap Zoltán</option>
+            <option value="Czap Gergely">Czap Gergely</option>
+            <option value="Lovas Péter">Lovas Péter</option>
+            <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+            <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
+          </select>
+        </div>
+      </div>
+      <button>Küldés</button>
+    </form>
+  </div>
+</div>
+
+<div class="doc-type" data-doc-type="szallorostkonc">
+  <h2 style="text-align: center;">Szállórost koncentráció vizsgálata</h2>
+  <table style="width: 100%; margin-bottom: 20px;">
+    <tr>
+      <td><strong>Mintavétel helye(név):</strong> <span class="mintavetel_helyszine"></span></td>
+      <td><strong>Dátum:</strong> <span class="datum"></span></td>
+    </tr>
+    <tr>
+      <td><strong>Mintavétel helyszíne(cím):</strong> <span class="mintavetel_helyszine"></span></td>
+      <td><strong>Minták száma:</strong> <span class="mintak_szama"></span></td>
+    </tr>
+    <tr>
+      <td><strong>Mintavevők típusa:</strong> <span class="mintavevok_tipusa"></span></td>
+      <td><strong>Mintavevők száma:</strong> <span class="mintavevok_szama"></span></td>
+    </tr>
+  </table>
+  <p><strong>Mintavétel módja:</strong> <span class="mintavetel_modja"></span></p>
+  <table style="width: 100%; border: 1px solid black; margin-bottom: 20px; border-collapse: collapse; border-bottom: 0">
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Minta száma</p></strong> </td>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Mintavételi hely </p></strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Mv. kezd. </p></strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Mv. vége </p></strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Térfogatáram <br> (cm/min)</p></strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong><p>Munkafolyamat</p></strong></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_1">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott1">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_1">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_1">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_1">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_1"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_2">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott2">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_2">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_2">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_2">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_2"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_3">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott3">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_3">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_3">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_3">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_3"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_4">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott4">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_4">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_4">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_4">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_4"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_5">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott5">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_5">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_5">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_5">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_5"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_6">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott6">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_6">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_6">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_6">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_6"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_7">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott7">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_7">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_7">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_7">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_7"></span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_8">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott8">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_8">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_8">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_8">.</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_8"></span></td>
+    </tr>
+  </table>
+  <p><strong>Meterolgiai paraméterek: </strong></p>
+  <table style="width:100%; border-collapse: collapse; border-bottom: 0">
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><strong>Idő</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Légnyomás (mbar)</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Hőmérséklet (°C)</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Páratartalom (%)</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Légsebesség (m/s)</strong></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_1">-</span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_2">-</span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_3">-</span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_4">-</span></td>
+    </tr>
+  </table>
+  <p><strong>Behatás más területről: </strong><span class="behatas"></span></p> 
+  <div><strong>Üzemviteli és mintavételi körülmények, megjegyzések</strong><p class="uzemviteli"></p></div>
+    <strong>Alkalmazott eszközök:</strong>
+    <p>Rotaméter:<span class="rotameter"></span></p>
+    <p>Barométer:<span class="barometer"></span></p>
+    <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
+    <p>Mikroszkóp:<span class="mikroszkop"></span></p>
+    <p>A mintavétel ideje: <span class="datum"></span></p>
+    <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
 </div>

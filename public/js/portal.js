@@ -1,14 +1,14 @@
 var formCounter = 0;
 
 $('#filterButton').on('click', function(){
-	var val = $( "#filterSelect option:selected" ).val();
-	$('td:first-child').each(function() {
-		if( $(this).data('gep') !== val ) {
-			$(this).parent().hide();	
-		} else {
-			$(this).parent().show();				
-		}
-	});
+  var val = $( "#filterSelect option:selected" ).val();
+  $('td:first-child').each(function() {
+    if( $(this).data('gep') !== val ) {
+      $(this).parent().hide();  
+    } else {
+      $(this).parent().show();        
+    }
+  });
 });
 
 $('#modifypicker').on('click', function() {
@@ -16,29 +16,33 @@ $('#modifypicker').on('click', function() {
   console.log('>>' + val);
 });
 
-$('.component-label').on('change', function() {
-	$(this).parent().next('.component-value').find('select').prop('selectedIndex',0);
-	var val = $(this).val();
-	$(this).parent().next('.component-value').find('option').hide();
-	$(this).parent().next('.component-value').find('.' + val).show();
+$('body').on('change', '.component-label', function() {
+  $(this).parent().next('.component-value').find('select').prop('selectedIndex',0);
+  var val = $(this).val();
+  $(this).parent().next('.component-value').find('option').hide();
+  $(this).parent().next('.component-value').find('.' + val).show();
 });
 
-$('#modal-save').on('click', function(){
-	var $label = $('.component-label'),
-		$values = $('.component-value select'),
-		labelNames = '',
-		valueNames = '';
-	$label.each(function() {
-		labelNames += ($(this).val() !=='' ? $(this).val() + ', ' : "");
-	});
-	$values.each(function() {
-		valueNames += ($(this).val() !=='' ? $(this).val() + ', ' : "");
-		console.log($(this).val());
-	});
-	labelNames = labelNames.substring(0, labelNames.length - 2).toUpperCase();
-	$('.label-input').val(labelNames);
-	valueNames = valueNames.substring(0, valueNames.length - 2);
-	$('.value-input').val(valueNames);
+$('body').on('click', '[data-mark="#myModal"]', function(){
+  $(this).closest('.korker-form').find('#myModal').modal('show');
+});
+
+$('body').on('click', '#modal-save', function(){
+  var $label = $('.component-label'),
+    $values = $('.component-value select'),
+    labelNames = '',
+    valueNames = '';
+  $label.each(function() {
+    labelNames += ($(this).val() !=='' ? $(this).val() + ', ' : "");
+  });
+  $values.each(function() {
+    valueNames += ($(this).val() !=='' ? $(this).val() + ', ' : "");
+    console.log($(this).val());
+  });
+  labelNames = labelNames.substring(0, labelNames.length - 2).toUpperCase();
+  $(this).closest('.korker-form').find('.label-input').val(labelNames);
+  valueNames = valueNames.substring(0, valueNames.length - 2);
+  $(this).closest('.korker-form').find('.value-input').val(valueNames);
   $('.label-input').trigger('change');
   $('.value-input').trigger('change');
 });
@@ -50,20 +54,20 @@ $(function() {
 });
 
 $('#szalloSave').on('click', function(e) {
-	var resBe = $('#res-bemeres').val(),
-		resKi = $('#res-vissza').val(),
-		durvaBe = $('#durva-be').val(),
-		durvaKi = $('#durva-ki').val(),
-		name = $('#name').html();
-	$.ajax({
+  var resBe = $('#res-bemeres').val(),
+    resKi = $('#res-vissza').val(),
+    durvaBe = $('#durva-be').val(),
+    durvaKi = $('#durva-ki').val(),
+    name = $('#name').html();
+  $.ajax({
         url: '/szallorost-save',
         type: 'POST',
         data: JSON.stringify({
-        	"name" : name,
-        	"resp_be" : resBe,
-					"resp_ki" : resKi,
-					"durva_be" : durvaBe,
-					"durva_ki" : durvaKi
+          "name" : name,
+          "resp_be" : resBe,
+          "resp_ki" : resKi,
+          "durva_be" : durvaBe,
+          "durva_ki" : durvaKi
         }),
         dataType: 'json',
         contentType: "application/json"
@@ -71,17 +75,17 @@ $('#szalloSave').on('click', function(e) {
 });
 
 $('#szilardSave').on('click', function(e) {
-	var mintabe = $('#mintaBemeres').val(),
-		mintaki = $('#mintaVisszameres').val(),
-		azon = $('#docId').html();
-		console.log(azon);
-	$.ajax({
+  var mintabe = $('#mintaBemeres').val(),
+    mintaki = $('#mintaVisszameres').val(),
+    azon = $('#docId').html();
+    console.log(azon);
+  $.ajax({
         url: '/szilard-save',
         type: 'POST',
         data: JSON.stringify({
-        	"azon" : azon,
-					"mintabe" : mintabe,
-					"mintaki" : mintaki
+          "azon" : azon,
+          "mintabe" : mintabe,
+          "mintaki" : mintaki
         }),
         dataType: 'json',
         contentType: "application/json"
@@ -89,16 +93,16 @@ $('#szilardSave').on('click', function(e) {
 });
 
 $('#nedvessegSave').on('click', function(e) {
-	var mintabe = $('#mintaBemeres').val(),
-		mintaki = $('#mintaVisszameres').val(),
-		azon = $('#docId').html();
-	$.ajax({
+  var mintabe = $('#mintaBemeres').val(),
+    mintaki = $('#mintaVisszameres').val(),
+    azon = $('#docId').html();
+  $.ajax({
         url: '/nedvesseg-save',
         type: 'POST',
         data: JSON.stringify({
-        	"azon" : azon,
-					"mintabe" : mintabe,
-					"mintaki" : mintaki
+          "azon" : azon,
+          "mintabe" : mintabe,
+          "mintaki" : mintaki
         }),
         dataType: 'json',
         contentType: "application/json"
@@ -110,7 +114,7 @@ $('body').on('change', '.korker-form input, .korker-form select, .korker-form te
   var selector = $(this).attr('name');
   console.log('[data-form = \"' + dataSel + '\"]');
   $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.' + selector).text($(this).val());
-}); 
+});
 
 $('#form-adder').on('click', function() {
   $('.korker-form-container').append('<div class="korker-form" data-form=\"form-' + formCounter + '\"></div>');
@@ -122,51 +126,46 @@ $('#form-adder').on('click', function() {
   $('.korker-doc[data-form=\"form-' + formCounter + '\"]').html(doccontent.get(0));
   formCounter++;
 
-
-  $('.korker-form-container .pre-combobox').each(function(index, elem) {
-    $(elem).selectize({
-      create: true,
-      sortField: Text  
-    });
-    $(elem).parent().find('.pre-combobox').removeClass('pre-combobox');
-    console.log('>>', $(elem));
+  $('.combobox').selectize({
+    create: true,
+    sortField: Text
   });
 
-  return false;
+  $('.korker-form').find('.combobox').removeClass('combobox');
 });
 
 if ($('.szures-tabla').length) {
-	$('.link-to-doc').each(function(link) {
-		var id = $(this).attr('id');
-		var url = "/szallopor/"+id;
-		$(this).attr('href', url);
-	});
+  $('.link-to-doc').each(function(link) {
+    var id = $(this).attr('id');
+    var url = "/szallopor/"+id;
+    $(this).attr('href', url);
+  });
 };
 
 if ($('.szures-tabla').length) {
-	$('.link-to-szilard').each(function(link) {
-		var id = $(this).attr('id');
-		var url = "/szilard/"+id;
-		$(this).attr('href', url);
-	});
+  $('.link-to-szilard').each(function(link) {
+    var id = $(this).attr('id');
+    var url = "/szilard/"+id;
+    $(this).attr('href', url);
+  });
 };
 
 if ($('.szures-tabla').length) {
-	$('.link-to-nedvesseg').each(function(link) {
-		var id = $(this).attr('id');
-		var url = "/nedvesseg/"+id;
-		$(this).attr('href', url);
-	});
+  $('.link-to-nedvesseg').each(function(link) {
+    var id = $(this).attr('id');
+    var url = "/nedvesseg/"+id;
+    $(this).attr('href', url);
+  });
 };
 
 $(document).ready(function() {
-	$('#szures-tabla').dataTable({
+  $('#szures-tabla').dataTable({
     aLengthMenu: [
-	      [25, 50, 100, 200, -1],
-	      [25, 50, 100, 200, "All"]
-	  ],
-	  iDisplayLength: -1
-	});
+        [25, 50, 100, 200, -1],
+        [25, 50, 100, 200, "All"]
+    ],
+    iDisplayLength: -1
+  });
 });
 
 function fnExcelReport()
@@ -204,12 +203,11 @@ function fnExcelReport()
 }
 
 $('#tableExport').on('click', function() {
-	$('#szures-tabla').table2excel();
+  $('#szures-tabla').table2excel();
 });
 
 $(document).ready(function($) {
-  $("a.jquery-word-export").click(function(event) {
-      $("#korkerContent").wordExport();
-  });
-
+    $("a.jquery-word-export").click(function(event) {
+        $("#korkerContent").wordExport();
+    });
 });
