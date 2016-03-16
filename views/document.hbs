@@ -16,6 +16,7 @@
           <option value="felszinalatt">Mintavétel felszínalatti vízekből</option>
           <option value="szallorost">Szállórost koncentráció vizsgálata</option>
           <option value="szallorostkonc">Szállórost koncentráció vizsgálata (egy minta)</option>
+          <option value="szallopor">Munkahelyi szálló por koncentráció vizsgálata</option>
         </select>
         <button class="btn btn-success" id="form-adder">Add</button>
     </div>
@@ -453,17 +454,37 @@
         <div class="row">
           <div class="form-group">
             <p><strong>Alkalmazott eszközök</strong></p>
-            <div class="has-padding">
-              <label>Barométer</label>
-              <input class="form-control" name="barometer"></input>
-              <label>Rotaméter</label>
-              <input class="form-control" name="rotameter"></input>
-              <label>Hőmérséklet, páratartalom és légsebesség mérő:</label>
-              <input class="form-control" name="homerseklet_paratartalom"></input>
-              <label>Mikroszkóp</label>
-              <input class="form-control" name="mikroszkop"></input>
-            </div>
+            <label>Barométer</label>
+              <select class="combobox" name="mikroszkop">
+                <option value="">Válassz</option>
+                <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
+                <option value="Olympus; 15069">Olympus; 15069</option>
+                <option value="Leica DM 2700P">Leica DM 2700P</option>
+              </select>
+            <label>Rotaméter</label>
+            <select class="combobox" name="rotameter">
+              <option value="">Válassz</option>
+              <option value="94-168-1838">94-168-1838</option>
+              <option value="10-323-339">10-323-339</option>
+              <option value="11-130-141">11-130-141</option>
+              <option value="13-146-1">13-146-1</option>
+            </select>
+            <label>Hőmérséklet, páratartalom és légsebesség mérő:</label>
+            <select class="combobox" name="paratartalom_mero">
+              <option value="">Válassz</option>
+              <option value="testo_645_143190">Testo 645;143190</option>
+              <option value="testo_435_1559658">Testo 435; 1559658</option>
+              <option value="testo_405_V1">Testo 405-V1</option>
+            </select>
+            <label>Mikroszkóp</label>
+            <select class="combobox" name="mikroszkop">
+              <option value="">Válassz</option>
+              <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
+              <option value="Olympus; 15069">Olympus; 15069</option>
+              <option value="Leica DM 2700P">Leica DM 2700P</option>
+            </select>
           </div>
+        </div>
         </div>
         <div class="row">
           <label>Készítette</label>
@@ -1966,6 +1987,430 @@
     <p>Rotaméter:<span class="rotameter"></span></p>
     <p>Barométer:<span class="barometer"></span></p>
     <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
+    <p>Mikroszkóp:<span class="mikroszkop"></span></p>
+    <p>A mintavétel ideje: <span class="datum"></span></p>
+    <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+</div>
+<div class="form-type" data-type="szallopor">
+  <h1 class="text-center">Szállópor koncentráció vizsgálata</h1>
+  <form method="post">
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavétel helye(név): </label>
+            <input class="form-control" type="text" name="mintavetel_helye">
+          </div>
+          <div class="form-group">
+            <label>Mintavétel helyszíne(cím): </label>
+            <input class="form-control" type="text" name="mintavetel_helyszine">
+          </div>
+        </div>
+          <div class="row">
+            <div class="form-group">
+              <label>Dolgozó neve</label>
+              <input class="form-control" type="text" name="dolgozo_neve">
+            </div>
+          </div>
+          <div class="row">
+             <div class="form-group">
+                <label>Vizsgált légszenny</label>
+                <select name="vizsgalt_legszenny" class="combobox">
+                  <option value="Szállópor">Szállópor</option>
+                  <option value="Szállópor(fémek)">Szállópor(fémek)</option>
+                  <option value="Kvarc">Kvarc</option>
+                </select>
+            </div>
+          </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavétel dátuma</label>
+            <input class="form-control" type="date" name="datum">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Mintavétel kezdete</label>
+            <div class="mintavetel-ido input-append">
+              <input data-format="hh:mm:ss" type="text" name="mintavetel_kezdete"></input>
+              <span class="add-on">
+                <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                </i>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Mintavétel vége</label>
+            <div class="mintavetel-ido input-append">
+              <input data-format="hh:mm:ss" type="text" name="mintavetel_vege"></input>
+              <span class="add-on">
+                <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                  </i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span6">
+            <span>Mintavevő(k) típusa</span>
+            <input type="text" name="mintavevo_tipusa" class="label-input">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Hozzáadás
+            </button>
+          </div>
+          <div class="form-group span6">
+            <span>Mintavevő(k) száma</span>
+            <input type="text" name="mintavevo_szama" class="value-input">
+          </div>
+        </div>
+         <div class="modal fade modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Mintavevők típusa</h4>
+              </div>
+              <div class="modal-body text-center">
+                <div class="row">
+                  <div class="form-group span6">
+                    <select name="mintavetel_gep1" class="component-label">
+                      <option value=''>Kérem válasszon</option>
+                      <option value="casella">Casella Apex</option>
+                      <option value="wortex">Wortex Ultra Flow</option>
+                      <option value="ggy">GGY</option>
+                      <option value="sidekick">SIDEKICK ’T’</option>
+                      <option value="skc-flite">SKC Flite3</option>
+                    </select>
+                  </div>
+                  <div class="form-group span6 component-value">
+                    <select name="sorszam1">
+                      <option class="none" value=''>Kérem válasszon</option>
+                      <option value="1239544" class="casella">1239544</option>
+                      <option value="1239545" class="casella">1239545</option>
+                      <option value="1239547" class="casella">1239547</option>
+                      <option value="1156811" class="casella">1156811</option>
+                      <option value="1156813" class="casella">1156813</option>
+                      <option value="1156844" class="casella">1156844</option>
+                      <option value="1156852" class="casella">1156852</option>
+                      <option value="1156860"class="casella">1156860</option>
+                      <option value="1156864"class="casella">1156864</option>
+                      <option value="1156866"class="casella">1156866</option>
+                      <option value="1156886"class="casella">1156886</option>
+                      <option value="1156889"class="casella">1156889</option>
+                      <option value="1156892"class="casella">1156892</option>
+                      <option value="4-70" class="wortex">4-70</option>
+                      <option value="4-71" class="wortex">4-71</option>
+                      <option value="4-72" class="wortex">4-72</option>
+                      <option value="4-73" class="wortex">4-73</option>
+                      <option value="4-74" class="wortex">4-74</option>
+                      <option value="4-75" class="wortex">4-75</option>
+                      <option value="4-76" class="wortex">4-76</option>
+                      <option value="0677895" class="wortex">0677895</option>
+                      <option value="0677896" class="wortex">0677896</option>
+                      <option value="0677897" class="wortex">0677897</option>
+                      <option value="0878324" class="wortex">0878324</option>
+                      <option value="0878546" class="wortex">0878546</option>
+                      <option value="037604" class="wortex">037604</option>
+                      <option value="01" class="ggy">01</option>
+                      <option value="02" class="ggy">02</option>
+                      <option value="03" class="ggy">03</option>
+                      <option value="04" class="ggy">04</option>
+                      <option value="509695" class="sidekick">509695</option>
+                      <option value="15533748" class="skc-flite">15533748</option>
+                      <option value="15533749" class="skc-flite">15533749</option>
+                      <option value="15533750" class="skc-flite">15533750</option>
+                      <option value="15533751" class="skc-flite">15533751</option>
+                      <option value="15533752" class="skc-flite">15533752</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal-save"  data-dismiss="modal">Mentés</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group span6">
+            <span>Minta száma</span>
+            <select name="minta_szama" class="combobox">
+              <option value="">Kérlek válassz</option>
+              <option value="A1">A1</option>
+              <option value="A2">A2</option>
+              <option value="A3">A3</option>
+              <option value="A4">A4</option>
+              <option value="A5">A5</option>
+              <option value="A6">A6</option>
+              <option value="A7">A7</option>
+              <option value="A8">A8</option>
+              <option value="V1">V1</option>
+              <option value="V2">V2</option>
+              <option value="V3">V3</option>
+              <option value="V4">V4</option>
+            </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span10">
+          <span>Vizsgáló laboratórium</span>
+          <select name="vizsgalo_lab1" class="combobox">
+              <option value="">Válassz</option>
+              <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+              <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+              <option value="KVI Plus kft.">KVI plus kft.</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span10">
+          <span>Vizsgált komponensek</span>
+          <select name="vizsgalt_komponensek1" class="combobox">
+            <option value="">Kérlek válassz</option>
+            <option value="szerves anyagok">Szerves anyagok</option>
+            <option value="fémek">Fémek</option>
+            <option value="Sósav">Sósav</option>
+            <option value="Kénsav">Kénsav</option>
+            <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label>Respirábilis frakció bemérés</label>
+          <input class="form-control" type="text" name="respir_bemeres">
+        </div>
+        <div class="form-group">
+          <label>Respirábilis frakció visszamérés</label>
+          <input class="form-control" type="text" name="respir_visszameres">
+        </div>
+        <div class="form-group">
+          <label>Durva frakció bemérés</label>
+          <input class="form-control" type="text" name="durva_bemeres">
+        </div>
+        <div class="form-group">
+          <label>Durva frakció visszamérés</label>
+          <input class="form-control" type="text" name="durva_visszameres">
+        </div>
+      </div>
+      <div class="row">
+        <h2>Meterológiai paraméterek</h2>
+        <table class="table">
+          <thead>
+            <th>Idő</th>
+            <th>Légnyomás (mbar)</th>
+            <th>Hőmérséklet</th>
+            <th>Páratartalom</th>
+            <th>Légsebesség</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_1"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_1" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_1" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_1" /></td>
+              <td>
+                <select name="legsebesseg_1" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_2"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_2" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_2" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_2" /></td>
+              <td>
+                <select name="legsebesseg_2" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_3"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_3" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_3" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_3" /></td>
+              <td>
+                <select name="legsebesseg_3" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="input-append mintavetel-ido">
+                  <input data-format="hh:mm:ss" type="text" name="meterologia_ido_4"></input>
+                  <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                    </i>
+                  </span>
+                </div>
+              </td>
+              <td><input type="text" class="form-control" name="legnyomas_4" /></td>
+              <td><input type="text" class="form-control" name="homerseklet_4" /></td>
+              <td><input type="text" class="form-control" name="paratartalom_4" /></td>
+              <td>
+                <select name="legsebesseg_4" / class="combobox">
+                  <option value="">Válassz</option>
+                  <option value=">0,1">0,1</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+          <div class="form-group">
+            <label>Üzemviteli és mintavételi körülmények, megjegyzések</label>
+            <textarea name="uzemviteli" class="form-control"></textarea>
+          </div>
+        </div>
+       <div class="row">
+          <div class="form-group">
+            <p><strong>Alkalmazott eszközök</strong></p>
+            <label>Barométer</label>
+              <select class="combobox" name="barometer">
+                <option value="">Válassz</option>
+                <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
+                <option value="Olympus; 15069">Olympus; 15069</option>
+                <option value="Leica DM 2700P">Leica DM 2700P</option>
+              </select>
+            <label>Rotaméter</label>
+            <select class="combobox" name="rotameter">
+              <option value="">Válassz</option>
+              <option value="94-168-1838">94-168-1838</option>
+              <option value="10-323-339">10-323-339</option>
+              <option value="11-130-141">11-130-141</option>
+              <option value="13-146-1">13-146-1</option>
+            </select>
+            <label>Hőmérséklet, páratartalom és légsebesség mérő:</label>
+            <select class="combobox" name="paratartalom_mero">
+              <option value="">Válassz</option>
+              <option value="testo_645_143190">Testo 645;143190</option>
+              <option value="testo_435_1559658">Testo 435; 1559658</option>
+              <option value="testo_405_V1">Testo 405-V1</option>
+            </select>
+            <label>Mikroszkóp</label>
+            <select class="combobox" name="mikroszkop">
+              <option value="">Válassz</option>
+              <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
+              <option value="Olympus; 15069">Olympus; 15069</option>
+              <option value="Leica DM 2700P">Leica DM 2700P</option>
+            </select>
+          </div>
+        </div>
+        </div>
+        <div class="row">
+          <label>Készítette</label>
+          <select class="combobox" name="keszitette">
+            <option value="">Válassz</option>
+            <option value="Szenyán Zoltán">Szenyán Zoltán</option>
+            <option value="Czap Zoltán">Czap Zoltán</option>
+            <option value="Lovas Péter">Lovas Péter</option>
+            <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+            <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
+          </select>
+        </div>
+      </form>
+     </div>
+</div>
+<div class="doc-type" data-doc-type="szallopor">
+  <h2 style="text-align: center;">Szállópor koncentráció vizsgálata</h2>
+  <table style="width: 100%; margin-bottom: 20px;">
+    <tr>
+      <td><strong>Mintavétel helye(név):</strong> <span class="mintavetel_helyszine"></span></td>
+    </tr>
+    <tr>
+      <td><strong>Mintavétel helyszíne(cím):</strong> <span class="mintavetel_helyszine"></span></td>
+    </tr>
+    <tr>
+      <td><strong>Dolgozó neve: </strong> <span class="dolgozo_neve"></span></td>
+    </tr>
+    <tr>
+      <td><strong>Vizsgált légszennyező anyag: </strong> <span class="vizsgalt_legszeny"></span></td>
+    </tr>
+    <tr>
+      <td><strong>Dátum:</strong> <span class="datum"></span></td>
+      <td><strong>Mintavétel időtartama:</strong> <span class="mintavetel_kezdete"></span>-<span class="mintavetel_vege"></span></td>
+    </tr>
+    <tr>
+      <td><strong>Mintavevők típusa:</strong> <span class="mintavevo_tipusa"></span></td>
+      <td><strong>Mintavevők száma:</strong> <span class="mintavevo_szama"></span></td>
+    </tr>
+    <tr>
+      <td><strong>Mintavétel sebessége:</strong> <span class="mintavetel_modja"></span> l/perc</td>
+      <td><strong>Minta száma:</strong> <span class="minta_szama"></span></td>
+    </tr>
+  </table>
+  <p><strong>Meterolgiai paraméterek: </strong></p>
+  <table style="width:100%; border-collapse: collapse; border-bottom: 0; margin-bottom: 20px;">
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><strong>Idő</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Légnyomás (mbar)</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Hőmérséklet (°C)</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Páratartalom (%)</strong></td>
+      <td style="border: 1px solid black; text-align: center;"><strong>Légsebesség (m/s)</strong></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_1">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_1">-</span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_2">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_2">-</span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_3">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_3">-</span></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; text-align: center;"><span class="meterologia_ido_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legnyomas_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="homerseklet_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="paratartalom_4">-</span></td>
+      <td style="border: 1px solid black; text-align: center;"><span class="legsebesseg_4">-</span></td>
+    </tr>
+  </table>
+  <div><strong>Üzemviteli és mintavételi körülmények, megjegyzések</strong><p class="uzemviteli"></p></div>
+    <strong>Alkalmazott eszközök:</strong>
+    <p>Rotaméter:<span class="rotameter"></span></p>
+    <p>Barométer:<span class="barometer"></span></p>
+    <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="paratartalom_mero"></span></p>
     <p>Mikroszkóp:<span class="mikroszkop"></span></p>
     <p>A mintavétel ideje: <span class="datum"></span></p>
     <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
