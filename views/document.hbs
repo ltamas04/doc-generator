@@ -1708,12 +1708,6 @@
         </div>
       <div class="row">
         <div class="form-group col-sm-12">
-            <label>Mintán átáramló levegő térfogata: </label>
-            <input class="form-control" type="text" name="levego_terfogata">
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-sm-12">
           <label>Mintavetel vége</label>
           <div class="mintavetel-ido input-append">
             <input data-format="hh:mm" type="text" name="mintavetel_vege"></input>
@@ -1722,6 +1716,12 @@
               </i>
             </span>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12">
+            <label>Mintán átáramló levegő térfogata: </label>
+            <input class="form-control" type="text" name="levego_terfogata">
         </div>
       </div>
       <div class="row">
@@ -1899,94 +1899,31 @@
   <table style="width: 100%; margin-bottom: 20px;">
     <tr>
       <td><strong>Mintavétel helye(név):</strong> <span class="mintavetel_helyszine"></span></td>
-      <td><strong>Dátum:</strong> <span class="datum"></span></td>
     </tr>
     <tr>
       <td><strong>Mintavétel helyszíne(cím):</strong> <span class="mintavetel_helyszine"></span></td>
-      <td><strong>Minták száma:</strong> <span class="mintak_szama"></span></td>
     </tr>
     <tr>
-      <td><strong>Mintavevők típusa:</strong> <span class="mintavevok_tipusa"></span></td>
-      <td><strong>Mintavevők száma:</strong> <span class="mintavevok_szama"></span></td>
-    </tr>
-  </table>
-  <p><strong>Mintavétel módja:</strong> <span class="mintavetel_modja"></span></p>
-  <table style="width: 100%; border: 1px solid black; margin-bottom: 20px; border-collapse: collapse; border-bottom: 0">
-    <tr>
-      <td style="border: 1px solid black; text-align: center;"><strong><p>Minta száma</p></strong> </td>
-      <td style="border: 1px solid black; text-align: center;"><strong><p>Mintavételi hely </p></strong></td>
-      <td style="border: 1px solid black; text-align: center;"><strong><p>Mv. kezd. </p></strong></td>
-      <td style="border: 1px solid black; text-align: center;"><strong><p>Mv. vége </p></strong></td>
-      <td style="border: 1px solid black; text-align: center;"><strong><p>Térfogatáram <br> (cm/min)</p></strong></td>
-      <td style="border: 1px solid black; text-align: center;"><strong><p>Munkafolyamat</p></strong></td>
+      <td><strong>Mérési hely</strong> <span class="meresi_hely"></span></td>
     </tr>
     <tr>
-      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_1">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott1">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_1">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_1">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_1">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_1"></span></td>
+      <td><strong>Minta száma:</strong> <span class="minta_szama"></span></td>
+      <td><strong>Dátum:</strong> <span class="datum"></span></td>
     </tr>
     <tr>
-      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_2">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott2">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_2">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_2">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_2">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_2"></span></td>
+      <td><strong>Mintavevők típusa:</strong> <span class="mintavevo_tipusa"></span></td>
+      <td><strong>Mintavevők száma:</strong> <span class="mintavevo_szama"></span></td>
     </tr>
     <tr>
-      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_3">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott3">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_3">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_3">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_3">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_3"></span></td>
+      <td><strong>Mintavétel módja:</strong> <span class="mintavetel_modja"></span></td>
+      <td><strong>Mintavétel időtartama:</strong> <span class="mintavetel_kezdete"></span>-<span class="mintavetel_vege"></span></td>
     </tr>
     <tr>
-      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_4">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott4">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_4">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_4">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_4">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_4"></span></td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_5">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott5">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_5">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_5">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_5">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_5"></span></td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_6">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott6">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_6">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_6">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_6">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_6"></span></td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_7">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott7">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_7">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_7">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_7">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_7"></span></td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; text-align: center;"><span class="minta_szama_8">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="ellenorzott8">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_hely_8">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="mintavetel_vege_8">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="terfogataram_8">.</span></td>
-      <td style="border: 1px solid black; text-align: center;"><span class="munkafolyamat_8"></span></td>
+      <td><strong>Mintán átáramló levegő térfogata:</strong> <span class="levego_terfogata"></span></td>    
     </tr>
   </table>
   <p><strong>Meterolgiai paraméterek: </strong></p>
-  <table style="width:100%; border-collapse: collapse; border-bottom: 0">
+  <table style="width:100%; border-collapse: collapse; border-bottom: 0; margin-bottom: 20px;">
     <tr>
       <td style="border: 1px solid black; text-align: center;"><strong>Idő</strong></td>
       <td style="border: 1px solid black; text-align: center;"><strong>Légnyomás (mbar)</strong></td>
