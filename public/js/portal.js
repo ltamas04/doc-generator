@@ -215,10 +215,10 @@ $(document).ready(function($) {
 // Put event listeners into place
 window.addEventListener("DOMContentLoaded", function() {
   // Grab elements, create settings, etc.
-  var canvas = document.getElementById("canvas"),
+  var canvas = document.querySelector(".canvas"),
     context = canvas.getContext("2d"),
-    video = document.getElementById("video"),
-    photo  = document.querySelector('#photo'),
+    video = document.querySelector(".video"),
+    photo  = document.querySelector('.photo'),
     videoObj = { "video": true },
     errBack = function(error) {
       console.log("Video capture error: ", error.code); 
@@ -243,8 +243,9 @@ window.addEventListener("DOMContentLoaded", function() {
     }, errBack);
   }
 
-document.getElementById("snap").addEventListener("click", function() {
-  context.drawImage(video, 0, 0, 640, 480);
-  var data = canvas.toDataURL('image/png');
-  photo.setAttribute('src', data);
+  $(".snap").on("click", function() {
+    context.drawImage(video, 0, 0, 640, 480);
+    var data = canvas.toDataURL('image/png');
+    var dataSel = $(this).closest('.korker-form').data('form');
+    $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.photo').attr('src', data);
 });
