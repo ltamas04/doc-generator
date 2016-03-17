@@ -47,12 +47,6 @@ $('body').on('click', '#modal-save', function(){
   $('.value-input').trigger('change');
 });
 
-$(function() {
-    $('.mintavetel-ido').datetimepicker({
-      pickDate: false
-    });
-});
-
 $('#szalloSave').on('click', function(e) {
   var resBe = $('#res-bemeres').val(),
     resKi = $('#res-vissza').val(),
@@ -126,13 +120,18 @@ $('#form-adder').on('click', function() {
   $('.korker-doc[data-form=\"form-' + formCounter + '\"]').html(doccontent.get(0));
   formCounter++;
 
+  var lastForm = $('.korker-form').last();
+
+  console.log(lastForm);
+  $('.korker-form .mintavetel-ido').timepicker({step: 1})
+});
+
+$('#form-adder').one('click', function() {
   $('.combobox').selectize({
     create: true,
     sortField: Text
   });
-
-  $('.korker-form').find('.combobox').removeClass('combobox');
-});
+})
 
 if ($('.szures-tabla').length) {
   $('.link-to-doc').each(function(link) {
@@ -207,7 +206,7 @@ $('#tableExport').on('click', function() {
 });
 
 $(document).ready(function($) {
-    $("a.jquery-word-export").click(function(event) {
+    $(".korker-doc").click(function(event) {
         $("#korkerContent").wordExport();
     });
 });
@@ -215,6 +214,9 @@ $(document).ready(function($) {
 // Put event listeners into place
 $('#form-adder').on('click' , function() {
   // Grab elements, create settings, etc.
+  if($('.korker-form').last().find('.canvas').length) {
+
+
   var canvasList = document.getElementsByClassName('canvas'),  
     canvas = canvasList[canvasList.length - 2],
     context = canvas.getContext("2d"),
@@ -250,4 +252,6 @@ $('#form-adder').on('click' , function() {
     var dataSel = $(this).closest('.korker-form').data('form');
     $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.photo').attr('src', data);
   });
+
+  }
 });
