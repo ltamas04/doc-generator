@@ -213,9 +213,10 @@ $(document).ready(function($) {
 });
 
 // Put event listeners into place
-window.addEventListener("DOMContentLoaded", function() {
+$('#form-adder').on('click' , function() {
   // Grab elements, create settings, etc.
-  var canvas = document.querySelector(".canvas"),
+  var canvasList = document.getElementsByClassName('canvas'),  
+    canvas = canvasList[canvasList.length - 2],
     context = canvas.getContext("2d"),
     video = document.querySelector(".video"),
     photo  = document.querySelector('.photo'),
@@ -244,8 +245,9 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   $(".snap").on("click", function() {
-    context.drawImage(video, 0, 0, 640, 480);
+    context.drawImage(video, 0, 0, 400, 400);
     var data = canvas.toDataURL('image/png');
     var dataSel = $(this).closest('.korker-form').data('form');
     $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.photo').attr('src', data);
+  });
 });
