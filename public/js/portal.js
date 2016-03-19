@@ -105,7 +105,7 @@ $('#nedvessegSave').on('click', function(e) {
 
 $('body').on('change', '.korker-form input, .korker-form select, .korker-form textarea', function () {
   var dataSel = $(this).closest('.korker-form').data('form');
-  var selector = $(this).attr('name');
+  var selector = $(this).data('name');
   console.log('[data-form = \"' + dataSel + '\"]');
   $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.' + selector).text($(this).val());
 });

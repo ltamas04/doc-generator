@@ -37,6 +37,7 @@ module.exports = function() {
   require('../app/routes/index.route.js')(app);
   require('../app/routes/document.route.js')(app);
   require('../app/routes/company.route.js')(app);
+  require('../app/routes/szures.route.js')(app);
 
   return app;
 };
