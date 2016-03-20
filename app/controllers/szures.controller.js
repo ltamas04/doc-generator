@@ -1,5 +1,7 @@
 var SzalloRost = require('mongoose').model('SzalloRost');
 var SzalloPor = require('mongoose').model('SzalloPor');
+var SzilardAnyag = require('mongoose').model('SzilardAnyag');
+var NedvessegMintak = require('mongoose').model('NedvessegMintak');
 
 exports.szalloRost = function(req, res) {
     SzalloRost.find({}, function(err, docs) {
@@ -56,3 +58,78 @@ exports.szalloPorSave = function(req, res, next) {
       });
     });
 };
+
+
+exports.szilard = function(req, res) {
+    SzilardAnyag.find({}, function(err, docs) {
+      if(err) {
+            res.json(err);
+        } else {
+          console.log(docs);
+            res.render('szures-szilard', { docs: docs });
+      }
+  });
+}
+
+exports.szilardEndPoint = function(req, res) {
+  res.render('szilard-vegoldal', {docs: req.doc});
+}
+
+exports.szilardParam = function(req, res, next, id) {
+  SzilardAnyag.findOne({
+    _id:id
+  }, function(err, doc) {
+    if(err) {
+      return next(err);
+    } else {
+      req.doc = doc;
+      next();
+    }
+  });
+};
+
+exports.szilardSave =  function(req, res) {
+    SzilardAnyag.findOne({_id:req.body.azon}, function(err, doc){
+      doc.minta_bemerese  = req.body.mintabe;
+      doc.minta_visszamerese  = req.body.mintaki;
+      doc.save(function(err) {
+    });
+  });
+};
+
+exports.nedvesseg = function(req, res) {
+    NedvessegMintak.find({}, function(err, docs) {
+      if(err) {
+            res.json(err);
+        } else {
+            res.render('szures-nedvesseg', { docs: docs });
+      }
+  });
+}
+
+exports.nedvessegEndPoint = function(req, res) {
+  res.render('nedves-vegoldal', {docs: req.doc});
+}
+
+exports.nedvessegParam = function(req, res, next, id) {
+  NedvessegMintak.findOne({
+    _id:id
+  }, function(err, doc) {
+    if(err) {
+      return next(err);
+    } else {
+      req.doc = doc;
+      next();
+    }
+  });
+};
+
+exports.nedvessegSave =  function(req, res) {
+    NedvessegMintak.findOne({_id:req.body.azon}, function(err, doc){
+      doc.minta_bemerese  = req.body.mintabe;
+      doc.minta_visszamerese  = req.body.mintaki;
+      doc.save(function(err) {
+      });
+    });
+};
+
