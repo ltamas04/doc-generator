@@ -52,12 +52,12 @@ $('#szalloSave').on('click', function(e) {
     resKi = $('#res-vissza').val(),
     durvaBe = $('#durva-be').val(),
     durvaKi = $('#durva-ki').val(),
-    name = $('#name').html();
+    azon = $('#docId').html();
   $.ajax({
         url: '/szallorost-save',
         type: 'POST',
         data: JSON.stringify({
-          "name" : name,
+          "azon" : azon,
           "resp_be" : resBe,
           "resp_ki" : resKi,
           "durva_be" : durvaBe,
@@ -156,6 +156,11 @@ if ($('.szures-tabla').length) {
     $(this).attr('href', url);
   });
 };
+
+$('body').on('change', '[type="checkbox"]',  function(e) {
+  var sel = $(e.target).data('target');
+  $('[data-emisszio=\"' + sel + '\"]').toggleClass('hidden');
+});
 
 $(document).ready(function() {
   $('#szures-tabla').dataTable({

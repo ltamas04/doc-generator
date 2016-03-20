@@ -199,93 +199,60 @@
           <p>Nedvességtartalom mérése</p>
           <table class="table">
             <thead>
-              <th>Minta jele</th>
-              <th>Mv. kezd</th>
-              <th>Mv. vége</th>
-              <th>Gázóra kezd.</th>
-              <th>Gázóra vége.</th>
-              <th>Nyomás</th>
-              <th>Hőmérséklet</th>
-              <th>Térfogatá.</th>
+              <tr>
+                <th>Minta jele</th>
+                <th>Mv. kezd</th>
+                <th>Mv. vége</th>
+                <th>Gázóra kezd.</th>
+                <th>Gázóra vége.</th>
+                <th>Nyomás</th>
+                <th>Hőmérséklet</th>
+                <th>Térfogatá.</th>
+              </tr>
             </thead>
             <tbody>
               <tr>
-                <td><input type="text" name="n_minta_jele1"></td>
                 <td>
-                  <div class="mintavetel-ido input-append">
-                  <input data-format="hh:mm:ss" type="text" name="mintavetel_kezdete_1"></input>
-                  <span class="add-on">
-                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                    </i>
-                  </span>
-                  </div>
+                  <input type="text" data-name="n_minta_jele1" name="n_minta_jele[]"></td>
+                <td>
+                  <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="n_minta_kezd1"></input>
                 </td>
                 <td>
-                  <div class="mintavetel-ido input-append">
-                  <input data-format="hh:mm:ss" type="text" name="mintavetel_vege_1"></input>
-                  <span class="add-on">
-                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                    </i>
-                  </span>
-                </div>
+                  <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="n_minta_veg1"></input>
                 </td>
-                <td><input type="text" name="gazora_kezd1"></td>
-                <td><input type="text" name="gazora_vege1"></td>
-                <td><input type="text" name="homerseklet1"></td>
-                <td><input type="text" name="nyomas1"></td>
-                <td><input type="text" name="terfogat1"></td>
+                <td><input type="text" data-name="gazora_kezd1"></td>
+                <td><input type="text" data-name="gazora_vege1"></td>
+                <td><input type="text" data-name="homerseklet1"></td>
+                <td><input type="text" data-name="nyomas1"></td>
+                <td><input type="text" data-name="terfogat1"></td>
               </tr>
               <tr>
-                <td><input type="text" name="n_minta_jele2"></td>
+                <td><input type="text" data-name="n_minta_jele2" name="n_minta_jele[]"></td>
                 <td>
-                  <div class="mintavetel-ido input-append">
-                  <input data-format="hh:mm:ss" type="text" name="mintavetel_kezdete_2"></input>
-                  <span class="add-on">
-                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                    </i>
-                  </span>
-                  </div>
+                  <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="n_minta_kezd2"></input>
                 </td>
                 <td>
-                  <div class="mintavetel-ido input-append">
-                  <input data-format="hh:mm:ss" type="text" name="mintavetel_vege_2"></input>
-                  <span class="add-on">
-                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                    </i>
-                  </span>
-                </div>
+                  <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="n_minta_veg2"></input>
                 </td>
-                <td><input type="text" name="gazora_kezd2"></td>
-                <td><input type="text" name="gazora_vege2"></td>
-                <td><input type="text" name="homerseklet2"></td>
-                <td><input type="text" name="nyomas2"></td>
-                <td><input type="text" name="terfogat2"></td>
+                <td><input type="text" data-name="gazora_kezd2"></td>
+                <td><input type="text" data-name="gazora_vege2"></td>
+                <td><input type="text" data-name="homerseklet2"></td>
+                <td><input type="text" data-name="nyomas2"></td>
+                <td><input type="text" data-name="terfogat2"></td>
               </tr>
               <tr>
-                <td><input type="text" name="n_minta_jele3"></td>
+                <td><input type="text" data-name="n_minta_jele3" name="n_minta_jele[]"></td>
                 <td>
-                  <div class="mintavetel-ido input-append">
-                  <input data-format="hh:mm:ss" type="text" name="mintavetel_kezdete_3"></input>
-                  <span class="add-on">
-                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                    </i>
-                  </span>
-                  </div>
+                  <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="n_minta_kezd3"></input>
                 </td>
                 <td>
-                  <div class="mintavetel-ido input-append">
-                  <input data-format="hh:mm:ss" type="text" name="mintavetel_vege_3"></input>
-                  <span class="add-on">
-                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                    </i>
-                  </span>
-                </div>
+                  <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="n_minta_veg3"></input>
                 </td>
-                <td><input type="text" name="gazora_kezd3"></td>
-                <td><input type="text" name="gazora_vege3"></td>
-                <td><input type="text" name="homerseklet3"></td>
-                <td><input type="text" name="nyomas3"></td>
-                <td><input type="text" name="terfogat3"></td>
+                <td><input type="text" data-name="gazora_kezd3"></td>
+                <td><input type="text" data-name="gazora_vege3"></td>
+                <td><input type="text" data-name="homerseklet3"></td>
+                <td><input type="text" data-name="nyomas3"></td>
+                <td><input type="text" data-name="terfogat3"></td>
               </tr>
             </tbody>
           </table>
