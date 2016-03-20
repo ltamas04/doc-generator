@@ -84,22 +84,22 @@
                             <div class="form-group">
                                 <select data-name="mintavetel_celja" class="component-label">
                                     <option value=''>Kérem válasszon</option>
-                                    <option value="bakter">Bakter.</option>
+                                    <option value="Baktérium">Baktérium</option>
                                     <option value="kemiai">Kémiai</option>
                                 </select>
                             </div>
                             <div class="form-group component-value">
                                 <select>
                                     <option value=''>Kérem válasszon</option>
-                                    <option value="Escherichia coli (E.coli)" class="bakter">Escherichia coli (E.coli)</option>
-                                    <option value="Enterococcus" class="bakter">Enterococcus</option>
-                                    <option value="Clostridium perfringens" class="bakter">Clostridium perfringens</option>
-                                    <option value="Telepszám 22 ˚ C  - on" class="bakter">Telepszám 22 ˚ C - on</option>
-                                    <option value="Telepszám   37 ˚ C – on " class="bakter">Telepszám 37 ˚ C – on </option>
-                                    <option value="Coliform baktériumok" class="bakter">Coliform baktériumok </option>
-                                    <option value="Pseudomonas aeruginosa" class="bakter">Pseudomonas aeruginosa</option>
-                                    <option value="Mikroszkópos biológia" class="bakter">Mikroszkópos biológia</option>
-                                    <option value="Legionella" class="bakter">Legionella</option>
+                                    <option value="Escherichia coli (E.coli)" class="Baktérium">Escherichia coli (E.coli)</option>
+                                    <option value="Enterococcus" class="Baktérium">Enterococcus</option>
+                                    <option value="Clostridium perfringens" class="Baktérium">Clostridium perfringens</option>
+                                    <option value="Telepszám 22 ˚ C  - on" class="Baktérium">Telepszám 22 ˚ C - on</option>
+                                    <option value="Telepszám   37x1 ˚ C – on " class="Baktérium">Telepszám 37 ˚ C – on </option>
+                                    <option value="Coliform baktériumok" class="Baktérium">Coliform baktériumok </option>
+                                    <option value="Pseudomonas aeruginosa" class="Baktérium">Pseudomonas aeruginosa</option>
+                                    <option value="Mikroszkópos biológia" class="Baktérium">Mikroszkópos biológia</option>
+                                    <option value="Legionella" class="Baktérium">Legionella</option>
                                     <option class="kemiai" val="Antimon">Antimon</option>
                                     <option class="kemiai" val="Arzén">Arzén</option>
                                     <option class="kemiai" val="Benzol">Benzol</option>
@@ -138,6 +138,7 @@
                                     <option class="kemiai" val="Zavarosság">Zavarosság</option>
                                     <option class="kemiai" val="Össz.keménység">Össz.keménység</option>
                                     <option class="kemiai" val="Fenol index">Fenol index</option>
+                                    <option class="kemiai" val="Olaj származékok">Olaj származékok</option>
                                 </select>
                             </div>
                         </div>
@@ -247,7 +248,7 @@
                 <option value="Czap Zoltán">Czap Zoltán</option>
                 <option value="Czap Gergely">Czap Gergely</option>
                 <option value="Lovas Péter">Lovas Péter</option>
-                <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+                <option value="Gyuricza Zsolt">Gyuricza Zsolt</option>
                 <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
             </select>
         </div>
@@ -494,7 +495,7 @@
             <option value="Szenyán Zoltán">Szenyán Zoltán</option>
             <option value="Czap Zoltán">Czap Zoltán</option>
             <option value="Lovas Péter">Lovas Péter</option>
-            <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+            <option value="Gyuricza Zsolt">Gyuricza Zsolt</option>
             <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
         </select>
     </div>
@@ -625,9 +626,6 @@
                             <label>Vizsgálandó komponensek</label>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input class="form-control label-input" type="text" data-name="komponensek_label">
-                                </div>
-                                <div class="col-sm-6">
                                     <input class="form-control value-input" type="text" data-name="komponensek">
                                 </div>
                             </div>
@@ -644,62 +642,34 @@
                                 <div class="modal-body text-center">
                                     <div class="row">
                                         <div class="form-group">
-                                            <select data-name="mintavetel_celja" class="component-label">
+                                            <select data-name="mintavetel_celja" class="component-label hidden">
                                                 <option value=''>Kérem válasszon</option>
-                                                <option value="bakter">Bakter.</option>
+                                                <option value="Baktérium">Baktérium</option>
                                                 <option value="kemiai">Kémiai</option>
                                             </select>
                                         </div>
                                         <div class="form-group component-value">
                                             <select>
                                                 <option value=''>Kérem válasszon</option>
-                                                <option value="Escherichia coli (E.coli)" class="bakter">Escherichia coli (E.coli)</option>
-                                                <option value="Enterococcus" class="bakter">Enterococcus</option>
-                                                <option value="Clostridium perfringens" class="bakter">Clostridium perfringens</option>
-                                                <option value="Telepszám 22 ˚ C  - on" class="bakter">Telepszám 22 ˚ C - on</option>
-                                                <option value="Telepszám   37 ˚ C – on " class="bakter">Telepszám 37 ˚ C – on </option>
-                                                <option value="Coliform baktériumok" class="bakter">Coliform baktériumok </option>
-                                                <option value="Pseudomonas aeruginosa" class="bakter">Pseudomonas aeruginosa</option>
-                                                <option value="Mikroszkópos biológia" class="bakter">Mikroszkópos biológia</option>
-                                                <option value="Legionella" class="bakter">Legionella</option>
-                                                <option class="kemiai" val="Antimon">Antimon</option>
-                                                <option class="kemiai" val="Arzén">Arzén</option>
-                                                <option class="kemiai" val="Benzol">Benzol</option>
-                                                <option class="kemiai" val="Benz(a)pirén*">Benz(a)pirén*</option>
-                                                <option class="kemiai" val="Bór">Bór</option>
-                                                <option class="kemiai" val="Kadmium">Kadmium</option>
-                                                <option class="kemiai" val="Króm">Króm</option>
+                                                <option value="pH" class="Baktérium">pH</option>
+                                                <option value="oldott oxigén" class="Baktérium">oldott oxigén</option>
+                                                <option value="fajl. vez.képesség" class="Baktérium">fajl. vez.képesség</option>
+                                                <option value="klorid" class="Baktérium">klorid</option>
+                                                <option value="szulfát" class="Baktérium">szulfát</option>
+                                                <option value="ammónia" class="Baktérium">ammónia</option>
+                                                <option value="nitrit" class="Baktérium">nitrit</option>
+                                                <option value="nitrát" class="Baktérium">nitrát</option>
+                                                <option value="foszfát" class="Baktérium">foszfát</option>
+                                                <option class="kemiai" val="KOI ps">KOI ps</option>
+                                                <option class="kemiai" val="higany">higany</option>
+                                                <option class="kemiai" val="arzén">arzén</option>
+                                                <option class="kemiai" val="króm">króm</option>
+                                                <option class="kemiai" val="nikkel">nikkel</option>
+                                                <option class="kemiai" val="ólom">ólom</option>
                                                 <option class="kemiai" val="Réz">Réz</option>
-                                                <option class="kemiai" val="Összes cianid">Összes cianid</option>
-                                                <option class="kemiai" val="1,2-diklór-etán**">1,2-diklór-etán**</option>
-                                                <option class="kemiai" val="Fluorid">Fluorid</option>
-                                                <option class="kemiai" val="Ólom">Ólom</option>
-                                                <option class="kemiai" val="Higany">Higany</option>
-                                                <option class="kemiai" val="Nikkel">Nikkel</option>
-                                                <option class="kemiai" val="Nitrát">Nitrát</option>
-                                                <option class="kemiai" val="Nitrit">Nitrit</option>
-                                                <option class="kemiai" val="Peszticidek  (10 db)">Peszticidek (10 db)</option>
-                                                <option class="kemiai" val="Policiklikus aromás szénhidrogének (4 db)*">Policiklikus aromás szénhidrogének (4 db)*</option>
-                                                <option class="kemiai" val="Szelén">Szelén</option>
-                                                <option class="kemiai" val="Tetraklór-etilén és triklór –etilén**">Tetraklór-etilén és triklór –etilén**</option>
-                                                <option class="kemiai" val="Összes trihalo-metán**">Összes trihalo-metán**</option>
-                                                <option class="kemiai" val="Cisz-1,2-diklór-etilén**">Cisz-1,2-diklór-etilén**</option>
-                                                <option class="kemiai" val="Kötött aktív klór">Kötött aktív klór</option>
-                                                <option class="kemiai" val="Alumínium">Alumínium</option>
-                                                <option class="kemiai" val="Ammónium">Ammónium</option>
-                                                <option class="kemiai" val="Klorid">Klorid</option>
-                                                <option class="kemiai" val="Fajl.el. vez.kép.">Fajl.el. vez.kép.</option>
-                                                <option class="kemiai" val="pH">pH</option>
-                                                <option class="kemiai" val="Vas">Vas</option>
-                                                <option class="kemiai" val="Mangán">Mangán</option>
-                                                <option class="kemiai" val="Kémiai oxigénigény(ps)">Kémiai oxigénigény(ps)</option>
-                                                <option class="kemiai" val="Szulfát">Szulfát</option>
-                                                <option class="kemiai" val="Lúgoság">Lúgoság</option>
-                                                <option class="kemiai" val="Nátrium">Nátrium</option>
-                                                <option class="kemiai" val="Összes szerves szén TOC">Összes szerves szén TOC</option>
-                                                <option class="kemiai" val="Zavarosság">Zavarosság</option>
-                                                <option class="kemiai" val="Össz.keménység">Össz.keménység</option>
-                                                <option class="kemiai" val="Fenol index">Fenol index</option>
+                                                <option class="kemiai" val="cink">cink</option>
+                                                <option class="kemiai" val="PCB">PCB</option>
+                                                <option class="kemiai" val="TPH (GC)">TPH (GC)</option>
                                             </select>
                                         </div>
                                     </div>
@@ -865,7 +835,7 @@
                                 <option value="Czap Zoltán">Czap Zoltán</option>
                                 <option value="Czap Gergely">Czap Gergely</option>
                                 <option value="Lovas Péter">Lovas Péter</option>
-                                <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+                                <option value="Gyuricza Zsolt">Gyuricza Zsolt</option>
                                 <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
                             </select>
                         </div>
@@ -1397,9 +1367,7 @@
                             <label>Barométer</label>
                             <select class="form-control" data-name="mikroszkop">
                                 <option value="">Válassz</option>
-                                <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
-                                <option value="Olympus; 15069">Olympus; 15069</option>
-                                <option value="Leica DM 2700P">Leica DM 2700P</option>
+                                <option value="Stieber DM 120B/M; 1149">Stieber DM 120B/M; 1149</option>
                             </select>
                             <label>Rotaméter</label>
                             <select class="form-control" data-name="rotameter">
@@ -1433,7 +1401,7 @@
                             <option value="Czap Zoltán">Czap Zoltán</option>
                             <option value="Czap Gergely">Czap Gergely</option>
                             <option value="Lovas Péter">Lovas Péter</option>
-                            <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+                            <option value="Gyuricza Zsolt">Gyuricza Zsolt</option>
                             <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
                         </select>
                     </div>
@@ -1860,7 +1828,6 @@
                         <select class="combobox" data-name="barometer">
                             <option value="">Válassz</option>
                             <option value="Stieber_DM_120B/M_1149">Stieber DM 120B/M; 1149</option>
-                            <option value="FEINGERATEBAU FISCHER 104; 943224182438">FEINGERATEBAU FISCHER 104; 943224182438</option>
                         </select>
                     </div>
                 </div>
@@ -1890,7 +1857,7 @@
                             <option value="Czap Zoltán">Czap Zoltán</option>
                             <option value="Czap Gergely">Czap Gergely</option>
                             <option value="Lovas Péter">Lovas Péter</option>
-                            <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+                            <option value="Gyuricza Zsolt">Gyuricza Zsolt</option>
                             <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
                         </select>
                     </div>
@@ -1996,8 +1963,8 @@
             </div>
             <div class="row">
                 <div class="form-group">
-                    <label>Vizsgált légszenny</label>
-                    <select data-name="vizsgalt_legszenny" class="combobox">
+                    <label>Vizsgált légszennyező anyag</label>
+                    <select data-name="Vizsgált légszennyező anyag" class="combobox">
                         <option value="Szállópor">Szállópor</option>
                         <option value="Szállópor(fémek)">Szállópor(fémek)</option>
                         <option value="Kvarc">Kvarc</option>
@@ -2046,10 +2013,8 @@
                                     <select data-name="mintavetel_gep1" class="component-label">
                                         <option value=''>Kérem válasszon</option>
                                         <option value="casella">Casella Apex</option>
-                                        <option value="wortex">Wortex Ultra Flow</option>
                                         <option value="ggy">GGY</option>
                                         <option value="sidekick">SIDEKICK ’T’</option>
-                                        <option value="skc-flite">SKC Flite3</option>
                                     </select>
                                 </div>
                                 <div class="form-group component-value">
@@ -2068,29 +2033,12 @@
                                         <option value="1156886" class="casella">1156886</option>
                                         <option value="1156889" class="casella">1156889</option>
                                         <option value="1156892" class="casella">1156892</option>
-                                        <option value="4-70" class="wortex">4-70</option>
-                                        <option value="4-71" class="wortex">4-71</option>
-                                        <option value="4-72" class="wortex">4-72</option>
-                                        <option value="4-73" class="wortex">4-73</option>
-                                        <option value="4-74" class="wortex">4-74</option>
-                                        <option value="4-75" class="wortex">4-75</option>
-                                        <option value="4-76" class="wortex">4-76</option>
-                                        <option value="0677895" class="wortex">0677895</option>
-                                        <option value="0677896" class="wortex">0677896</option>
-                                        <option value="0677897" class="wortex">0677897</option>
-                                        <option value="0878324" class="wortex">0878324</option>
-                                        <option value="0878546" class="wortex">0878546</option>
-                                        <option value="037604" class="wortex">037604</option>
                                         <option value="01" class="ggy">01</option>
                                         <option value="02" class="ggy">02</option>
                                         <option value="03" class="ggy">03</option>
                                         <option value="04" class="ggy">04</option>
+                                        <option value="509694" class="sidekick">509694</option>
                                         <option value="509695" class="sidekick">509695</option>
-                                        <option value="15533748" class="skc-flite">15533748</option>
-                                        <option value="15533749" class="skc-flite">15533749</option>
-                                        <option value="15533750" class="skc-flite">15533750</option>
-                                        <option value="15533751" class="skc-flite">15533751</option>
-                                        <option value="15533752" class="skc-flite">15533752</option>
                                     </select>
                                 </div>
                             </div>
@@ -2269,9 +2217,8 @@
                     <label>Barométer</label>
                     <select class="combobox" data-name="barometer">
                         <option value="">Válassz</option>
-                        <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
-                        <option value="Olympus; 15069">Olympus; 15069</option>
-                        <option value="Leica DM 2700P">Leica DM 2700P</option>
+                        <option value="FEINGERATEBAU FISCHER 104; 943224182438">FEINGERATEBAU FISCHER 104; 943224182438</option>
+                        <option value="Stieber DM 120B/M; 1149">Stieber DM 120B/M; 1149</option>
                     </select>
                     <label>Rotaméter</label>
                     <select class="combobox" data-name="rotameter">
@@ -2288,13 +2235,6 @@
                         <option value="testo_435_1559658">Testo 435; 1559658</option>
                         <option value="testo_405_V1">Testo 405-V1</option>
                     </select>
-                    <label>Mikroszkóp</label>
-                    <select class="combobox" data-name="mikroszkop">
-                        <option value="">Válassz</option>
-                        <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
-                        <option value="Olympus; 15069">Olympus; 15069</option>
-                        <option value="Leica DM 2700P">Leica DM 2700P</option>
-                    </select>
                 </div>
             </div>
         </div>
@@ -2305,7 +2245,7 @@
                 <option value="Szenyán Zoltán">Szenyán Zoltán</option>
                 <option value="Czap Zoltán">Czap Zoltán</option>
                 <option value="Lovas Péter">Lovas Péter</option>
-                <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+                <option value="Gyuricza Zsolt">Gyuricza Zsolt</option>
                 <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
             </select>
         </div>
@@ -2972,7 +2912,7 @@
                 <option value="Czap Zoltán">Czap Zoltán</option>
                 <option value="Czap Gergely">Czap Gergely</option>
                 <option value="Lovas Péter">Lovas Péter</option>
-                <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+                <option value="Gyuricza Zsolt">Gyuricza Zsolt</option>
                 <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
             </select>
         </div>
@@ -3732,7 +3672,7 @@
                 <option value="Czap Zoltán">Czap Zoltán</option>
                 <option value="Czap Gergely">Czap Gergely</option>
                 <option value="Lovas Péter">Lovas Péter</option>
-                <option value="Gyuricza Zsolt">Gyuricza Úr</option>
+                <option value="Gyuricza Zsolt">Gyuricza Zsolt</option>
                 <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
             </select>
         </div>
