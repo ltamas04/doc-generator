@@ -93,7 +93,58 @@ exports.save = function(req, res) {
       }
         szilardIndex++;
     });
-  } 
+
+    var szilardAtadott = 0;
+    req.body.szilard_minta_jele.forEach(function() {
+      if (req.body.szilard_minta_jele[szilardAtadott]) {
+
+        var atadott = new AtadottMintak({
+            mintavetel_datuma: req.body.datum[0],
+            mintavetel_helye: req.body.mintavetel_helye[0],
+            minta_jele: req.body.szilard_minta_jele[szilardAtadott]
+        });
+        atadott.save(); 
+      }
+        szilardAtadott++;
+    });
+  }
+
+  if (req.body.adabem_minta_jele) {
+    var adabemAtadott = 0;
+      console.log('>>>', req.body.adabem_minta_jele);
+      req.body.adabem_minta_jele.forEach(function() {
+        if (req.body.adabem_minta_jele[adabemAtadott]) {
+
+          var atadott = new AtadottMintak({
+              mintavetel_datuma: req.body.datum[0],
+              mintavetel_helye: req.body.mintavetel_helye[0],
+              minta_jele: req.body.adabem_minta_jele[adabemAtadott]
+          });
+          atadott.save(); 
+        }
+          adabemAtadott++;
+    });
+  }
+
+  if (req.body.adabmun_minta_jele) {
+    var adabmunAtadott = 0;
+      console.log('>>> function is reached');
+      req.body.adabmun_minta_jele.forEach(function() {
+        if (req.body.adabmun_minta_jele[adabmunAtadott]) {
+
+          var atadott = new AtadottMintak({
+              mintavetel_datuma: req.body.datum[0],
+              mintavetel_helye: req.body.mintavetel_helye[0],
+              minta_jele: req.body.adabmun_minta_jele[adabmunAtadott]
+          });
+          atadott.save(); 
+        }
+          adabmunAtadott++;
+    });
+  }
+
+       
+
 
   if(req.body.n_minta_jele) {
     var nedvessegIndex = 0;
