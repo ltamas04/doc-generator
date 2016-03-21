@@ -157,6 +157,11 @@ if ($('.szures-tabla').length) {
   });
 };
 
+$('body').on('click', '#addGep', function() {
+  var form = $(this).closest('.modal-body').find('#gep-form').clone();
+  $(this).closest('.modal-body').find('.gepform-container').append(form);
+})
+
 $('body').on('change', '[type="checkbox"]',  function(e) {
   var sel = $(e.target).data('target');
   $('[data-emisszio=\"' + sel + '\"]').toggleClass('hidden');
