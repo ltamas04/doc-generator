@@ -178,19 +178,23 @@ $(document).ready(function() {
 });
 
 $('#form-adder').on('click', function() {
-  var nev = $('[data-name="mintavetel_helye"]').val();
-  var hely = $('[data-name="mintavetel_helyszine"]').val();
-  console.log(nev, hely);
-  Cookies.set('cegneve', nev);
-  Cookies.set( nev, hely);
+  if($('[data-name="mintavetel_helye"]').val()) {
+    var nev = $('[data-name="mintavetel_helye"]').val();
+    var hely = $('[data-name="mintavetel_helyszine"]').val();
+    console.log(nev, hely);
+    Cookies.set('cegneve', nev);
+    Cookies.set(nev, hely);
+  }
 });
 
 $('form').on('submit', function() {
-  var nev = $('[data-name="mintavetel_helye"]').val();
-  var hely = $('[data-name="mintavetel_helyszine"]').val();
-  console.log(nev, hely);
-  Cookies.set('cegneve', nev);
-  Cookies.set( nev, hely);
+  if($('[data-name="mintavetel_helye"]').val()) {  
+    var nev = $('[data-name="mintavetel_helye"]').val();
+    var hely = $('[data-name="mintavetel_helyszine"]').val();
+    console.log(nev, hely);
+    Cookies.set('cegneve', nev);
+    Cookies.set(nev, hely);
+  }
 });
 
 $('body').on('keyup', '[data-name="mintavetel_helye"]',  function() {
@@ -301,5 +305,49 @@ $('#form-adder').on('click' , function() {
     $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.photo').attr('src', data);
   });
 
+  }
+});
+
+// Put event listeners into place
+$('#form-adder').on('click' , function() {
+  // Grab elements, create settings, etc.
+  if($('.korker-form').last().find('.canvas-uzemviteli').length) {
+
+
+  var canvasList = document.getElementsByClassName('canvas-uzemviteli'),  
+    canvas = canvasList[canvasList.length - 2],
+    context = canvas.getContext("2d"),
+    video = document.querySelector(".video-uzemviteli"),
+    photo  = document.querySelector('.photo-uzemviteli'),
+    videoObj = { "video": true },
+    errBack = function(error) {
+      console.log("Video capture error: ", error.code); 
+    };
+
+  // Put video listeners into place
+  if(navigator.getUserMedia) { // Standard
+    navigator.getUserMedia(videoObj, function(stream) {
+      video.src = stream;
+      video.play();
+    }, errBack);
+  } else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+    navigator.webkitGetUserMedia(videoObj, function(stream){
+      video.src = window.webkitURL.createObjectURL(stream);
+      video.play();
+    }, errBack);
+  }
+  else if(navigator.mozGetUserMedia) { // Firefox-prefixed
+    navigator.mozGetUserMedia(videoObj, function(stream){
+      video.src = window.URL.createObjectURL(stream);
+      video.play();
+    }, errBack);
+  }
+
+  $(".snap-uzemviteli").on("click", function() {
+    context.drawImage(video, 0, 0, 350, 260);
+    var data = canvas.toDataURL('image/png');
+    var dataSel = $(this).closest('.korker-form').data('form');
+    $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.photo-uzemviteli').attr('src', data);
+  });
   }
 });
