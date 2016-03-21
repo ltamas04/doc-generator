@@ -211,6 +211,7 @@ $(document).ready(function() {
 
 $('#form-delete').on('click', function() {
   $('.korker-form').last().remove();
+  $('.doc-type').last().remove();
 });
 
 function fnExcelReport()
@@ -253,6 +254,7 @@ $('#tableExport').on('click', function() {
 
 $(document).ready(function($) {
     $(".korker-doc").click(function(event) {
+        $("#korkerContent").find('br').last().remove();      
         $("#korkerContent").wordExport();
     });
 });
