@@ -210,7 +210,7 @@
             <div class="form-group">
                 <p><strong>Alkalmazott eszközök</strong></p>
                 <label>Barométer</label>
-                <select class="combobox" data-name="mikroszkop">
+                <select class="combobox" data-name="barometer">
                     <option value="">Válassz</option>
                     <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
                     <option value="Olympus; 15069">Olympus; 15069</option>
@@ -371,22 +371,22 @@
                             <div class="form-group">
                                 <select data-name="mintavetel_celja" class="component-label">
                                     <option value=''>Kérem válasszon</option>
-                                    <option value="bakter">Bakter.</option>
+                                    <option value="Baktérium">Baktérium</option>
                                     <option value="kemiai">Kémiai</option>
                                 </select>
                             </div>
                             <div class="form-group component-value">
                                 <select>
                                     <option value=''>Kérem válasszon</option>
-                                    <option value="Escherichia coli (E.coli)" class="bakter">Escherichia coli (E.coli)</option>
-                                    <option value="Enterococcus" class="bakter">Enterococcus</option>
-                                    <option value="Clostridium perfringens" class="bakter">Clostridium perfringens</option>
-                                    <option value="Telepszám 22 ˚ C  - on" class="bakter">Telepszám 22 ˚ C - on</option>
-                                    <option value="Telepszám   37 ˚ C – on " class="bakter">Telepszám 37 ˚ C – on </option>
-                                    <option value="Coliform baktériumok" class="bakter">Coliform baktériumok </option>
-                                    <option value="Pseudomonas aeruginosa" class="bakter">Pseudomonas aeruginosa</option>
-                                    <option value="Mikroszkópos biológia" class="bakter">Mikroszkópos biológia</option>
-                                    <option value="Legionella" class="bakter">Legionella</option>
+                                    <option value="Escherichia coli (E.coli)" class="Baktérium">Escherichia coli (E.coli)</option>
+                                    <option value="Enterococcus" class="Baktérium">Enterococcus</option>
+                                    <option value="Clostridium perfringens" class="Baktérium">Clostridium perfringens</option>
+                                    <option value="Telepszám 22 ˚ C  - on" class="Baktérium">Telepszám 22 ˚ C - on</option>
+                                    <option value="Telepszám   37 ˚ C – on " class="Baktérium">Telepszám 37 ˚ C – on </option>
+                                    <option value="Coliform baktériumok" class="Baktérium">Coliform baktériumok </option>
+                                    <option value="Pseudomonas aeruginosa" class="Baktérium">Pseudomonas aeruginosa</option>
+                                    <option value="Mikroszkópos biológia" class="Baktérium">Mikroszkópos biológia</option>
+                                    <option value="Legionella" class="Baktérium">Legionella</option>
                                     <option class="kemiai" val="Antimon">Antimon</option>
                                     <option class="kemiai" val="Arzén">Arzén</option>
                                     <option class="kemiai" val="Benzol">Benzol</option>
@@ -518,25 +518,25 @@
                 <br> MSZ 448-36:1985 3. fejezet</td>
         </tr>
     </table>
-    <p>Vizsgálandó komponensek: <span class="komponensek_label" style="padding-right: 20px;"></span><span class="komponensek"> </span></p>
+    <p>Vizsgálandó komponensek: <span class="komponensek_label" style="padding-right: 20px;"></span> <span class="komponensek"> </span></p>
     <p>A tartósításra vonatkozó szabvány száma: MSZ EN ISO 5667-3:2004 (visszavont szabvány)</p>
     <p>A tartósítás módja: <span class="tartositas_modja"></span></p>
     <p>Minták jele: <span class="mintak_jele"></span></p>
     <p>pH (MSZ 1484-22:2009): <span class="ph"></span></p>
     <p>Vezetőképesség (MSZ EN 27888:1998) (µS/cm): <span class="vezetokep"></span></p>
-    <p>Vízhőmérséklet (MSZ 448-2:1967 (visszavont szabvány)) (°C):<span class="vizhomersek"></span></p>
+    <p>Vízhőmérséklet (MSZ 448-2:1967 (visszavont szabvány)) (°C):<span class="vizhomersek"></span>°C</p>
     <br style="page-break-before: always">
     <div><strong>Üzemviteli és mintavételi körülmények, megjegyzések</strong>
         <p class="uzemviteli"></p>
     </div>
     <div>
         <strong>Alkalmazott eszközök:</strong>
-        <p>Rotaméter:<span class="rotameter"></span></p>
-        <p>Barométer:<span class="barometer"></span></p>
-        <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
-        <p>Mikroszkóp:<span class="mikroszkop"></span></p>
+        <p>Rotaméter: <span class="rotameter"></span></p>
+        <p>Barométer: <span class="barometer"></span></p>
+        <p>Hőmérséklet, páratartalom és légsebesség mérő: <span class="paratartalom_mero"></span></p>
+        <p>Mikroszkóp: <span class="mikroszkop"></span></p>
         <p>A mintavétel ideje: <span class="datum"></span></p>
-        <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+        <p>A mintavételt végző neve és aláírása: <span class="keszitette"></span></p>
     </div>
 </div>
 <div class="doc-type" data-doc-type="szallopor">
@@ -612,9 +612,8 @@
     <p>Rotaméter:<span class="rotameter"></span></p>
     <p>Barométer:<span class="barometer"></span></p>
     <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="paratartalom_mero"></span></p>
-    <p>Mikroszkóp:<span class="mikroszkop"></span></p>
     <p>A mintavétel ideje: <span class="datum"></span></p>
-    <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+    <p>A mintavételt végző neve és aláírása: <span class="keszitette"></span></p>
 </div>
 <div class="form-type" data-type="adabmun">
     <h1 class="text-center">Adszorpciós/abszorpciós mintavétel (munkahelyi mérés)</h1>
@@ -626,6 +625,12 @@
         <div class="form-group">
             <label>Mintavétel helyszíne(cím): </label>
             <input class="form-control" type="text" data-name="mintavetel_helyszine">
+        </div>
+    </div>
+     <div class="row">
+        <div class="form-group">
+            <label>Mérési hely</label>
+            <input class="form-control" type="text" data-name="meresi_hely">
         </div>
     </div>
     <div class="row">
@@ -1112,20 +1117,11 @@
     </div>
     <div class="row">
         <div class="form-group">
-            <span>Rotaméter</span>
-            <select class="combobox" data-name="rotameter">
+            <span>Mikromanometer</span>
+            <select class="combobox" data-name="mikromanometer">
                 <option value="">Válassz</option>
-                <option value="94-168-1838">94-168-1838</option>
-                <option value="10-323-339">10-323-339</option>
-                <option value="11-130-141">11-130-141</option>
-                <option value="13-146-1">13-146-1</option>
-            </select>
-            <span>Mikroszkóp</span>
-            <select class="combobox" data-name="mikroszkop">
-                <option value="">Válassz</option>
-                <option value="zeiss_jenamed_variant">Zeiss Jenamed Variant; 742760</option>
-                <option value="olympus_15069">Olympus; 15069</option>
-                <option value="leica_dm_2700p">Leica DM 2700P</option>
+                <option value="SI Spec. Instr., digima premo 1621">SI Spec. Instr., digima premo 1621</option>
+                <option value="Stieber Bt, DM120 PL1/M 411">Stieber Bt, DM120 PL1/M 411</option>
             </select>
             <span>Hőmérséklet, páratartalom mérő:</span>
             <select class="combobox" data-name="paratartalom_mero">
@@ -1190,7 +1186,7 @@
             <td><strong>Dolgozó neve: </strong> <span class="dolgozo_neve"></span></td>
         </tr>
         <tr>
-            <td><strong>Vizsgált légszennyező anyag: </strong> <span class="vizsgalt_legszeny"></span></td>
+            <td><strong>Vizsgált légszennyező anyag: </strong> <span class="vizsgalt_legszenny"></span></td>
         </tr>
         <tr>
             <td><strong>Dátum:</strong> <span class="datum"></span></td>
@@ -1280,12 +1276,11 @@
         <p class="uzemviteli"></p>
     </div>
     <strong>Alkalmazott eszközök:</strong>
-    <p>Rotaméter:<span class="rotameter"></span></p>
-    <p>Barométer:<span class="barometer"></span></p>
-    <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="paratartalom_mero"></span></p>
-    <p>Mikroszkóp:<span class="mikroszkop"></span></p>
+    <p>Mikromanometer: <span class="mikromanometer"></span></p>
+    <p>Barométer: <span class="barometer"></span></p>
+    <p>Hőmérséklet, páratartalom és légsebesség mérő: <span class="paratartalom_mero"></span></p>
     <p>A mintavétel ideje: <span class="datum"></span></p>
-    <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+    <p>A mintavételt végző neve és aláírása: <span class="keszitette"></span></p>
 </div>
 <div class="form-type" data-type="emisszio">
     <h1 class="text-center">Emissziómérés   </h1>
@@ -2352,7 +2347,7 @@
     <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="paratartalom_mero"></span></p>
     <p>Mikroszkóp:<span class="mikroszkop"></span></p>
     <p>A mintavétel ideje: <span class="datum"></span></p>
-    <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+    <p>A mintavételt végző neve és aláírása: <span class="keszitette"></span></p>
 </div>
 <div class="doc-type" data-doc-type="szennyviz">
     <h2 style="text-align: center;">Mintavétel szennyvízből</h2>
@@ -2384,7 +2379,7 @@
         <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
         <p>Mikroszkóp:<span class="mikroszkop"></span></p>
         <p>A mintavétel ideje: <span class="datum"></span></p>
-        <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+        <p>A mintavételt végző neve és aláírása: <span class="keszitette"></span></p>
     </div>
 </div>
         <div class="form-type" data-type="felszinalatt">
@@ -2399,6 +2394,12 @@
                     <input class="form-control" type="text" data-name="mintavetel_helye">
                 </div>
             </div>
+             <div class="row">
+            <div class="form-group">
+                <label>Mérési hely: </label>
+                <input class="form-control" type="text" data-name="meresi_hely">
+            </div>
+        </div>
             <div class="row">
                 <div class="form-group">
                     <label>Mintavételi hely meghatározása</label>
@@ -2695,7 +2696,7 @@
                             <td>A számítással meghatározott háromszoros térfogat: <span class="szamitassal_meghatarozott"></span></td>
                         </tr>
                         <tr>
-                            <td>Kitermelt víz térfogata (L): <span class="kitermelt_viz_terfogata"></span> m</td>
+                            <td>Kitermelt víz térfogata (L): <span class="kitermelt_viz"></span> m</td>
                         </tr>
                     </table>
                     <p>Tisztító szivattyúzás adatai: </p>
@@ -2745,12 +2746,8 @@
                         <p class="uzemviteli"></p>
                     </div>
                     <strong>Alkalmazott eszközök:</strong>
-                    <p>Rotaméter:<span class="rotameter"></span></p>
-                    <p>Barométer:<span class="barometer"></span></p>
-                    <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
-                    <p>Mikroszkóp:<span class="mikroszkop"></span></p>
                     <p>A mintavétel ideje: <span class="datum"></span></p>
-                    <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+                    <p>A mintavételt végző neve és aláírása: <span class="keszitette"></span></p>
                 </div>
                 <div class="form-type" data-type="szallorost">
                     <h1 class="text-center">Szállórost koncentráció vizsgálata</h1>
@@ -3182,7 +3179,7 @@
                         <div class="form-group">
                             <p><strong>Alkalmazott eszközök</strong></p>
                             <label>Barométer</label>
-                            <select class="form-control" data-name="mikroszkop">
+                            <select class="form-control" data-name="barometer">
                                 <option value="">Válassz</option>
                                 <option value="Stieber DM 120B/M; 1149">Stieber DM 120B/M; 1149</option>
                             </select>
@@ -3361,10 +3358,10 @@
             <strong>Alkalmazott eszközök:</strong>
             <p>Rotaméter:<span class="rotameter"></span></p>
             <p>Barométer:<span class="barometer"></span></p>
-            <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="homerseklet_paratartalom"></span></p>
+            <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="paratartalom_mero"></span></p>
             <p>Mikroszkóp:<span class="mikroszkop"></span></p>
             <p>A mintavétel ideje: <span class="datum"></span></p>
-            <p>A mintavételt végző neve és aláírása: <span class="keszitette_nev"></span></p>
+            <p>A mintavételt végző neve és aláírása: <span class="keszitette"></span></p>
         </div>
         <div class="form-type" data-type="szallorostkonc">
             <h1 class="text-center">Szállórost koncentráció vizsgálata</h1>
@@ -3781,7 +3778,7 @@
             <div class="row">
                 <div class="form-group">
                     <label>Vizsgált légszennyező anyag</label>
-                    <select data-name="Vizsgált légszennyező anyag" class="combobox">
+                    <select data-name="vizsgalt_legszeny" class="combobox">
                         <option value="Szállópor">Szállópor</option>
                         <option value="Szállópor(fémek)">Szállópor(fémek)</option>
                         <option value="Kvarc">Kvarc</option>
@@ -4060,6 +4057,7 @@
                 <option value="">Válassz</option>
                 <option value="Szenyán Zoltán">Szenyán Zoltán</option>
                 <option value="Czap Zoltán">Czap Zoltán</option>
+                <option value="Czap Gergely">Czap Gergely</option>
                 <option value="Lovas Péter">Lovas Péter</option>
                 <option value="Gyuricza Zsolt">Gyuricza Zsolt</option>
                 <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
