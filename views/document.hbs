@@ -24,8 +24,8 @@
             <a class="btn btn-danger" id="form-delete">Az utolsó törlése</a>
     </div>
     <div role="tabpanel" class="tab-pane" id="preview">
-        <div id="korkerContent">
-            <img src="img/header.png">
+        <div class="text-center" id="korkerContent">
+            <img src="img/header.png" width="1200px" height="300px">
         </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="save">
@@ -504,9 +504,9 @@
 </div>
 <div class="doc-type" data-doc-type="ivoviz">
     <h2 style="text-align: center;">Mintavétel ivóvízből</h2>
-    <p>Mintavétel helye: <name="mintavetel_helye" span class="mintavetel_helye"></span></p>
-    <p>Helység: <span class="mintavetel_helyszine"></span></p>
-    <p>Mérési hely: <span class="meresi_hely"></span></p>
+    <p style="line-height: 5px;">Mintavétel helye: <name="mintavetel_helye" span class="mintavetel_helye"></span></p>
+    <p style="line-height: 5px;">Helység: <span class="mintavetel_helyszine"></span></p>
+    <p style="line-height: 5px;">Mérési hely: <span class="meresi_hely"></span></p>
     <table>
         <tr>
             <td style="vertical-align: top;">Mintavételi szabvány száma:</td>
@@ -519,13 +519,13 @@
                 <br> MSZ 448-36:1985 3. fejezet</td>
         </tr>
     </table>
-    <p>Vizsgálandó komponensek: <span class="komponensek_label" style="padding-right: 20px;"></span> <span class="komponensek"> </span></p>
-    <p>A tartósításra vonatkozó szabvány száma: MSZ EN ISO 5667-3:2004 (visszavont szabvány)</p>
-    <p>A tartósítás módja: <span class="tartositas_modja"></span></p>
-    <p>Minták jele: <span class="mintak_jele"></span></p>
-    <p>pH (MSZ 1484-22:2009): <span class="ph"></span></p>
-    <p>Vezetőképesség (MSZ EN 27888:1998) (µS/cm): <span class="vezetokep"></span></p>
-    <p>Vízhőmérséklet (MSZ 448-2:1967 (visszavont szabvány)) (°C):<span class="vizhomersek"></span>°C</p>
+    <p style="line-height: 5px;">Vizsgálandó komponensek: <span class="komponensek_label" style="padding-right: 20px;"></span> <span class="komponensek"> </span></p>
+    <p style="line-height: 5px;">A tartósításra vonatkozó szabvány száma: MSZ EN ISO 5667-3:2004 (visszavont szabvány)</p>
+    <p style="line-height: 5px;">A tartósítás módja: <span class="tartositas_modja"></span></p>
+    <p style="line-height: 5px;">Minták jele: <span class="mintak_jele"></span></p>
+    <p style="line-height: 5px;">pH (MSZ 1484-22:2009): <span class="ph"></span></p>
+    <p style="line-height: 5px;">Vezetőképesség (MSZ EN 27888:1998) (µS/cm): <span class="vezetokep"></span></p>
+    <p style="line-height: 5px;">Vízhőmérséklet (MSZ 448-2:1967 (visszavont szabvány)) (°C):<span class="vizhomersek"></span>°C</p>
     <br style="page-break-before: always">
     <div><strong>Üzemviteli és mintavételi körülmények, megjegyzések</strong>
                         <table>
@@ -2534,7 +2534,7 @@
                                         <div class="form-group component-value">
                                             <select>
                                                 <option value=''>Kérem válasszon</option>
-                                                <option value="pH" class="Baktérium">pH</option>
+                                                <optioFn value="pH" class="Baktérium">pH</option>
                                                 <option value="oldott oxigén" class="Baktérium">oldott oxigén</option>
                                                 <option value="fajl. vez.képesség" class="Baktérium">fajl. vez.képesség</option>
                                                 <option value="klorid" class="Baktérium">klorid</option>
@@ -3765,21 +3765,21 @@
             <h2 style="text-align: center;">Szállórost koncentráció vizsgálata</h2>
             <table style="width: 100%; margin-bottom: 20px;">
                 <tr>
-                    <td><strong>Mintavétel helye(név):</strong> <span class="mintavetel_helyszine"></span></td>
+                    <td><p line-height="5px"><strong>Mintavétel helye(név):</strong> <span class="mintavetel_helyszine"></span></p></td>
                 </tr>
                 <tr>
-                    <td><strong>Mintavétel helyszíne(cím):</strong> <span class="mintavetel_helyszine"></span></td>
+                    <td><p line-height="5px"><strong>Mintavétel helyszíne(cím):</strong> <span class="mintavetel_helyszine"></span></p></td>
                 </tr>
                 <tr>
-                    <td><strong>Mérési hely</strong> <span class="meresi_hely"></span></td>
+                    <td><p line-height="5px"><strong>Mérési hely</strong> <span class="meresi_hely"></span></p></td>
                 </tr>
                 <tr>
-                    <td><strong>Minta száma:</strong> <span class="minta_szama"></span></td>
-                    <td><strong>Dátum:</strong> <span class="datum"></span></td>
+                    <td><p line-height="5px"><strong>Minta száma:</strong> <span class="minta_szama"></span></p></td>
+                    <td><p line-height="5px"><strong>Dátum:</strong> <span class="datum"></span></p></td>
                 </tr>
                 <tr>
-                    <td><strong>Mintavevők típusa:</strong> <span class="mintavevo_tipusa"></span></td>
-                    <td><strong>Mintavevők száma:</strong> <span class="mintavevo_szama"></span></td>
+                    <td><p line-height="5px"><strong>Mintavevők típusa:</strong> <span class="mintavevo_tipusa"></span></p></td>
+                    <td><p line-height="5px"><strong>Mintavevők száma:</strong> <span class="mintavevo_szama"></span></p></td>
                 </tr>
                 <tr>
                     <td><strong>Mintavétel módja:</strong> <span class="mintavetel_modja"></span></td>
