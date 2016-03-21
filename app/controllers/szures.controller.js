@@ -2,6 +2,8 @@ var SzalloRost = require('mongoose').model('SzalloRost');
 var SzalloPor = require('mongoose').model('SzalloPor');
 var SzilardAnyag = require('mongoose').model('SzilardAnyag');
 var NedvessegMintak = require('mongoose').model('NedvessegMintak');
+var AtadottMintak = require('mongoose').model('AtadottMintak');
+
 
 exports.szalloRost = function(req, res) {
     SzalloRost.find({}, function(err, docs) {
@@ -132,4 +134,14 @@ exports.nedvessegSave =  function(req, res) {
       });
     });
 };
+
+exports.atadott = function(req, res) {
+    AtadottMintak.find({}, function(err, docs) {
+      if(err) {
+            res.json(err);
+        } else {
+            res.render('szures-vizsgalat', { docs: docs });
+      }
+  });
+}
 
