@@ -1,5 +1,6 @@
 module.exports = function(app) {
-  var document = require('../controllers/document.controller'); 
+  var document = require('../controllers/document.controller');
+  var sync =  require('../controllers/db.sync');
   app.get('/', function(req, res){
     res.render('index');
   });

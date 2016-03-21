@@ -3,7 +3,7 @@ var SzalloPor = require('mongoose').model('SzalloPor');
 var SzilardAnyag = require('mongoose').model('SzilardAnyag');
 var NedvessegMintak = require('mongoose').model('NedvessegMintak');
 var AtadottMintak = require('mongoose').model('AtadottMintak');
-
+  
 
 exports.szalloRost = function(req, res) {
     SzalloRost.find({}, function(err, docs) {

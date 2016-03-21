@@ -1,16 +1,37 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var mongoose = require('./config/mongoose'),
+  remoteMongoose = require('./config/remoteMongoose'),
   express = require('./config/express');
 
 var db = mongoose();
+//var remoteDb = remoteMongoose();
 var app = express();
+
 
 app.listen(3001);
 
 module.exports = app;
 
-console.log('Server running at http://localhost:3001');
+
+//mongoose.connect('mongodb://127.0.0.1:27017/korker');
+//var conn = mongoose.connect;
+
+//mongoose2.connect('mongodb://127.0.0.1:27017/pina');
+//var conn2 = mongoose2.connect;
+
+
+//mongoose.connect('mongodb://127.0.0.1:27017/testB');
+//var conn2 = mongoose.connect; 
+
+//mongoose.model();
+
+//var szallorosts = mongoose.model('szallorosts');
+//szallorosts.find({}, function(err, data) { console.log(err, data, data.length); });
+
+
 /*
 
 app.get('/felszinalatt', function(request, response) {

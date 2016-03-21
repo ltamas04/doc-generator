@@ -172,6 +172,10 @@ $(document).ready(function() {
   });
 });
 
+$('#form-delete').on('click', function() {
+  $('.korker-form').last().remove();
+});
+
 function fnExcelReport()
 {
     var tab_text="<table border='2px'><tr bgcolor='#87AFC6'>";
