@@ -256,7 +256,7 @@ $('#form-adder').on('click' , function() {
   }
 
   $(".snap").on("click", function() {
-    context.drawImage(video, 0, 0, 400, 400);
+    context.drawImage(video, 0, 0, 350, 260);
     var data = canvas.toDataURL('image/png');
     var dataSel = $(this).closest('.korker-form').data('form');
     $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.photo').attr('src', data);
