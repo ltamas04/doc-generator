@@ -126,12 +126,12 @@ $('#form-adder').on('click', function() {
   $('.korker-form .mintavetel-ido').timepicker({step: 1})
 });
 
-$('#form-adder').one('click', function() {
-  $('.combobox').selectize({
+$('#form-adder').on('click', function() {
+   $('.korker-form').last().find('.combobox').selectize({
     create: true,
     sortField: Text
   });
-})
+});
 
 if ($('.szures-tabla').length) {
   $('.link-to-doc').each(function(link) {
@@ -169,6 +169,38 @@ $(document).ready(function() {
         [25, 50, 100, 200, "All"]
     ],
     iDisplayLength: -1
+  });
+});
+
+$('#form-adder').on('click', function() {
+  var nev = $('[data-name="mintavetel_helye"]').val();
+  var hely = $('[data-name="mintavetel_helyszine"]').val();
+  console.log(nev, hely);
+  Cookies.set('cegneve', nev);
+  Cookies.set( nev, hely);
+});
+
+$('form').on('submit', function() {
+  var nev = $('[data-name="mintavetel_helye"]').val();
+  var hely = $('[data-name="mintavetel_helyszine"]').val();
+  console.log(nev, hely);
+  Cookies.set('cegneve', nev);
+  Cookies.set( nev, hely);
+});
+
+$('body').on('keyup', '[data-name="mintavetel_helye"]',  function() {
+  console.log('>>>', Cookies.get($(this).val()));
+  if(Cookies.get($(this).val())) {
+    $('[data-name="mintavetel_helyszine"]').val(Cookies.get($(this).val()));
+  }
+});
+
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
   });
 });
 
