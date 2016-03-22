@@ -121,8 +121,11 @@ $('#form-adder').on('click', function() {
   formCounter++;
 
   var lastForm = $('.korker-form').last();
+  
+  var tmp = $('#formNames').val();
+  tmp += $('form .form-type').last().data('type') + ' ';
+  $('#formNames').val(tmp);
 
-  console.log(lastForm);
   $('.korker-form .mintavetel-ido').timepicker({step: 1})
 });
 
@@ -349,5 +352,50 @@ $('#form-adder').on('click' , function() {
     var dataSel = $(this).closest('.korker-form').data('form');
     $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.photo-uzemviteli').attr('src', data);
   });
+  }
+
+});
+
+  //localStorage logic
+$('#localSave').on('click', function() {
+    var formname = $('#localName').val();
+    var formObject = $('form').serializeObject();
+    localStorage[formname] = JSON.stringify(formObject);
+});
+
+$('#localGet').on('click', function() {
+  var localStorageObject = JSON.parse(localStorage['variablename']);
+
+  localStorageObject.forms.split(' ').forEach(function(element) {
+    $('.korker-form-container').append('<div class="korker-form" data-form=\"form-' + formCounter + '\"></div>');
+    var content = $('.form-type[data-type=' + element + ']').clone().css('display', 'block');
+    $('.korker-form[data-form=\"form-' + formCounter + '\"]').html(content.get(0));
+
+    $('#korkerContent').append('<div class="korker-doc" data-form=\"form-' + formCounter + '\"></div>');
+    var doccontent = $('.doc-type[data-doc-type=' + element + ']').clone().css('display', 'block');
+    $('.korker-doc[data-form=\"form-' + formCounter + '\"]').html(doccontent.get(0));
+    formCounter++;
+  });
+
+  for (var property in localStorageObject) {
+    if (localStorageObject.hasOwnProperty(property)) {
+      if ($el.length > 1) { 
+        $el.each(function() {
+          $(this).val(localStorageObject[property][i]);
+          i++;
+        });
+      } else {
+        var val = (localStorageObject[property].constructor === Array) ? localStorageObject[property][0] : localStorageObject[property];  
+        $el.val(val);
+      }
+    }
+  }
+});
+
+
+$('#localOpener').on('click', function() {
+  for (var key in localStorage){
+   var str = '<option value=' + key + '>' + key + '</option>';
+   $('#localsList').append(str);
   }
 });

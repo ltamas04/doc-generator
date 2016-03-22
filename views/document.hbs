@@ -20,8 +20,21 @@
                 <option value="adabmun">Adszorpciós/abszorpciós mintavétel - munkahelyi</option>
                 <option value="emisszio">Emisszió</option>
             </select>
-            <a class="btn btn-success" id="form-adder">Hozzáadás</a>
-            <a class="btn btn-danger" id="form-delete">Az utolsó törlése</a>
+            <div class="row">
+                <div class="col-xs-3">
+                    <a class="btn btn-success" id="form-adder">Hozzáadás</a>
+                </div>
+                <div class="col-xs-3">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#saveLocals">Lokál mentés</a>
+                </div>
+                <div class="col-xs-3">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#getLocals" id="localOpener">Lokál előhívás</a>
+                </div>
+                <div class="col-xs-3">
+                    <a class="btn btn-danger" id="form-delete">Az utolsó törlése</a>            
+                </div>
+            </div>
+            <input type="hidden" name="forms" id="formNames" value="" />
     </div>
     <div role="tabpanel" class="tab-pane" id="preview">
         <div id="korkerContent">
@@ -39,6 +52,7 @@
         </form>
     </div>
 </div>
+
 {{> ivoviz-form }} 
 {{> ivoviz-doc}} 
 
@@ -63,3 +77,43 @@
 {{> emisszio-form}}
 {{> emisszio-doc}}
 
+<div class="modal fade" id="saveLocals" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">A form adatainak elmentése lokálisan</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Ezen a néven tudod majd előhívni a formot</label>
+            <input type="text" value="" class="form-control" id="localName">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="localSave">Mentés</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="getLocals" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Lokális form előhívása</h4>
+      </div>
+      <div class="modal-body">
+            <label>Ezek a formok vannak lokálisan elmentve</label>
+            <select id="localsList" class="form-control">
+
+            </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
