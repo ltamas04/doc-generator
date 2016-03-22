@@ -5,7 +5,9 @@
     "body-parser": "^1.15.0",
     "compression": "^1.6.1",
     "express": "^4.13.4",
+    "express-hbs": "^0.8.4",
     "express3-handlebars": "^0.5.2",
+    "handlebars": "^4.0.5",
     "method-override": "^2.3.5",
     "mongoose": "^4.4.7",
     "morgan": "^1.7.0"

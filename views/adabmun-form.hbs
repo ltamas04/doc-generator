@@ -1,0 +1,556 @@
+<div class="form-type" data-type="adabmun">
+    <h1 class="text-center">Adszorpciós/abszorpciós mintavétel (munkahelyi mérés)</h1>
+    <div class="row">
+        <div class="form-group">
+            <label>Mintavétel helye(név): </label>
+            <input class="form-control" type="text" name="mintavetel_helye" data-name="mintavetel_helye">
+        </div>
+        <div class="form-group">
+            <label>Mintavétel helyszíne(cím): </label>
+            <input class="form-control" type="text" data-name="mintavetel_helyszine">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label>Mérési hely</label>
+            <input class="form-control" type="text" data-name="meresi_hely">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label>Dolgozó neve</label>
+            <input class="form-control" type="text" data-name="dolgozo_neve">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label>Vizsgált légszenny</label>
+            <select data-name="vizsgalt_legszenny" class="combobox">
+                <option value="Szállópor">Szállópor</option>
+                <option value="Szállópor(fémek)">Szállópor(fémek)</option>
+                <option value="Kvarc">Kvarc</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label>Mintavétel dátuma</label>
+            <input class="form-control" type="date" name="datum" data-name="datum">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label>Mintavétel kezdete</label>
+            <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="mintavetel_kezdete"></input>
+        </div>
+        <div class="form-group">
+            <label>Mintavétel vége</label>
+            <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="mintavetel_vege"></input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label>Mintavevő(k) típusa</label>
+            <input type="text" data-name="mintavevo_tipusa" class="label-input form-control">
+        </div>
+        <div class="form-group">
+            <label>Mintavevő(k) száma</label>
+            <input type="text" data-name="mintavevo_szama" class="value-input form-control">
+        </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Hozzáadás
+        </button>
+    </div>
+    <div class="modal fade modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mintavevők típusa</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="row">
+                        <div class="form-group">
+                            <select data-name="mintavetel_gep1" class="component-label">
+                                <option value=''>Kérem válasszon</option>
+                                <option value="Kálmán-System-KS-502">Kálmán System KS-502</option>
+                                <option value="Kálmán-System-KS-408">Kálmán System KS-408</option>
+                                <option value="Kálmán-System-KS-409">Kálmán System KS-409</option>
+                            </select>
+                        </div>
+                        <div class="form-group component-value">
+                            <select data-name="sorszam1">
+                                <option class="none" value=''>Kérem válasszon</option>
+                                <option value="102005112005" class="Kálmán-System-KS-502">102005112005</option>
+                                <option value="122005132005" class="Kálmán-System-KS-502">122005132005</option>
+                                <option value="142005152005" class="Kálmán-System-KS-502">142005152005</option>
+                                <option value="172005" class="Kálmán-System-KS-408">172005</option>
+                                <option value="042005" class="Kálmán-System-KS-409">042005</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="modal-save" data-dismiss="modal">Mentés</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label>Minták száma</label>
+            <input type="text" data-name="mintak_szama" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <h2>Meterológiai paraméterek</h2>
+        <table class="table">
+            <thead>
+                <th>Idő</th>
+                <th>Légnyomás (mbar)</th>
+                <th>Hőmérséklet</th>
+                <th>Páratartalom</th>
+                <th>Légsebesség</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="meterologia_ido_1"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="legnyomas_1" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="homerseklet_1" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="paratartalom_1" />
+                    </td>
+                    <td>
+                        <select data-name="legsebesseg_1" / class="combobox">
+                            <option value="">Válassz</option>
+                            <option value=">0,1">0,1</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="meterologia_ido_2"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="legnyomas_2" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="homerseklet_2" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="paratartalom_2" />
+                    </td>
+                    <td>
+                        <select data-name="legsebesseg_2" / class="combobox">
+                            <option value="">Válassz</option>
+                            <option value=">0,1">0,1</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="meterologia_ido_3"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="legnyomas_3" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="homerseklet_3" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="paratartalom_3" />
+                    </td>
+                    <td>
+                        <select data-name="legsebesseg_3" / class="combobox">
+                            <option value="">Válassz</option>
+                            <option value=">0,1">0,1</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="meterologia_ido_4"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="legnyomas_4" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="homerseklet_4" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="paratartalom_4" />
+                    </td>
+                    <td>
+                        <select data-name="legsebesseg_4" / class="combobox">
+                            <option value="">Válassz</option>
+                            <option value=">0,1">0,1</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <th>Minta jele</th>
+                <th>Mintavétel kezd</th>
+                <th>Mintavétel befejezése</th>
+                <th>Megjegyzés</th>
+                <th>Vizsgáló labor</th>
+                <th>Vizsgált komp.</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" data-name="minta_jele1" name="adabmun_minta_jele[]">
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd1"></input>
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg1"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="megjegyzes1" style="width: 150px;">
+                    </td>
+                    <td>
+                        <select data-name="vizsgalo_lab1" class="combobox">
+                            <option value="">Válassz</option>
+                            <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+                            <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+                            <option value="K    VI Plus kft.">KVI plus kft.</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select data-name="vizsgalt_komponensek1" class="combobox">
+                            <option value="">Kérlek válassz</option>
+                            <option value="szerves anyagok">Szerves anyagok</option>
+                            <option value="fémek">Fémek</option>
+                            <option value="Sósav">Sósav</option>
+                            <option value="Kénsav">Kénsav</option>
+                            <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" data-name="minta_jele2  " name="adabmun_minta_jele[]">
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd2"></input>
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg2"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="megjegyzes2" style="width: 150px;">
+                    </td>
+                    <td>
+                        <select data-name="vizsgalo_lab2" class="combobox">
+                            <option value="">Válassz</option>
+                            <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+                            <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+                            <option value="KVI Plus kft.">KVI plus kft.</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select data-name="vizsgalt_komponensek2" class="combobox">
+                            <option value="">Kérlek válassz</option>
+                            <option value="szerves anyagok">Szerves anyagok</option>
+                            <option value="fémek">Fémek</option>
+                            <option value="Sósav">Sósav</option>
+                            <option value="Kénsav">Kénsav</option>
+                            <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" data-name="minta_jele3" name="adabmun_minta_jele[]">
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd3"></input>
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg3"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="megjegyzes3" style="width: 150px;">
+                    </td>
+                    <td>
+                        <select data-name="vizsgalo_lab3" class="combobox">
+                            <option value="">Válassz</option>
+                            <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+                            <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+                            <option value="KVI Plus kft.">KVI plus kft.</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select data-name="vizsgalt_komponensek3" class="combobox">
+                            <option value="">Kérlek válassz</option>
+                            <option value="szerves anyagok">Szerves anyagok</option>
+                            <option value="fémek">Fémek</option>
+                            <option value="Sósav">Sósav</option>
+                            <option value="Kénsav">Kénsav</option>
+                            <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" data-name="minta_jele4" name="adabmun_minta_jele[]">
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd4"></input>
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg4"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="megjegyzes4" style="width: 150px;">
+                    </td>
+                    <td>
+                        <select data-name="vizsgalo_lab4" class="combobox">
+                            <option value="">Válassz</option>
+                            <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+                            <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+                            <option value="KVI Plus kft.">KVI plus kft.</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select data-name="vizsgalt_komponensek4" class="combobox">
+                            <option value="">Kérlek válassz</option>
+                            <option value="szerves anyagok">Szerves anyagok</option>
+                            <option value="fémek">Fémek</option>
+                            <option value="Sósav">Sósav</option>
+                            <option value="Kénsav">Kénsav</option>
+                            <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" data-name="minta_jele5" name="adabmun_minta_jele[]">
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd5"></input>
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg5"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="megjegyzes5" style="width: 150px;">
+                    </td>
+                    <td>
+                        <select data-name="vizsgalo_lab5" class="combobox">
+                            <option value="">Válassz</option>
+                            <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+                            <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+                            <option value="KVI Plus kft.">KVI plus kft.</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select data-name="vizsgalt_komponensek5" class="combobox">
+                            <option value="">Kérlek válassz</option>
+                            <option value="szerves anyagok">Szerves anyagok</option>
+                            <option value="fémek">Fémek</option>
+                            <option value="Sósav">Sósav</option>
+                            <option value="Kénsav">Kénsav</option>
+                            <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" data-name="minta_jele6" name="adabmun_minta_jele[]">
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd6"></input>
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg6"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="megjegyzes6" style="width: 150px;">
+                    </td>
+                    <td>
+                        <select data-name="vizsgalo_lab6" class="combobox">
+                            <option value="">Válassz</option>
+                            <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+                            <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+                            <option value="KVI Plus kft.">KVI plus kft.</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select data-name="vizsgalt_komponensek6" class="combobox">
+                            <option value="">Kérlek válassz</option>
+                            <option value="szerves anyagok">Szerves anyagok</option>
+                            <option value="fémek">Fémek</option>
+                            <option value="Sósav">Sósav</option>
+                            <option value="Kénsav">Kénsav</option>
+                            <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" data-name="minta_jele7" name="adabmun_minta_jele[]">
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd7"></input>
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg7"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="megjegyzes7" style="width: 150px;">
+                    </td>
+                    <td>
+                        <select data-name="vizsgalo_lab7" class="combobox">
+                            <option value="">Válassz</option>
+                            <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+                            <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+                            <option value="KVI Plus kft.">KVI plus kft.</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select data-name="vizsgalt_komponense7" class="combobox">
+                            <option value="">Kérlek válassz</option>
+                            <option value="szerves anyagok">Szerves anyagok</option>
+                            <option value="fémek">Fémek</option>
+                            <option value="Sósav">Sósav</option>
+                            <option value="Kénsav">Kénsav</option>
+                            <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" data-name="minta_jele8" name="adabmun_minta_jele[]">
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd8"></input>
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg8"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="megjegyzes8" style="width: 150px;">
+                    </td>
+                    <td>
+                        <select data-name="vizsgalo_lab8" class="combobox">
+                            <option value="">Válassz</option>
+                            <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+                            <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+                            <option value="KVI Plus kft.">KVI plus kft.</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select data-name="vizsgalt_komponensek8" class="combobox">
+                            <option value="">Kérlek válassz</option>
+                            <option value="szerves anyagok">Szerves anyagok</option>
+                            <option value="fémek">Fémek</option>
+                            <option value="Sósav">Sósav</option>
+                            <option value="Kénsav">Kénsav</option>
+                            <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" data-name="minta_jele9" name="adabmun_minta_jele[]">
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd9"></input>
+                    </td>
+                    <td>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg9"></input>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-name="megjegyzes9" style="width: 150px;">
+                    </td>
+                    <td>
+                        <select data-name="vizsgalo_lab9" class="combobox">
+                            <option value="">Válassz</option>
+                            <option value="Kör-Ker Kft.">Kör-ker Kft</option>
+                            <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
+                            <option value="KVI Plus kft.">KVI plus kft.</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select data-name="vizsgalt_komponensek9" class="combobox">
+                            <option value="">Kérlek válassz</option>
+                            <option value="szerves anyagok">Szerves anyagok</option>
+                            <option value="fémek">Fémek</option>
+                            <option value="Sósav">Sósav</option>
+                            <option value="Kénsav">Kénsav</option>
+                            <option value="Nátrium hidroxid">Nátrium hidroxid</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <span>Mikromanometer</span>
+            <select class="combobox" data-name="mikromanometer">
+                <option value="">Válassz</option>
+                <option value="SI Spec. Instr., digima premo 1621">SI Spec. Instr., digima premo 1621</option>
+                <option value="Stieber Bt, DM120 PL1/M 411">Stieber Bt, DM120 PL1/M 411</option>
+            </select>
+            <span>Hőmérséklet, páratartalom mérő:</span>
+            <select class="combobox" data-name="paratartalom_mero">
+                <option value="">Válassz</option>
+                <option value="testo_645_143190">Testo 645;143190</option>
+                <option value="testo_435_1559658">Testo 435; 1559658</option>
+                <option value="testo_405_V1">Testo 405-V1</option>
+            </select>
+            <span>Barométer</span>
+            <select class="combobox" data-name="barometer">
+                <option value="">Válassz</option>
+                <option value="Stieber_DM_120B/M_1149">Stieber DM 120B/M; 1149</option>
+                <option value="FEINGERATEBAU FISCHER 104; 943224182438">FEINGERATEBAU FISCHER 104; 943224182438</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <span>Alkalmazott eszközök</span>
+        <br>
+        <textarea data-name="alkalmazott eszközök"></textarea>
+    </div>
+    <div class="row">
+        <span>Üzemviteli és mintavételi körülmények:</span>
+        <br>
+        <textarea data-name="uzemviteli"></textarea>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <span>Mellékletek </span>
+            <br>
+            <textarea type="text" data-name="mellekletek"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <span>Készítette</span>
+            <select class="combobox" data-name="keszitette">
+                <option value="">Válassz</option>
+                <option value="Szenyán Zoltán">Szenyán Zoltán</option>
+                <option value="Czap Zoltán">Czap Zoltán</option>
+                <option value="Czap Gergely">Czap Gergely</option>
+                <option value="Lovas Péter">Lovas Péter</option>
+                <option value="Gyuricza Zsolt">Gyuricza Zsolt</option>
+                <option value="Robotka Ernő Róbert">Robotka Ernő Róbert</option>
+            </select>
+        </div>
+    </div>
+    <br style="page-break-before: always">
+</div>

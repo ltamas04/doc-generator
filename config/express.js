@@ -1,6 +1,6 @@
 var express = require('express'),
   morgan = require('morgan'),
-  hbs = require('express3-handlebars'),
+  hbs = require('express-hbs'),
   compress = require('compression'),
   bodyParser  = require('body-parser'),
   methodOverride = require('method-override'),
@@ -31,8 +31,12 @@ module.exports = function() {
   app.use(bodyParser.json());
   app.use(methodOverride());
 
-  app.engine('hbs', hbs({extName: 'hbs', defaultLayout:'main.hbs'}));
   app.set('view engine', 'hbs');
+  app.engine('hbs', hbs.express3({  
+    defaultLayout: 'views/layouts/main.hbs',
+    partialsDir: 'views',
+    layoutsDir: 'views'
+  }));
 
   require('../app/routes/index.route.js')(app);
   require('../app/routes/document.route.js')(app);
