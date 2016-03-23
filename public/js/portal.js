@@ -305,7 +305,9 @@ $('#form-adder').on('click' , function() {
     context.drawImage(video, 0, 0, 350, 260);
     var data = canvas.toDataURL('image/png');
     var dataSel = $(this).closest('.korker-form').data('form');
-    $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.photo').attr('src', data);
+    var target = $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.photo');
+    target.attr('src', data);
+    target.parents('.image-container').find('#imageInput').attr('value', data);
   });
 
   }
@@ -364,21 +366,25 @@ $('#localSave').on('click', function() {
 });
 
 $('#localGet').on('click', function() {
-  var localStorageObject = JSON.parse(localStorage['variablename']);
-
+  var localStorageObject = JSON.parse(localStorage[$('#localsList').val()]);
   localStorageObject.forms.split(' ').forEach(function(element) {
-    $('.korker-form-container').append('<div class="korker-form" data-form=\"form-' + formCounter + '\"></div>');
-    var content = $('.form-type[data-type=' + element + ']').clone().css('display', 'block');
-    $('.korker-form[data-form=\"form-' + formCounter + '\"]').html(content.get(0));
+    if(element) {
+      console.log(element);
+      $('.korker-form-container').append('<div class="korker-form" data-form=\"form-' + formCounter + '\"></div>');
+      var content = $('.form-type[data-type=' + element + ']').clone().css('display', 'block');
+      $('.korker-form[data-form=\"form-' + formCounter + '\"]').html(content.get(0));
 
-    $('#korkerContent').append('<div class="korker-doc" data-form=\"form-' + formCounter + '\"></div>');
-    var doccontent = $('.doc-type[data-doc-type=' + element + ']').clone().css('display', 'block');
-    $('.korker-doc[data-form=\"form-' + formCounter + '\"]').html(doccontent.get(0));
-    formCounter++;
+      $('#korkerContent').append('<div class="korker-doc" data-form=\"form-' + formCounter + '\"></div>');
+      var doccontent = $('.doc-type[data-doc-type=' + element + ']').clone().css('display', 'block');
+      $('.korker-doc[data-form=\"form-' + formCounter + '\"]').html(doccontent.get(0));
+      formCounter++;
+    }
   });
 
   for (var property in localStorageObject) {
     if (localStorageObject.hasOwnProperty(property)) {
+      var $el = $('form [name=\"' + property + '\"]');
+      var i = 0;
       if ($el.length > 1) { 
         $el.each(function() {
           $(this).val(localStorageObject[property][i]);
@@ -390,6 +396,12 @@ $('#localGet').on('click', function() {
       }
     }
   }
+
+  $('.image-container').each(function() {
+    $(this).find('img').attr('src', $(this).find('input').val());
+  });
+
+  $('#form-adder').trigger('formAdded');
 });
 
 
