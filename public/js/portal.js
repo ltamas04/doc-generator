@@ -305,7 +305,7 @@ $('#form-adder').on('click' , function() {
     context.drawImage(video, 0, 0, 350, 260);
     var data = canvas.toDataURL('image/png');
     var dataSel = $(this).closest('.korker-form').data('form');
-    var target = $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.photo');
+    var target = $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.image-container .photo');
     target.attr('src', data);
     target.parents('.image-container').find('#imageInput').attr('value', data);
   });
@@ -352,14 +352,17 @@ $('#form-adder').on('click' , function() {
     context.drawImage(video, 0, 0, 350, 260);
     var data = canvas.toDataURL('image/png');
     var dataSel = $(this).closest('.korker-form').data('form');
-    $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.photo-uzemviteli').attr('src', data);
+    var target = $('#preview').find('[data-form = \"' + dataSel + '\"]').find('.image-container-uzemviteli .photo');
+    target.attr('src', data);
+    target.parents('.image-container-uzemviteli').find('#imageInput').attr('value', data);
   });
+
   }
 
 });
 
   //localStorage logic
-$('#localSave').on('click', function() {
+$('#localSave').on('click offline', function() {
     var formname = $('#localName').val();
     var formObject = $('form').serializeObject();
     localStorage[formname] = JSON.stringify(formObject);
@@ -400,14 +403,37 @@ $('#localGet').on('click', function() {
   $('.image-container').each(function() {
     $(this).find('img').attr('src', $(this).find('input').val());
   });
-
-  $('#form-adder').trigger('formAdded');
 });
 
 
-$('#localOpener').on('click', function() {
+$('#localOpener').one('click', function() {
   for (var key in localStorage){
    var str = '<option value=' + key + '>' + key + '</option>';
    $('#localsList').append(str);
   }
 });
+
+
+
+//offline support 
+$('#saveToDb').on('click', function(e) {
+  e.preventDefault();
+  if(checkNetConnection()) {
+    $('form').submit();    
+  } else {
+    $('#saveLocals').modal('show');
+  }
+});
+
+
+function checkNetConnection(){
+ jQuery.ajaxSetup({async:false});
+ re="";
+ r=Math.round(Math.random() * 10000);
+ $.get("https://scontent-vie1-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/10383573_615502271885170_3050415218211596357_n.jpg?oh=bcaa017fc1607700c14f815ab041d8f8&oe=574D1DF1",{subins:r},function(d){
+  re=true;
+ }).error(function(){
+  re=false;
+ });
+ return re;
+}
