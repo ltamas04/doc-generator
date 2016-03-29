@@ -8,13 +8,13 @@
             </div>
             <div class="form-group">
                 <label>Mintavétel helyszíne(cím): </label>
-                <input class="form-control" type="text" data-name="mintavetel_helyszine">
+                <input class="form-control" type="text" name="mintavetel_helyszine" data-name="mintavetel_helyszine">
             </div>
         </div>
         <div class="row">
             <div class="form-group">
                 <label>Mérési hely: </label>
-                <input class="form-control" type="text" data-name="meresi_hely">
+                <input class="form-control" type="text" name="meresi_hely" data-name="meresi_hely">
             </div>
         </div>
         <div class="row">
@@ -26,61 +26,61 @@
         <div class="row">
             <div class="form-group">
                 <label>Mintavétel célja</label>
-                <input class="form-control" data-name="mintavetel_celja" type="text" />
+                <input class="form-control" name="mintavetel_celja" data-name="mintavetel_celja" type="text" />
             </div>
         </div>
         <div class="row">
             <div class="form-group">
                 <label>Mintavétel módszere</label>
-                <input class="form-control" data-name="mintavetel_modszere" type="text" />
+                <input class="form-control" name="mintavetel_modszere" data-name="mintavetel_modszere" type="text" />
             </div>
             <div class="has-padding">
                 <div class="form-group">
                     <label>pontminta</label>
-                    <input class="form-control" data-name="pontminta" type="text" />
+                    <input class="form-control" name="pontminta" data-name="pontminta" type="text" />
                 </div>
                 <div class="form-group">
                     <label>időarányos átlagminta: </label>
-                    <input class="form-control" data-name="ido_atlag" type="text" />
+                    <input class="form-control" name="ido_atlag" data-name="ido_atlag" type="text" />
                 </div>
                 <div class="form-group">
                     <label>hozamarányos átlagminta: </label>
-                    <input class="form-control" data-name="hozam_atlag" type="text" />
+                    <input class="form-control" name="hozam_atlag" data-name="hozam_atlag" type="text" />
                 </div>
                 <div class="form-group">
                     <label>Alkalmazott eszköz: </label>
-                    <input class="form-control" data-name="alkalmazott" type="text" />
+                    <input class="form-control" name="alkalmazott" data-name="alkalmazott" type="text" />
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="form-group">
                 <label>A minták közti időtartam vagy hozam (perc vagy m3): </label>
-                <input class="form-control" data-name="mintak_kozott" type="text" />
+                <input class="form-control" name="mintak_kozott" data-name="mintak_kozott" type="text" />
             </div>
         </div>
         <div class="row">
             <div class="form-group">
                 <label>A pontminták térfogata (ml): </label>
-                <input class="form-control" data-name="minta_terfogata" type="text" />
+                <input class="form-control" name="minta_terfogata" data-name="minta_terfogata" type="text" />
             </div>
         </div>
         <div class="row">
             <div class="form-group">
                 <label>Mv kezd.: </label>
-                <input class="form-control" data-name="minta_kezdete" type="text" />
+                <input class="form-control" name="minta_kezdete" data-name="minta_kezdete" type="text" />
             </div>
         </div>
         <div class="row">
             <div class="form-group">
                 <label>Mv. vége: </label>
-                <input class="form-control" data-name="minta_vege" type="text" />
+                <input class="form-control" name="minta_vege" data-name="minta_vege" type="text" />
             </div>
         </div>
         <div class="row">
             <div class="form-group">
                 <label>A minták közti időtartam vagy hozam (perc vagy m3): </label>
-                <input class="form-control" data-name="mintak_kozott" type="text" />
+                <input class="form-control" name="mintak_kozott" data-name="mintak_kozott" type="text" />
             </div>
         </div>
         <div class="row">
@@ -94,10 +94,10 @@
                 <label>Vizsgálandó komponensek</label>
                 <div class="row">
                     <div class="col-sm-6">
-                        <input class="form-control label-input" type="text" data-name="komponensek_label" class="">
+                        <input class="form-control label-input" type="text" name="komponensek_label" data-name="komponensek_label" class="">
                     </div>
                     <div class="col-sm-6">
-                        <input class="form-control value-input" type="text" data-name="komponensek">
+                        <input class="form-control value-input" type="text" name="komponensek" data-name="komponensek">
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-mark="#myModal">Vizsgalando komponensek</button>
@@ -113,7 +113,7 @@
                     <div class="modal-body text-center">
                         <div class="row">
                             <div class="form-group">
-                                <select data-name="mintavetel_celja" class="component-label">
+                                <select name="mintavetel_celja" data-name="mintavetel_celja" class="component-label">
                                     <option value=''>Kérem válasszon</option>
                                     <option value="Baktérium">Baktérium</option>
                                     <option value="kemiai">Kémiai</option>
@@ -182,19 +182,19 @@
         <div class="row">
             <div class="form-group">
                 <label>Vezetőképesség (MSZ EN 27888:1998) (µS/cm): </label>
-                <input class="form-control" data-name="vezetokepesseg" type="text" />
+                <input class="form-control" name="vezetokepesseg" data-name="vezetokepesseg" type="text" />
             </div>
         </div>
         <div class="row">
             <div class="form-group">
                 <label>Vízhőmérséklet (MSZ 260-2:1955) (°C): </label>
-                <input class="form-control" data-name="vizhomerseklet" type="text" />
+                <input class="form-control" name="vizhomerseklet" data-name="vizhomerseklet" type="text" />
             </div>
         </div>
         <div class="row">
             <div class="form-group">
                 <label>Üzemviteli és mintavételi körülmények, megjegyzések</label>
-                <textarea data-name="uzemviteli" class="form-control"></textarea>
+                <textarea name="uzemviteli" data-name="uzemviteli" class="form-control"></textarea>
                 <div class="row">
                     <div class="col-sm-12">
                         <video class="video-uzemviteli" width="350" height="260" autoplay></video>
@@ -208,14 +208,14 @@
             <div class="form-group">
                 <p><strong>Alkalmazott eszközök</strong></p>
                 <label>Barométer</label>
-                <select class="combobox" data-name="mikroszkop">
+                <select class="combobox" name="mikroszkop" data-name="mikroszkop">
                     <option value="">Válassz</option>
                     <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
                     <option value="Olympus; 15069">Olympus; 15069</option>
                     <option value="Leica DM 2700P">Leica DM 2700P</option>
                 </select>
                 <label>Rotaméter</label>
-                <select class="combobox" data-name="rotameter">
+                <select class="combobox" name="rotameter" data-name="rotameter">
                     <option value="">Válassz</option>
                     <option value="94-168-1838">94-168-1838</option>
                     <option value="10-323-339">10-323-339</option>
@@ -223,14 +223,14 @@
                     <option value="13-146-1">13-146-1</option>
                 </select>
                 <label>Hőmérséklet, páratartalom és légsebesség mérő:</label>
-                <select class="combobox" data-name="paratartalom_mero">
+                <select class="combobox" name="paratartalom_mero" data-name="paratartalom_mero">
                     <option value="">Válassz</option>
                     <option value="testo_645_143190">Testo 645;143190</option>
                     <option value="testo_435_1559658">Testo 435; 1559658</option>
                     <option value="testo_405_V1">Testo 405-V1</option>
                 </select>
                 <label>Mikroszkóp</label>
-                <select class="combobox" data-name="mikroszkop">
+                <select class="combobox" name="mikroszkop" data-name="mikroszkop">
                     <option value="">Válassz</option>
                     <option value="Zeiss Jenamed Variant;">Zeiss Jenamed Variant; 742760</option>
                     <option value="Olympus; 15069">Olympus; 15069</option>
@@ -241,7 +241,7 @@
     </div>
     <div class="row">
         <label>Készítette</label>
-        <select class="combobox" data-name="keszitette">
+        <select class="combobox" name="keszitette" data-name="keszitette">
             <option value="">Válassz</option>
             <option value="Szenyán Zoltán">Szenyán Zoltán</option>
             <option value="Czap Zoltán">Czap Zoltán</option>

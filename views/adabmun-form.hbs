@@ -7,25 +7,25 @@
         </div>
         <div class="form-group">
             <label>Mintavétel helyszíne(cím): </label>
-            <input class="form-control" type="text" data-name="mintavetel_helyszine">
+            <input class="form-control" type="text" name="mintavetel_helyszine" data-name="mintavetel_helyszine">
         </div>
     </div>
     <div class="row">
         <div class="form-group">
             <label>Mérési hely</label>
-            <input class="form-control" type="text" data-name="meresi_hely">
+            <input class="form-control" type="text" name="meresi_hely" data-name="meresi_hely">
         </div>
     </div>
     <div class="row">
         <div class="form-group">
             <label>Dolgozó neve</label>
-            <input class="form-control" type="text" data-name="dolgozo_neve">
+            <input class="form-control" type="text" name="dolgozo_neve" data-name="dolgozo_neve">
         </div>
     </div>
     <div class="row">
         <div class="form-group">
             <label>Vizsgált légszenny</label>
-            <select data-name="vizsgalt_legszenny" class="combobox">
+            <select name="vizsgalt_legszenny" data-name="vizsgalt_legszenny" class="combobox">
                 <option value="Szállópor">Szállópor</option>
                 <option value="Szállópor(fémek)">Szállópor(fémek)</option>
                 <option value="Kvarc">Kvarc</option>
@@ -41,21 +41,21 @@
     <div class="row">
         <div class="form-group">
             <label>Mintavétel kezdete</label>
-            <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="mintavetel_kezdete"></input>
+            <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="mintavetel_kezdete" data-name="mintavetel_kezdete"></input>
         </div>
         <div class="form-group">
             <label>Mintavétel vége</label>
-            <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="mintavetel_vege"></input>
+            <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="mintavetel_vege" data-name="mintavetel_vege"></input>
         </div>
     </div>
     <div class="row">
         <div class="form-group">
             <label>Mintavevő(k) típusa</label>
-            <input type="text" data-name="mintavevo_tipusa" class="label-input form-control">
+            <input type="text" name="mintavevo_tipusa" data-name="mintavevo_tipusa" class="label-input form-control">
         </div>
         <div class="form-group">
             <label>Mintavevő(k) száma</label>
-            <input type="text" data-name="mintavevo_szama" class="value-input form-control">
+            <input type="text" name="mintavevo_szama" data-name="mintavevo_szama" class="value-input form-control">
         </div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
             Hozzáadás
@@ -71,7 +71,7 @@
                 <div class="modal-body text-center">
                     <div class="row">
                         <div class="form-group">
-                            <select data-name="mintavetel_gep1" class="component-label">
+                            <select name="mintavetel_gep1" data-name="mintavetel_gep1" class="component-label">
                                 <option value=''>Kérem válasszon</option>
                                 <option value="Kálmán-System-KS-502">Kálmán System KS-502</option>
                                 <option value="Kálmán-System-KS-408">Kálmán System KS-408</option>
@@ -79,7 +79,7 @@
                             </select>
                         </div>
                         <div class="form-group component-value">
-                            <select data-name="sorszam1">
+                            <select name="sorszam1" data-name="sorszam1">
                                 <option class="none" value=''>Kérem válasszon</option>
                                 <option value="102005112005" class="Kálmán-System-KS-502">102005112005</option>
                                 <option value="122005132005" class="Kálmán-System-KS-502">122005132005</option>
@@ -99,7 +99,7 @@
     <div class="row">
         <div class="form-group">
             <label>Minták száma</label>
-            <input type="text" data-name="mintak_szama" class="form-control" />
+            <input type="text" name="mintak_szama" data-name="mintak_szama" class="form-control" />
         </div>
     </div>
     <div class="row">
@@ -115,19 +115,19 @@
             <tbody>
                 <tr>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="meterologia_ido_1"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="meterologia_ido_1" data-name="meterologia_ido_1"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="legnyomas_1" />
+                        <input type="text" class="form-control" name="legnyomas_1" data-name="legnyomas_1" />
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="homerseklet_1" />
+                        <input type="text" class="form-control" name="homerseklet_1" data-name="homerseklet_1" />
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="paratartalom_1" />
+                        <input type="text" class="form-control" name="paratartalom_1" data-name="paratartalom_1" />
                     </td>
                     <td>
-                        <select data-name="legsebesseg_1" / class="combobox">
+                        <select name="legsebesseg_1" data-name="legsebesseg_1" / class="combobox">
                             <option value="">Válassz</option>
                             <option value=">0,1">0,1</option>
                         </select>
@@ -135,19 +135,19 @@
                 </tr>
                 <tr>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="meterologia_ido_2"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="meterologia_ido_2" data-name="meterologia_ido_2"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="legnyomas_2" />
+                        <input type="text" class="form-control" name="legnyomas_2" data-name="legnyomas_2" />
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="homerseklet_2" />
+                        <input type="text" class="form-control" name="homerseklet_2" data-name="homerseklet_2" />
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="paratartalom_2" />
+                        <input type="text" class="form-control" name="paratartalom_2" data-name="paratartalom_2" />
                     </td>
                     <td>
-                        <select data-name="legsebesseg_2" / class="combobox">
+                        <select name="legsebesseg_2" data-name="legsebesseg_2" / class="combobox">
                             <option value="">Válassz</option>
                             <option value=">0,1">0,1</option>
                         </select>
@@ -155,19 +155,19 @@
                 </tr>
                 <tr>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="meterologia_ido_3"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="meterologia_ido_3" data-name="meterologia_ido_3"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="legnyomas_3" />
+                        <input type="text" class="form-control" name="legnyomas_3" data-name="legnyomas_3" />
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="homerseklet_3" />
+                        <input type="text" class="form-control" name="homerseklet_3" data-name="homerseklet_3" />
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="paratartalom_3" />
+                        <input type="text" class="form-control" name="paratartalom_3" data-name="paratartalom_3" />
                     </td>
                     <td>
-                        <select data-name="legsebesseg_3" / class="combobox">
+                        <select name="legsebesseg_3" data-name="legsebesseg_3" / class="combobox">
                             <option value="">Válassz</option>
                             <option value=">0,1">0,1</option>
                         </select>
@@ -175,19 +175,19 @@
                 </tr>
                 <tr>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="meterologia_ido_4"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="meterologia_ido_4" data-name="meterologia_ido_4"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="legnyomas_4" />
+                        <input type="text" class="form-control" name="legnyomas_4" data-name="legnyomas_4" />
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="homerseklet_4" />
+                        <input type="text" class="form-control" name="homerseklet_4" data-name="homerseklet_4" />
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="paratartalom_4" />
+                        <input type="text" class="form-control" name="paratartalom_4" data-name="paratartalom_4" />
                     </td>
                     <td>
-                        <select data-name="legsebesseg_4" / class="combobox">
+                        <select name="legsebesseg_4" data-name="legsebesseg_4" / class="combobox">
                             <option value="">Válassz</option>
                             <option value=">0,1">0,1</option>
                         </select>
@@ -212,24 +212,24 @@
                         <input type="text" class="form-control" data-name="minta_jele1" name="adabmun_minta_jele[]">
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd1"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="kezd1" data-name="kezd1"></input>
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg1"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="veg1" data-name="veg1"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="megjegyzes1" style="width: 150px;">
+                        <input type="text" class="form-control" name="megjegyzes1" data-name="megjegyzes1" style="width: 150px;">
                     </td>
                     <td>
-                        <select data-name="vizsgalo_lab1" class="combobox">
+                        <select name="vizsgalo_lab1" data-name="vizsgalo_lab1" class="combobox">
                             <option value="">Válassz</option>
                             <option value="Kör-Ker Kft.">Kör-ker Kft</option>
                             <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
-                            <option value="K    VI Plus kft.">KVI plus kft.</option>
+                            <option value="KVI Plus kft.">KVI plus kft.</option>
                         </select>
                     </td>
                     <td>
-                        <select data-name="vizsgalt_komponensek1" class="combobox">
+                        <select name="vizsgalt_komponensek1" data-name="vizsgalt_komponensek1" class="combobox">
                             <option value="">Kérlek válassz</option>
                             <option value="szerves anyagok">Szerves anyagok</option>
                             <option value="fémek">Fémek</option>
@@ -241,19 +241,19 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" data-name="minta_jele2  " name="adabmun_minta_jele[]">
+                        <input type="text" class="form-control" data-name="minta_jele2" name="adabmun_minta_jele[]">
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd2"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="kezd2" data-name="kezd2"></input>
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg2"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="veg2" data-name="veg2"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="megjegyzes2" style="width: 150px;">
+                        <input type="text" class="form-control" name="megjegyzes2" data-name="megjegyzes2" style="width: 150px;">
                     </td>
                     <td>
-                        <select data-name="vizsgalo_lab2" class="combobox">
+                        <select name="vizsgalo_lab2" data-name="vizsgalo_lab2" class="combobox">
                             <option value="">Válassz</option>
                             <option value="Kör-Ker Kft.">Kör-ker Kft</option>
                             <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
@@ -261,7 +261,7 @@
                         </select>
                     </td>
                     <td>
-                        <select data-name="vizsgalt_komponensek2" class="combobox">
+                        <select name="vizsgalt_komponensek2" data-name="vizsgalt_komponensek2" class="combobox">
                             <option value="">Kérlek válassz</option>
                             <option value="szerves anyagok">Szerves anyagok</option>
                             <option value="fémek">Fémek</option>
@@ -276,16 +276,16 @@
                         <input type="text" class="form-control" data-name="minta_jele3" name="adabmun_minta_jele[]">
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd3"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="kezd3" data-name="kezd3"></input>
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg3"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="veg3" data-name="veg3"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="megjegyzes3" style="width: 150px;">
+                        <input type="text" class="form-control" name="megjegyzes3" data-name="megjegyzes3" style="width: 150px;">
                     </td>
                     <td>
-                        <select data-name="vizsgalo_lab3" class="combobox">
+                        <select name="vizsgalo_lab3" data-name="vizsgalo_lab3" class="combobox">
                             <option value="">Válassz</option>
                             <option value="Kör-Ker Kft.">Kör-ker Kft</option>
                             <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
@@ -293,7 +293,7 @@
                         </select>
                     </td>
                     <td>
-                        <select data-name="vizsgalt_komponensek3" class="combobox">
+                        <select name="vizsgalt_komponensek3" data-name="vizsgalt_komponensek3" class="combobox">
                             <option value="">Kérlek válassz</option>
                             <option value="szerves anyagok">Szerves anyagok</option>
                             <option value="fémek">Fémek</option>
@@ -308,16 +308,16 @@
                         <input type="text" class="form-control" data-name="minta_jele4" name="adabmun_minta_jele[]">
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd4"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="kezd4" data-name="kezd4"></input>
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg4"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="veg4" data-name="veg4"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="megjegyzes4" style="width: 150px;">
+                        <input type="text" class="form-control" name="megjegyzes4" data-name="megjegyzes4" style="width: 150px;">
                     </td>
                     <td>
-                        <select data-name="vizsgalo_lab4" class="combobox">
+                        <select name="vizsgalo_lab4" data-name="vizsgalo_lab4" class="combobox">
                             <option value="">Válassz</option>
                             <option value="Kör-Ker Kft.">Kör-ker Kft</option>
                             <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
@@ -325,7 +325,7 @@
                         </select>
                     </td>
                     <td>
-                        <select data-name="vizsgalt_komponensek4" class="combobox">
+                        <select name="vizsgalt_komponensek4" data-name="vizsgalt_komponensek4" class="combobox">
                             <option value="">Kérlek válassz</option>
                             <option value="szerves anyagok">Szerves anyagok</option>
                             <option value="fémek">Fémek</option>
@@ -340,16 +340,16 @@
                         <input type="text" class="form-control" data-name="minta_jele5" name="adabmun_minta_jele[]">
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd5"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="kezd5" data-name="kezd5"></input>
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg5"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="veg5" data-name="veg5"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="megjegyzes5" style="width: 150px;">
+                        <input type="text" class="form-control" name="megjegyzes5" data-name="megjegyzes5" style="width: 150px;">
                     </td>
                     <td>
-                        <select data-name="vizsgalo_lab5" class="combobox">
+                        <select name="vizsgalo_lab5" data-name="vizsgalo_lab5" class="combobox">
                             <option value="">Válassz</option>
                             <option value="Kör-Ker Kft.">Kör-ker Kft</option>
                             <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
@@ -357,7 +357,7 @@
                         </select>
                     </td>
                     <td>
-                        <select data-name="vizsgalt_komponensek5" class="combobox">
+                        <select name="vizsgalt_komponensek5" data-name="vizsgalt_komponensek5" class="combobox">
                             <option value="">Kérlek válassz</option>
                             <option value="szerves anyagok">Szerves anyagok</option>
                             <option value="fémek">Fémek</option>
@@ -372,16 +372,16 @@
                         <input type="text" class="form-control" data-name="minta_jele6" name="adabmun_minta_jele[]">
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd6"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="kezd6" data-name="kezd6"></input>
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg6"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="veg6" data-name="veg6"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="megjegyzes6" style="width: 150px;">
+                        <input type="text" class="form-control" name="megjegyzes6" data-name="megjegyzes6" style="width: 150px;">
                     </td>
                     <td>
-                        <select data-name="vizsgalo_lab6" class="combobox">
+                        <select name="vizsgalo_lab6" data-name="vizsgalo_lab6" class="combobox">
                             <option value="">Válassz</option>
                             <option value="Kör-Ker Kft.">Kör-ker Kft</option>
                             <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
@@ -389,7 +389,7 @@
                         </select>
                     </td>
                     <td>
-                        <select data-name="vizsgalt_komponensek6" class="combobox">
+                        <select name="vizsgalt_komponensek6" data-name="vizsgalt_komponensek6" class="combobox">
                             <option value="">Kérlek válassz</option>
                             <option value="szerves anyagok">Szerves anyagok</option>
                             <option value="fémek">Fémek</option>
@@ -404,16 +404,16 @@
                         <input type="text" class="form-control" data-name="minta_jele7" name="adabmun_minta_jele[]">
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd7"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="kezd7" data-name="kezd7"></input>
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg7"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="veg7" data-name="veg7"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="megjegyzes7" style="width: 150px;">
+                        <input type="text" class="form-control" name="megjegyzes7" data-name="megjegyzes7" style="width: 150px;">
                     </td>
                     <td>
-                        <select data-name="vizsgalo_lab7" class="combobox">
+                        <select name="vizsgalo_lab7" data-name="vizsgalo_lab7" class="combobox">
                             <option value="">Válassz</option>
                             <option value="Kör-Ker Kft.">Kör-ker Kft</option>
                             <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
@@ -421,7 +421,7 @@
                         </select>
                     </td>
                     <td>
-                        <select data-name="vizsgalt_komponense7" class="combobox">
+                        <select name="vizsgalt_komponense7" data-name="vizsgalt_komponense7" class="combobox">
                             <option value="">Kérlek válassz</option>
                             <option value="szerves anyagok">Szerves anyagok</option>
                             <option value="fémek">Fémek</option>
@@ -436,16 +436,16 @@
                         <input type="text" class="form-control" data-name="minta_jele8" name="adabmun_minta_jele[]">
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd8"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="kezd8" data-name="kezd8"></input>
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg8"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="veg8" data-name="veg8"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="megjegyzes8" style="width: 150px;">
+                        <input type="text" class="form-control" name="megjegyzes8" data-name="megjegyzes8" style="width: 150px;">
                     </td>
                     <td>
-                        <select data-name="vizsgalo_lab8" class="combobox">
+                        <select name="vizsgalo_lab8" data-name="vizsgalo_lab8" class="combobox">
                             <option value="">Válassz</option>
                             <option value="Kör-Ker Kft.">Kör-ker Kft</option>
                             <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
@@ -453,7 +453,7 @@
                         </select>
                     </td>
                     <td>
-                        <select data-name="vizsgalt_komponensek8" class="combobox">
+                        <select name="vizsgalt_komponensek8" data-name="vizsgalt_komponensek8" class="combobox">
                             <option value="">Kérlek válassz</option>
                             <option value="szerves anyagok">Szerves anyagok</option>
                             <option value="fémek">Fémek</option>
@@ -468,16 +468,16 @@
                         <input type="text" class="form-control" data-name="minta_jele9" name="adabmun_minta_jele[]">
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="kezd9"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="kezd9" data-name="kezd9"></input>
                     </td>
                     <td>
-                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="veg9"></input>
+                        <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="veg9" data-name="veg9"></input>
                     </td>
                     <td>
-                        <input type="text" class="form-control" data-name="megjegyzes9" style="width: 150px;">
+                        <input type="text" class="form-control" name="megjegyzes9" data-name="megjegyzes9" style="width: 150px;">
                     </td>
                     <td>
-                        <select data-name="vizsgalo_lab9" class="combobox">
+                        <select name="vizsgalo_lab9" data-name="vizsgalo_lab9" class="combobox">
                             <option value="">Válassz</option>
                             <option value="Kör-Ker Kft.">Kör-ker Kft</option>
                             <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
@@ -485,7 +485,7 @@
                         </select>
                     </td>
                     <td>
-                        <select data-name="vizsgalt_komponensek9" class="combobox">
+                        <select name="vizsgalt_komponensek9" data-name="vizsgalt_komponensek9" class="combobox">
                             <option value="">Kérlek válassz</option>
                             <option value="szerves anyagok">Szerves anyagok</option>
                             <option value="fémek">Fémek</option>
@@ -501,20 +501,20 @@
     <div class="row">
         <div class="form-group">
             <span>Mikromanometer</span>
-            <select class="combobox" data-name="mikromanometer">
+            <select class="combobox" name="mikromanometer" data-name="mikromanometer">
                 <option value="">Válassz</option>
                 <option value="SI Spec. Instr., digima premo 1621">SI Spec. Instr., digima premo 1621</option>
                 <option value="Stieber Bt, DM120 PL1/M 411">Stieber Bt, DM120 PL1/M 411</option>
             </select>
             <span>Hőmérséklet, páratartalom mérő:</span>
-            <select class="combobox" data-name="paratartalom_mero">
+            <select class="combobox" name="paratartalom_mero" data-name="paratartalom_mero">
                 <option value="">Válassz</option>
                 <option value="testo_645_143190">Testo 645;143190</option>
                 <option value="testo_435_1559658">Testo 435; 1559658</option>
                 <option value="testo_405_V1">Testo 405-V1</option>
             </select>
             <span>Barométer</span>
-            <select class="combobox" data-name="barometer">
+            <select class="combobox" name="barometer" data-name="barometer">
                 <option value="">Válassz</option>
                 <option value="Stieber_DM_120B/M_1149">Stieber DM 120B/M; 1149</option>
                 <option value="FEINGERATEBAU FISCHER 104; 943224182438">FEINGERATEBAU FISCHER 104; 943224182438</option>
@@ -524,12 +524,12 @@
     <div class="row">
         <span>Alkalmazott eszközök</span>
         <br>
-        <textarea data-name="alkalmazott eszközök"></textarea>
+        <textarea name="alkalmazott" data-name="alkalmazott eszközök"></textarea>
     </div>
     <div class="row">
         <span>Üzemviteli és mintavételi körülmények:</span>
         <br>
-        <textarea data-name="uzemviteli"></textarea>
+        <textarea name="uzemviteli" data-name="uzemviteli"></textarea>
         <div class="row">
             <div class="col-sm-12">
                 <video class="video-uzemviteli" width="350" height="260" autoplay></video>
@@ -542,13 +542,13 @@
         <div class="form-group">
             <span>Mellékletek </span>
             <br>
-            <textarea type="text" data-name="mellekletek"></textarea>
+            <textarea type="text" name="mellekletek" data-name="mellekletek"></textarea>
         </div>
     </div>
     <div class="row">
         <div class="span6">
             <span>Készítette</span>
-            <select class="combobox" data-name="keszitette">
+            <select class="combobox" name="keszitette" data-name="keszitette">
                 <option value="">Válassz</option>
                 <option value="Szenyán Zoltán">Szenyán Zoltán</option>
                 <option value="Czap Zoltán">Czap Zoltán</option>

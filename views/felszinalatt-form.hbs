@@ -7,29 +7,29 @@
         </div>
         <div class="form-group">
             <label>Mintavétel helyszíne: </label>
-            <input class="form-control" type="text" data-name="mintavetel_helye">
+            <input class="form-control" type="text" name="mintavetel_helye" data-name="mintavetel_helye">
         </div>
     </div>
     <div class="row">
         <div class="form-group">
             <label>Mérési hely: </label>
-            <input class="form-control" type="text" data-name="meresi_hely">
+            <input class="form-control" type="text" name="meresi_hely" data-name="meresi_hely">
         </div>
     </div>
     <div class="row">
         <div class="form-group">
             <label>Mintavételi hely meghatározása</label>
-            <input class="form-control" type="text" data-name="mintaveteli_hely">
+            <input class="form-control" type="text" name="mintaveteli_hely" data-name="mintaveteli_hely">
         </div>
         <div class="form-group">
             <label>A szűrőzés adatai</label>
-            <input class="form-control" type="text" data-name="szurozes_adatai">
+            <input class="form-control" type="text" name="szurozes_adatai" data-name="szurozes_adatai">
         </div>
     </div>
     <div class="row">
         <div class="form-group">
             <label>Kútanyag</label>
-            <input class="form-control" type="text" data-name="kutanyag">
+            <input class="form-control" type="text" name="kutanyag" data-name="kutanyag">
         </div>
         <div class="form-group">
             <label>Talpmélység</label>
@@ -37,7 +37,7 @@
                 <div class="col-sm-6">
                     <div class="row">
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" data-name="talpmelyseg">
+                            <input class="form-control" type="text" name="talpmelyseg" data-name="talpmelyseg">
                         </div>
                         <div class="col-sm-2">
                             <span>mbf</span>
@@ -47,7 +47,7 @@
                 <div class="col-sm-6">
                     <div class="row">
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" data-name="mbf">
+                            <input class="form-control" type="text" name="mbf" data-name="mbf">
                         </div>
                         <div class="col-sm-2">
                             <span>m</span>
@@ -60,7 +60,7 @@
                     <label>Vizsgálandó komponensek</label>
                     <div class="row">
                         <div class="col-sm-6">
-                            <input class="form-control value-input" type="text" data-name="komponensek">
+                            <input class="form-control value-input" type="text" name="komponensek" data-name="komponensek">
                         </div>
                     </div>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-mark="#myModal">Vizsgalando komponensek</button>
@@ -76,7 +76,7 @@
                         <div class="modal-body text-center">
                             <div class="row">
                                 <div class="form-group">
-                                    <select data-name="mintavetel_celja" class="component-label hidden">
+                                    <select name="mintavetel_celja" data-name="mintavetel_celja" class="component-label hidden">
                                         <option value=''>Kérem válasszon</option>
                                         <option value="Baktérium">Baktérium</option>
                                         <option value="kemiai">Kémiai</option>
@@ -117,7 +117,7 @@
             <div class="row">
                 <div class="form-group">
                     <label>A tartósítás módja</label>
-                    <input class="form-control" data-name="tartositas_modja" type="text" />
+                    <input class="form-control" name="tartositas_modja" data-name="tartositas_modja" type="text" />
                 </div>
             </div>
             <h2>Helyszíni adatok</h2>
@@ -135,7 +135,7 @@
             </div>
             <div class="row">
                 <label>Vizsgáló laboratórium</label>
-                <select data-name="vizsgalo_lab1" class="combobox">
+                <select name="vizsgalo_lab1" data-name="vizsgalo_lab1" class="combobox">
                     <option value="">Válassz</option>
                     <option value="Kör-Ker Kft.">Kör-ker Kft</option>
                     <option value="Környezettechnologia kft.">Környezettechnológiai kft.</option>
@@ -144,7 +144,7 @@
             </div>
             <div class="row">
                 <label>Vizsgált komponensek</label>
-                <select data-name="vizsgalt_komponensek1" class="combobox">
+                <select name="vizsgalt_komponensek1" data-name="vizsgalt_komponensek1" class="combobox">
                     <option value="">Kérlek válassz</option>
                     <option value="szerves anyagok">Szerves anyagok</option>
                     <option value="fémek">Fémek</option>
@@ -156,33 +156,33 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label>Szivattyúzás előtti vízszint</label>
-                    <input class="form-control" type="text" data-name="szivattyuzas" />
+                    <input class="form-control" type="text" name="szivattyuzas" data-name="szivattyuzas" />
                 </div>
                 <div class="col-sm-6">
                     <label>Talpmélység:</label>
-                    <input class="form-control" type="text" data-name="talpmelyseg" />
+                    <input class="form-control" type="text" name="talpmelyseg" data-name="talpmelyseg" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
                     <label>Vízoszlop</label>
-                    <input class="form-control" type="text" data-name="vizoszlop" />
+                    <input class="form-control" type="text" name="vizoszlop" data-name="vizoszlop" />
                 </div>
                 <div class="col-sm-6">
                     <label>Csőátmérő:</label>
-                    <input class="form-control" type="text" data-name="csoatmero" />
+                    <input class="form-control" type="text" name="csoatmero" data-name="csoatmero" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
                     <label>A számítással meghatározott háromszoros térfogat:</label>
-                    <input class="form-control" type="text" data-name="szamitassal_meghatarozott" />
+                    <input class="form-control" type="text" name="szamitassal_meghatarozott" data-name="szamitassal_meghatarozott" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
                     <label>Kitermelt víz térfogata (L):</label>
-                    <input class="form-control" type="text" data-name="kitermelt_viz" />
+                    <input class="form-control" type="text" name="kitermelt_viz" data-name="kitermelt_viz" />
                 </div>
             </div>
             <h2>Tisztító szivattyúzás adatai</h2>
@@ -199,62 +199,62 @@
                     <tbody>
                         <tr>
                             <td>
-                                <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="ido1"></input>
+                                <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="ido1" data-name="ido1"></input>
                             </td>
                             <td>
-                                <input type="text" class="form-control" / data-name="hozam1">
+                                <input type="text" class="form-control" / name="hozam1" data-name="hozam1">
                             </td>
                             <td>
-                                <input type="text" class="form-control" / data-name="vizszint1">
+                                <input type="text" class="form-control" / name="vizszint1" data-name="vizszint1">
                             </td>
                             <td>
-                                <input type="text" class="form-control" / data-name="vezeto1">
+                                <input type="text" class="form-control" / name="vezeto1" data-name="vezeto1">
                             </td>
                             <td>
-                                <input type="text" class="form-control" / data-name="vizho1">
+                                <input type="text" class="form-control" / name="vizho1" data-name="vizho1">
                             </td>
                             <td>
-                                <input type="text" class="form-control" / data-name="ph1">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="ido2"></input>
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" / data-name="hozam2">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" / data-name="vizszint2">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" / data-name="vezeto2">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" / data-name="vizho2">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control" / data-name="ph2">
+                                <input type="text" class="form-control" / name="ph1" data-name="ph1">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" data-name="ido3"></input>
+                                <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="ido2" data-name="ido2"></input>
                             </td>
                             <td>
-                                <input type="text" class="form-control" / data-name="hozam3">
+                                <input type="text" class="form-control" / name="hozam2" data-name="hozam2">
                             </td>
                             <td>
-                                <input type="text" class="form-control" / data-name="vizszint3">
+                                <input type="text" class="form-control" / name="vizszint2" data-name="vizszint2">
                             </td>
                             <td>
-                                <input type="text" class="form-control" / data-name="vezeto3">
+                                <input type="text" class="form-control" / name="vezeto2" data-name="vezeto2">
                             </td>
                             <td>
-                                <input type="text" class="form-control" / data-name="vizho3">
+                                <input type="text" class="form-control" / name="vizho2" data-name="vizho2">
                             </td>
                             <td>
-                                <input type="text" class="form-control" / data-name="ph3">
+                                <input type="text" class="form-control" / name="ph2" data-name="ph2">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input class="mintavetel-ido form-control" data-format="hh:mm:ss" type="text" name="ido3" data-name="ido3"></input>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" / name="hozam3" data-name="hozam3">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" / name="vizszint3" data-name="vizszint3">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" / name="vezeto3" data-name="vezeto3">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" / name="vizho3" data-name="vizho3">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" / name="ph3" data-name="ph3">
                             </td>
                         </tr>
                     </tbody>
@@ -263,7 +263,7 @@
             <div class="row">
                 <div class="span6">
                     <span>Készítette</span>
-                    <select class="combobox" data-name="keszitette">
+                    <select class="combobox" name="keszitette" data-name="keszitette">
                         <option value="">Válassz</option>
                         <option value="Szenyán Zoltán">Szenyán Zoltán</option>
                         <option value="Czap Zoltán">Czap Zoltán</option>

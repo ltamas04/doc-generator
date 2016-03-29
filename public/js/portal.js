@@ -103,7 +103,7 @@ $('#nedvessegSave').on('click', function(e) {
     });
 });
 
-$('body').on('change', '.korker-form input, .korker-form select, .korker-form textarea', function () {
+$('body').on('change dateChange', '.korker-form input, .korker-form select, .korker-form textarea', function () {
   var dataSel = $(this).closest('.korker-form').data('form');
   var selector = $(this).data('name');
   console.log('[data-form = \"' + dataSel + '\"]');
@@ -437,3 +437,17 @@ function checkNetConnection(){
  });
  return re;
 }
+
+
+$('body').on('change', '.mintavetel-ido', function() {
+  var val = $(this).val();
+  console.log(val);
+  if(val.indexOf('am') > 0) {
+    val = val.substring(0, val.length - 2);    
+  } else {
+    val = val.substring(0, val.length - 2);
+    val = (Number(val.split(':')[0])+12)+ ':' + val.split(':')[1]
+  }
+  $(this).val(val);
+  $(this).trigger('dateChange');
+});
