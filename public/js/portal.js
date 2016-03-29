@@ -403,6 +403,9 @@ $('#localGet').on('click', function() {
   $('.image-container').each(function() {
     $(this).find('img').attr('src', $(this).find('input').val());
   });
+
+  $('input').trigger('change');
+  $('select').trigger('change');
 });
 
 
