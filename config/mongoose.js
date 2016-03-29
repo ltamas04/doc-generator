@@ -2,8 +2,8 @@ var config = require('./config'),
   mongoose = require('mongoose');
 
 module.exports = function() {
-  var db = mongoose.connect(config.db, function() {
-  	console.log('we are local');
+  var db = mongoose.connect(config.remoteDb, function() {
+  	console.log('we are remote');
   });
 
   require('../app/models/document.model.js');
