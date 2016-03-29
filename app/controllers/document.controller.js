@@ -143,9 +143,6 @@ exports.save = function(req, res) {
     });
   }
 
-       
-
-
   if(req.body.n_minta_jele) {
     var nedvessegIndex = 0;
     req.body.n_minta_jele.forEach(function() {
@@ -159,6 +156,23 @@ exports.save = function(req, res) {
         nedvesseg.save();
       } 
         nedvessegIndex++;
+    });
+  }
+
+  if(req.body.mintavetel_gep) {
+    var gepIndex = 0;
+    req.body.mintavetel_gep.forEach(function() {
+      if (req.body.mintavetel_gep[gepIndex]) {
+        var gep = new GepNaplo({
+            mintavetel_gep: req.body.mintavetel_gep[gepIndex],
+            sorszam: req.body.sorszam[gepIndex],
+            mintavetel_datuma: req.body.datum[0],
+            mintavetel_helye: req.body.mintavetel_helye[0],
+        });
+
+        gep.save();
+      } 
+        gepIndex++;
     });
   }
 

@@ -18,9 +18,7 @@ module.exports = function(app) {
   app.param('Id', szures.nedvessegParam);
   app.post('/nedvesseg-save', szures.nedvessegSave);
 
+  app.get('/szures-gepnaplo', szures.gepNaplo);
 
   app.get('/szures-vizsgalat', szures.atadott);
-  //app.get('/nedvesseg/:Id', szures.nedvessegEndPoint);
-  //app.param('Id', szures.nedvessegParam);
-  //app.post('/nedvesseg-save', szures.nedvessegSave);
 };

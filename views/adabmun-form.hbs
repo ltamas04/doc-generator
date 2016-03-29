@@ -69,26 +69,29 @@
                     <h4 class="modal-title" id="myModalLabel">Mintavevők típusa</h4>
                 </div>
                 <div class="modal-body text-center">
-                    <div class="row">
-                        <div class="form-group">
-                            <select name="mintavetel_gep1" data-name="mintavetel_gep1" class="component-label">
-                                <option value=''>Kérem válasszon</option>
-                                <option value="Kálmán-System-KS-502">Kálmán System KS-502</option>
-                                <option value="Kálmán-System-KS-408">Kálmán System KS-408</option>
-                                <option value="Kálmán-System-KS-409">Kálmán System KS-409</option>
-                            </select>
-                        </div>
-                        <div class="form-group component-value">
-                            <select name="sorszam1" data-name="sorszam1">
-                                <option class="none" value=''>Kérem válasszon</option>
-                                <option value="102005112005" class="Kálmán-System-KS-502">102005112005</option>
-                                <option value="122005132005" class="Kálmán-System-KS-502">122005132005</option>
-                                <option value="142005152005" class="Kálmán-System-KS-502">142005152005</option>
-                                <option value="172005" class="Kálmán-System-KS-408">172005</option>
-                                <option value="042005" class="Kálmán-System-KS-409">042005</option>
-                            </select>
+                    <div class="gepform-container">
+                        <div class="row" id="gep-form">
+                            <div class="form-group">
+                                <select name="mintavetel_gep[]" data-name="mintavetel_gep1" class="component-label">
+                                    <option value=''>Kérem válasszon</option>
+                                    <option value="Kálmán-System-KS-502">Kálmán System KS-502</option>
+                                    <option value="Kálmán-System-KS-408">Kálmán System KS-408</option>
+                                    <option value="Kálmán-System-KS-409">Kálmán System KS-409</option>
+                                </select>
+                            </div>
+                            <div class="form-group component-value">
+                                <select name="sorszam[]" data-name="sorszam1">
+                                    <option class="none" value=''>Kérem válasszon</option>
+                                    <option value="102005112005" class="Kálmán-System-KS-502">102005112005</option>
+                                    <option value="122005132005" class="Kálmán-System-KS-502">122005132005</option>
+                                    <option value="142005152005" class="Kálmán-System-KS-502">142005152005</option>
+                                    <option value="172005" class="Kálmán-System-KS-408">172005</option>
+                                    <option value="042005" class="Kálmán-System-KS-409">042005</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
+                    <a class="btn btn-primary" id="addGep">Gép hozzáadása</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="modal-save" data-dismiss="modal">Mentés</button>

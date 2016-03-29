@@ -3,6 +3,8 @@ var SzalloPor = require('mongoose').model('SzalloPor');
 var SzilardAnyag = require('mongoose').model('SzilardAnyag');
 var NedvessegMintak = require('mongoose').model('NedvessegMintak');
 var AtadottMintak = require('mongoose').model('AtadottMintak');
+var GepNaplo = require('mongoose').model('GepNaplo');
+
   
 
 exports.szalloRost = function(req, res) {
@@ -145,3 +147,13 @@ exports.atadott = function(req, res) {
   });
 }
 
+exports.gepNaplo = function(req, res) {
+    GepNaplo.find({}, function(err, docs) {
+      if(err) {
+            res.json(err);
+        } else {
+          console.log(docs);
+            res.render('szures-gepnaplo', { docs: docs });
+      }
+  });
+}

@@ -63,40 +63,43 @@
                     <h4 class="modal-title" id="myModalLabel">Mintavevők típusa</h4>
                 </div>
                 <div class="modal-body text-center">
-                    <div class="row">
-                        <div class="form-group">
-                            <select name="mintavetel_gep1" data-name="mintavetel_gep1" class="component-label">
-                                <option value=''>Kérem válasszon</option>
-                                <option value="casella">Casella Apex</option>
-                                <option value="ggy">GGY</option>
-                                <option value="sidekick">SIDEKICK ’T’</option>
-                            </select>
-                        </div>
-                        <div class="form-group component-value">
-                            <select name="sorszam1" data-name="sorszam1">
-                                <option class="none" value=''>Kérem válasszon</option>
-                                <option value="1239544" class="casella">1239544</option>
-                                <option value="1239545" class="casella">1239545</option>
-                                <option value="1239547" class="casella">1239547</option>
-                                <option value="1156811" class="casella">1156811</option>
-                                <option value="1156813" class="casella">1156813</option>
-                                <option value="1156844" class="casella">1156844</option>
-                                <option value="1156852" class="casella">1156852</option>
-                                <option value="1156860" class="casella">1156860</option>
-                                <option value="1156864" class="casella">1156864</option>
-                                <option value="1156866" class="casella">1156866</option>
-                                <option value="1156886" class="casella">1156886</option>
-                                <option value="1156889" class="casella">1156889</option>
-                                <option value="1156892" class="casella">1156892</option>
-                                <option value="01" class="ggy">01</option>
-                                <option value="02" class="ggy">02</option>
-                                <option value="03" class="ggy">03</option>
-                                <option value="04" class="ggy">04</option>
-                                <option value="509694" class="sidekick">509694</option>
-                                <option value="509695" class="sidekick">509695</option>
-                            </select>
+                    <div class="gepform-container">
+                        <div class="row" id="gep-form">
+                            <div class="form-group">
+                                <select name="mintavetel_gep[]" data-name="mintavetel_gep1" class="component-label">
+                                    <option value=''>Kérem válasszon</option>
+                                    <option value="casella">Casella Apex</option>
+                                    <option value="ggy">GGY</option>
+                                    <option value="sidekick">SIDEKICK ’T’</option>
+                                </select>
+                            </div>
+                            <div class="form-group component-value">
+                                <select name="sorszam[]" data-name="sorszam1">
+                                    <option class="none" value=''>Kérem válasszon</option>
+                                    <option value="1239544" class="casella">1239544</option>
+                                    <option value="1239545" class="casella">1239545</option>
+                                    <option value="1239547" class="casella">1239547</option>
+                                    <option value="1156811" class="casella">1156811</option>
+                                    <option value="1156813" class="casella">1156813</option>
+                                    <option value="1156844" class="casella">1156844</option>
+                                    <option value="1156852" class="casella">1156852</option>
+                                    <option value="1156860" class="casella">1156860</option>
+                                    <option value="1156864" class="casella">1156864</option>
+                                    <option value="1156866" class="casella">1156866</option>
+                                    <option value="1156886" class="casella">1156886</option>
+                                    <option value="1156889" class="casella">1156889</option>
+                                    <option value="1156892" class="casella">1156892</option>
+                                    <option value="01" class="ggy">01</option>
+                                    <option value="02" class="ggy">02</option>
+                                    <option value="03" class="ggy">03</option>
+                                    <option value="04" class="ggy">04</option>
+                                    <option value="509694" class="sidekick">509694</option>
+                                    <option value="509695" class="sidekick">509695</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
+                    <a class="btn btn-primary" id="addGep">Gép hozzáadása</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="modal-save" data-dismiss="modal">Mentés</button>
