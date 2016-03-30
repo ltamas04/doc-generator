@@ -15,6 +15,21 @@ app.listen(3001);
 
 module.exports = app;
 
+var spawn = require('child_process').spawn,
+ls    = spawn('cmd.exe', ['/c', 'my.bat']);
+
+ls.stdout.on('data', function (data) {
+  console.log('stdout: ' + data);
+});
+
+ls.stderr.on('data', function (data) {
+  console.log('stderr: ' + data);
+});
+
+ls.on('exit', function (code) {
+  console.log('child process exited with code ' + code);
+});
+
 
 //mongoose.connect('mongodb://127.0.0.1:27017/korker');
 //var conn = mongoose.connect;
