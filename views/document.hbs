@@ -17,10 +17,12 @@
                 <option value="felszinalatt">Mintavétel felszínalatti vízekből</option>
                 <option value="szallorost">Szállórost koncentráció vizsgálata</option>
                 <option value="szallorostkonc">Szállórost koncentráció vizsgálata (egy minta)</option>
+                <option value="szallorostvege">Szállórost --vége</option>
                 <option value="szallopor">Munkahelyi szálló por koncentráció vizsgálata</option>
                 <option value="adabmun">Adszorpciós/abszorpciós mintavétel - munkahelyi</option>
                 <option value="emisszio">Emisszió</option>
-                <option value="gazallapot">Gázállapot</option>
+                <option value="gazallapotmhfg">Gázállapot-mhfg</option>
+                <option value="gazallapotmhch">Gázállapot-mhch</option>
             </select>
             <div class="row">
                 <div class="col-xs-3">
@@ -40,8 +42,10 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="preview">
         <div id="korkerContent">
-            <img src="img/header.png" width="1200px" height="300px">
-            <p style="text-align: center; margin-bottom: 0; padding-bottom: 0; line-height: 5px; font-size: 20px; font-weight: bold;">MINTAVÉTELI JEGYZŐKÖNYV</p>
+            <div class="doc-header">
+              <img src="img/header.png" width="1200px" height="300px">
+              <p style="text-align: center; margin-bottom: 0; padding-bottom: 0; line-height: 5px; font-size: 20px; font-weight: bold;">MINTAVÉTELI JEGYZŐKÖNYV</p>
+            </div>
         </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="save">
@@ -79,6 +83,11 @@
 
 {{> gazallapot-form}}
 {{> gazallapot-doc}}
+
+{{> gazallapot-form-mhch}}
+{{> gazallapot-doc-mhch}}
+
+{{> szallorost-vege}}
 
 <div class="modal fade" id="saveLocals" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">

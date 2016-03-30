@@ -320,7 +320,10 @@ $(document).ready(function($) {
             console.log('removed');
             $(this).remove();
           }
-        });      
+        });
+        if($('#korkerContent').find('[data-doc-type="szallorost"]').length) {
+          $('.doc-header').first().remove();
+        }      
         $("#korkerContent").wordExport();
         $('#saveToDb').removeClass('hidden');
     });
