@@ -284,7 +284,13 @@ $('#tableExport').on('click', function() {
 $(document).ready(function($) {
     $(".korker-doc").click(function(event) {
         $("#korkerContent").find('.image-helper').remove();              
-        $("#korkerContent").find('br').last().remove();      
+        $("#korkerContent").find('br').last().remove();
+        $("#korkerContent").find('img').each(function() {
+          if($(this).attr('src') === "") {
+            console.log('removed');
+            $(this).remove();
+          }
+        });      
         $("#korkerContent").wordExport();
     });
 });
