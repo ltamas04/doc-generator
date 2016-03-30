@@ -4,6 +4,7 @@ var SzilardAnyag = require('mongoose').model('SzilardAnyag');
 var SzalloRost = require('mongoose').model('SzalloRost');
 var AtadottMintak = require('mongoose').model('AtadottMintak');
 var GepNaplo = require('mongoose').model('GepNaplo');
+var EgyebGep = require('mongoose').model('EgyebGep');
 
 exports.render = function(req, res) {
     res.render('document');
@@ -16,8 +17,8 @@ exports.save = function(req, res) {
       if (req.body.szallorost_minta_szama[szallorostIndex]) {
 
           var szallorost = new SzalloRost({
-              mintavetel_datuma: req.body.datum[0],
-              mintavetel_helye: req.body.mintavetel_helye[0],
+              mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
+              mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,
               minta_jele: req.body.szallorost_minta_szama[szallorostIndex]
           });
 
@@ -32,11 +33,13 @@ exports.save = function(req, res) {
     req.body.viz_minta_jele.forEach(function() {
       if (req.body.viz_minta_jele[vizIndex]) {      
         var atadott = new AtadottMintak({
-            mintavetel_datuma: req.body.datum,
-            mintavetel_helye: req.body.mintavetel_helye,
+            mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,            
+            mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,            
             minta_jele: req.body.viz_minta_jele[vizIndex]
         });
-      atadott.save();
+
+
+        atadott.save();
       }
 
       vizIndex++;
@@ -48,8 +51,8 @@ exports.save = function(req, res) {
     req.body.szallopor_minta_szama.forEach(function() {
       if (req.body.szallopor_minta_szama[szalloporIndex]) {
         var szallopor = new SzalloPor({
-            mintavetel_datuma: req.body.datum[0],
-            mintavetel_helye: req.body.mintavetel_helye[0],
+            mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
+            mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,
             minta_jele: req.body.szallopor_minta_szama[szalloporIndex],
             respir_bemeres: req.body.respir_bemeres[szalloporIndex],
             respir_visszameres: req.body.respir_visszameres[szalloporIndex],
@@ -68,8 +71,8 @@ exports.save = function(req, res) {
         console.log('logic hit');
 
         var atadott = new AtadottMintak({
-            mintavetel_datuma: req.body.datum[0],
-            mintavetel_helye: req.body.mintavetel_helye[0],
+            mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
+            mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,
             minta_jele: req.body.szallopor_minta_szama[szalloporAtadott]
         });
         atadott.save(); 
@@ -85,8 +88,8 @@ exports.save = function(req, res) {
     req.body.szilard_minta_jele.forEach(function() {
       if (req.body.szilard_minta_jele[szilardIndex]) {
         var szilard = new SzilardAnyag ({
-            mintavetel_datuma: req.body.datum,
-            mintavetel_helye: req.body.mintavetel_helye,
+            mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,            
+            mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,            
             minta_jele: req.body.szilard_minta_jele[szilardIndex]
         });
         szilard.save();
@@ -99,8 +102,8 @@ exports.save = function(req, res) {
       if (req.body.szilard_minta_jele[szilardAtadott]) {
 
         var atadott = new AtadottMintak({
-            mintavetel_datuma: req.body.datum[0],
-            mintavetel_helye: req.body.mintavetel_helye[0],
+            mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
+            mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,
             minta_jele: req.body.szilard_minta_jele[szilardAtadott]
         });
         atadott.save(); 
@@ -116,8 +119,8 @@ exports.save = function(req, res) {
         if (req.body.adabem_minta_jele[adabemAtadott]) {
 
           var atadott = new AtadottMintak({
-              mintavetel_datuma: req.body.datum[0],
-              mintavetel_helye: req.body.mintavetel_helye[0],
+              mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
+              mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,
               minta_jele: req.body.adabem_minta_jele[adabemAtadott]
           });
           atadott.save(); 
@@ -133,8 +136,8 @@ exports.save = function(req, res) {
         if (req.body.adabmun_minta_jele[adabmunAtadott]) {
 
           var atadott = new AtadottMintak({
-              mintavetel_datuma: req.body.datum[0],
-              mintavetel_helye: req.body.mintavetel_helye[0],
+              mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
+              mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,
               minta_jele: req.body.adabmun_minta_jele[adabmunAtadott]
           });
           atadott.save(); 
@@ -148,8 +151,8 @@ exports.save = function(req, res) {
     req.body.n_minta_jele.forEach(function() {
       if (req.body.n_minta_jele[nedvessegIndex]) {
         var nedvesseg = new NedvessegMintak({
-            mintavetel_datuma: req.body.datum[0],
-            mintavetel_helye: req.body.mintavetel_helye[0],
+            mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
+            mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,
             minta_jele: req.body.n_minta_jele[nedvessegIndex++],
         });
 
@@ -166,11 +169,30 @@ exports.save = function(req, res) {
         var gep = new GepNaplo({
             mintavetel_gep: req.body.mintavetel_gep[gepIndex],
             sorszam: req.body.sorszam[gepIndex],
-            mintavetel_datuma: req.body.datum[0],
-            mintavetel_helye: req.body.mintavetel_helye[0],
+            mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
+            mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,
         });
 
         gep.save();
+      } 
+        gepIndex++;
+    });
+  }
+
+  if(req.body.egyeb_gep) {
+    var gepIndex = 0;
+    console.log(req.body.egyeb_gep);
+    req.body.egyeb_gep.forEach(function() {
+      if (req.body.egyeb_gep[gepIndex]) {
+        var gep = new EgyebGep({
+            mintavetel_gep: req.body.egyeb_gep[gepIndex],
+            mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
+            mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,
+        });
+
+        gep.save(function() {
+          console.log('juhu');
+        });
       } 
         gepIndex++;
     });

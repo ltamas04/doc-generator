@@ -64,6 +64,14 @@ var gepNaplo = new mongoose.Schema ({
   , updated_at    : { type: Date }
 });
 
+var egyebGep = new mongoose.Schema ({
+    mintavetel_gep: String,
+    mintavetel_datuma: String,
+    mintavetel_helye: String,
+    karbantartva: {type: String, default: "karbantartva"},
+    alairas: String
+});
+
 szalloRost.pre('save', function(next){
   now = new Date();
   this.updated_at = now;
@@ -88,3 +96,4 @@ mongoose.model('SzilardAnyag', szilardAnyag);
 mongoose.model('SzalloRost', szalloRost);
 mongoose.model('AtadottMintak', atadottMintak);
 mongoose.model('GepNaplo', gepNaplo);
+mongoose.model('EgyebGep', egyebGep);
