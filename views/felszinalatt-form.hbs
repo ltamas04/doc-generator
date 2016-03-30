@@ -60,7 +60,7 @@
                     <label>Vizsgálandó komponensek</label>
                     <div class="row">
                         <div class="col-sm-6">
-                            <input class="form-control value-input" type="text" name="komponensek" data-name="komponensek">
+                            <input class="form-control value-input bakter-input" type="text" name="komponensek" data-name="bakter_label">
                         </div>
                     </div>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-mark="#myModal">Vizsgalando komponensek</button>
@@ -76,7 +76,7 @@
                         <div class="modal-body text-center">
                             <div class="row">
                                 <div class="form-group component-value">
-                                    <select>
+                                    <select class="bakterium-value form-control" id="bakteriumVal">
                                         <option value=''>Kérem válasszon</option>
                                             <option value="pH">pH</option>
                                             <option value="oldott oxigén">oldott oxigén</option>
@@ -100,9 +100,10 @@
                                     </select>
                                 </div>
                             </div>
+                            <a href="#" class="btn btn-primary" id="bakterAdd">Hozzáadás</a>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" id="modal-save" data-dismiss="modal">Mentés</button>
+                            <button type="button" class="btn btn-primary bakteriumSave" id="modal-save" data-dismiss="modal">Mentés</button>
                         </div>
                     </div>
                 </div>
