@@ -321,7 +321,7 @@ $(document).ready(function($) {
             $(this).remove();
           }
         });
-        if($('#korkerContent').find('[data-doc-type="szallorost"]').length) {
+        if($('#korkerContent').find('[data-doc-type="szallorost"]').length || $('#korkerContent').find('[data-doc-type="szallorostkonc"]').length) {
           $('.doc-header').first().remove();
         }      
         $("#korkerContent").wordExport();
