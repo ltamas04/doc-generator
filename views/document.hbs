@@ -29,10 +29,10 @@
                     <a class="btn btn-success" id="form-adder">Hozzáadás</a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="btn btn-primary" data-toggle="modal" data-mark="#saveLocals">Lokál mentés</a>
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#saveLocals">Lokál mentés</a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="btn btn-primary" data-toggle="modal" data-mark="#getLocals" id="localOpener">Lokál előhívás</a>
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#getLocals" id="localOpener">Lokál előhívás</a>
                 </div>
                 <div class="col-xs-3">
                     <a class="btn btn-danger" id="form-delete">Az utolsó törlése</a>            
@@ -89,8 +89,7 @@
 
 {{> szallorost-vege}}
 {{> szallorostvege-doc}}
-
-
+</div>
 <div class="modal fade" id="saveLocals" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
