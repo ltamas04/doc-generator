@@ -283,6 +283,7 @@ $('#tableExport').on('click', function() {
 
 $(document).ready(function($) {
     $(".korker-doc").click(function(event) {
+        $("#korkerContent").find('.image-helper').remove();              
         $("#korkerContent").find('br').last().remove();      
         $("#korkerContent").wordExport();
     });
