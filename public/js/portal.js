@@ -71,7 +71,7 @@ $('body').on('click', '.kemiaiSave', function() {
 
 
 $('body').on('click', '#bakterAdd', function() {
-  var item = $(this).closest('.modal').find('#bakteriumVal').clone();
+  var item = $(this).closest('.modal').find('#bakteriumVal').first().clone();
   $(this).closest('.modal-body').prepend(item);
 });
 
@@ -185,6 +185,7 @@ $('body').on('change', '.inserted', function() {
   var val = $(this).val();
   $('#' + sel).append($("<option></option>").attr("value", val).text(val));
   $('#' + sel).val(val);
+  $('#' + sel).trigger('change');
 });
 
 if ($('.szures-tabla').length) {
