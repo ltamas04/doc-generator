@@ -292,6 +292,7 @@ $(document).ready(function($) {
           }
         });      
         $("#korkerContent").wordExport();
+        $('#saveToDb').removeClass('hidden');
     });
 });
 
