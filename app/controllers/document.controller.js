@@ -200,3 +200,13 @@ exports.save = function(req, res) {
 
   res.redirect('/document');
 }
+exports.szallorostSave = function(req, res) {
+    console.log('>>>', req.body.azon);
+    SzalloPor.findOne({_id:req.body.azon}, function(err, doc){
+      doc.respir_bemeres  = req.body.resp_be;
+      doc.respir_visszameres  = req.body.resp_ki;
+      doc.durva_bemeres  = req.body.durva_be;
+      doc.durva_visszameres  = req.body.durva_ki;
+      doc.save();
+    });
+}

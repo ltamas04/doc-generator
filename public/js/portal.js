@@ -23,8 +23,9 @@ $('body').on('change', '.component-label', function() {
   $(this).parent().next('.component-value').find('.' + val).show();
 });
 
-$('body').on('click', '[data-mark="#myModal"]', function(){
-  $(this).closest('.korker-form').find('#myModal').modal('show');
+$('body').on('click', '[data-mark]', function(){
+  var sel = $(this).data('mark'); 
+  $(this).closest('.korker-form').find(sel).modal('show');
 });
 
 $('body').on('click', '#modal-save', function(){
@@ -45,6 +46,33 @@ $('body').on('click', '#modal-save', function(){
   $(this).closest('.korker-form').find('.value-input').val(valueNames);
   $('.label-input').trigger('change');
   $('.value-input').trigger('change');
+});
+
+$('body').on('click', '.bakteriumSave', function() {
+  var str = '';
+  var bakter = $(this).closest('.modal').find('.bakterium-value').each(function() {
+    str += $(this).val() + ', ';
+  });
+  str = str.substring(0, str.length - 2);
+  $('.bakter-input').val(str);
+  $('.bakter-input').trigger('change');
+});
+
+$('body').on('click', '.kemiaiSave', function() {
+  var str = '';
+  var bakter = $(this).closest('.modal').find('.bakterium-value').each(function() {
+    str += $(this).val() + ', ';
+  });
+  str = str.substring(0, str.length - 2);
+  console.log(str);
+  $('.kemia-input').val(str);
+  $('.kemia-input').trigger('change');
+});
+
+
+$('body').on('click', '#bakterAdd', function() {
+  var item = $(this).closest('.modal').find('#bakteriumVal').clone();
+  $(this).closest('.modal-body').prepend(item);
 });
 
 $('#szalloSave').on('click', function(e) {
@@ -127,6 +155,7 @@ $('#form-adder').on('click', function() {
   $('#formNames').val(tmp);
 
   $('.korker-form .mintavetel-ido').timepicker({step: 1})
+  $('.static').trigger('change');
 });
 
 $('#form-adder').on('click', function() {

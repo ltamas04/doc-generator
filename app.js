@@ -84,20 +84,6 @@ app.post('/szallorost-document', function(req, res) {
 app.use(bodyParser());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post('/szallorost-save', function(req, res) {
-    console.log(req.body.resp_be);
-    SzalloPor.findOne({_id:req.body.azon}, function(err, doc){
-      if (err) { return next(err); }
-      doc.respir_bemeres  = req.body.resp_be;
-      doc.respir_visszameres  = req.body.resp_ki;
-      doc.durva_bemeres  = req.body.durva_be;
-      doc.durva_visszameres  = req.body.durva_ki;
-      doc.save(function(err) {
-        if (err) { return next(err); }
-      });
-    });
-});
-
 app.post('/szilard-save', function(req, res) {
     StringzilardAnyag.findOne({_id:req.body.azon}, function(err, doc){
       if (err) { return next(err); }

@@ -7,4 +7,5 @@ module.exports = function(app) {
 
   app.get('/document', document.render);
   app.post('/document', document.save);
+  app.post('/szallorost-save', document.szallorostSave);
 };
