@@ -130,10 +130,32 @@ $('#form-adder').on('click', function() {
 });
 
 $('#form-adder').on('click', function() {
-   $('.korker-form').last().find('.combobox').selectize({
+  $('.korker-form').last().find('.combobox').append($("<option></option>").attr("value", "beirom").text("Beírom én"));
+  $('.korker-form').last().find('.combobox').addClass('form-control');
+
+  /*$('.korker-form').last().find('.combobox').selectize({
     create: true,
     sortField: Text
-  });
+  });*/
+});
+
+
+
+
+$('body').on('change', '.combobox', function() {
+    if($(this).val() == 'beirom') {
+      console.log('hell', $(this).val(), $(this).val() == 'beirom');
+      var ts = $.now();
+      $(this).attr('id', ts);
+      $(this).after('<input class="inserted form-control" data-target="' + ts + '">');
+    }
+})
+
+$('body').on('change', '.inserted', function() {
+  var sel = $(this).data('target');
+  var val = $(this).val();
+  $('#' + sel).append($("<option></option>").attr("value", val).text(val));
+  $('#' + sel).val(val);
 });
 
 if ($('.szures-tabla').length) {
