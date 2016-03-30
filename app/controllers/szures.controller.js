@@ -42,6 +42,7 @@ exports.szalloPorParam = function(req, res, next, id) {
 };
 
 exports.szalloPorEndPoint = function(req, res) {
+  console.log(req.doc);
   res.render('doc-vegoldal', {docs: req.doc});
 }
 
