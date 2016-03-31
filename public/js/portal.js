@@ -158,14 +158,10 @@ $('#form-adder').on('click', function() {
   $('.static').trigger('change');
 });
 
-$('#form-adder').on('click', function() {
+$('#form-adder').on('click added', function() {
+  console.log('hehe');
   $('.korker-form').last().find('.combobox').append($("<option></option>").attr("value", "beirom").text("Beírom én"));
   $('.korker-form').last().find('.combobox').addClass('form-control');
-
-  /*$('.korker-form').last().find('.combobox').selectize({
-    create: true,
-    sortField: Text
-  });*/
 });
 
 
@@ -433,6 +429,7 @@ $('#localSave').on('click offline', function() {
 
 $('#localGet').on('click', function() {
   var localStorageObject = JSON.parse(localStorage[$('#localsList').val()]);
+  console.log(localStorageObject);
   localStorageObject.forms.split(' ').forEach(function(element) {
     if(element) {
       console.log(element);
@@ -457,7 +454,7 @@ $('#localGet').on('click', function() {
           i++;
         });
       } else {
-        var val = (localStorageObject[property].constructor === Array) ? localStorageObject[property][0] : localStorageObject[property];  
+        var val = (localStorageObject[property].constructor === Array) ? localStorageObject[property][0] : localStorageObject[property];
         $el.val(val);
       }
     }
@@ -466,8 +463,10 @@ $('#localGet').on('click', function() {
   $('.image-container').each(function() {
     $(this).find('img').attr('src', $(this).find('input').val());
   });
-
-  $('input').trigger('change');
+  $('.korker-form').last().find('.combobox').append($("<option></option>").attr("value", "beirom").text("Beírom én"));
+  $('.korker-form').last().find('.combobox').addClass('form-control');
+  
+  $('input[name]').trigger('change');
   $('select').trigger('change');
 });
 
@@ -479,6 +478,9 @@ $('#localOpener').one('click', function() {
   }
 });
 
+$('#localDelete').on('click', function() {
+  localStorage.removeItem($('#localsList').val());
+});
 
 
 //offline support 
@@ -510,9 +512,11 @@ $('body').on('change', '.mintavetel-ido', function() {
   console.log(val);
   if(val.indexOf('am') > 0) {
     val = val.substring(0, val.length - 2);    
-  } else {
+  } else if (val.indexOf('pm') > 0)  {
     val = val.substring(0, val.length - 2);
     val = (Number(val.split(':')[0])+12)+ ':' + val.split(':')[1]
+  } else {
+    return ;
   }
   $(this).val(val);
   $(this).trigger('dateChange');
