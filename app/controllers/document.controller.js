@@ -53,11 +53,7 @@ exports.save = function(req, res) {
         var szallopor = new SzalloPor({
             mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
             mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,
-            minta_jele: req.body.szallopor_minta_szama[szalloporIndex],
-            respir_bemeres: req.body.respir_bemeres[szalloporIndex],
-            respir_visszameres: req.body.respir_visszameres[szalloporIndex],
-            durva_bemeres: req.body.durva_bemeres[szalloporIndex],
-            durva_visszameres: req.body.durva_visszameres[szalloporIndex]
+            minta_jele: req.body.szallopor_minta_szama[szalloporIndex]
         });
         szallopor.save();
       }
