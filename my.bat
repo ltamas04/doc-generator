@@ -1,1 +1,1 @@
-teszt
+start chrome http://localhost:3001/
