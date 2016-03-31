@@ -523,7 +523,7 @@ $('body').on('change', '.mintavetel-ido', function() {
 });
 
 
-$('#form-adder').on('click', function() {
+$('#form-adder').one('click', function() {
   $('#sidebar-left').toggleClass('hide-it');
   $('#sidebarButton').toggleClass('hidden');
   $('#contentContainer').toggleClass('fullwidth-content');
