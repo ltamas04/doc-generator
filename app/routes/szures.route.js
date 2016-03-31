@@ -21,6 +21,8 @@ module.exports = function(app) {
   app.get('/szures-gepnaplo', szures.gepNaplo);
 
   app.get('/szures-egyeb', szures.egyebGep);
+  
+  app.get('/szures-horiba', szures.horiba);
 
   app.get('/szures-vizsgalat', szures.atadott);
 };

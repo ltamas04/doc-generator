@@ -5,12 +5,34 @@ var SzalloRost = require('mongoose').model('SzalloRost');
 var AtadottMintak = require('mongoose').model('AtadottMintak');
 var GepNaplo = require('mongoose').model('GepNaplo');
 var EgyebGep = require('mongoose').model('EgyebGep');
+var Horiba = require('mongoose').model('Horiba');
 
 exports.render = function(req, res) {
     res.render('document');
 };
 
 exports.save = function(req, res) {
+
+  console.log('>>>>horiba: ', req.body.horiba_gep);
+  if(req.body.horiba_gep) {
+    var horibaIndex = 0;
+    console.log('im here');
+    req.body.horiba_gep.forEach(function() {
+      if (req.body.horiba_gep[horibaIndex]) {
+        var horiba = new Horiba({
+            mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
+            mintavetel_helye: (req.body.mintavetel_helye.constructor === Array) ? req.body.mintavetel_helye[0] : req.body.mintavetel_helye,
+        });
+
+        horiba.save(function() {
+          console.log('juhu');
+        });
+      } 
+        horibaIndex++;
+    });
+  }
+
+
   if (req.body.szallorost_minta_szama) {
     var szallorostIndex = 0;
     req.body.szallorost_minta_szama.forEach(function() {
@@ -193,16 +215,7 @@ exports.save = function(req, res) {
         gepIndex++;
     });
   }
+  
 
   res.redirect('/document');
-}
-exports.szallorostSave = function(req, res) {
-    console.log('>>>', req.body.azon);
-    SzalloPor.findOne({_id:req.body.azon}, function(err, doc){
-      doc.respir_bemeres  = req.body.resp_be;
-      doc.respir_visszameres  = req.body.resp_ki;
-      doc.durva_bemeres  = req.body.durva_be;
-      doc.durva_visszameres  = req.body.durva_ki;
-      doc.save();
-    });
 }

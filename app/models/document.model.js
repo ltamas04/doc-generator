@@ -72,6 +72,19 @@ var egyebGep = new mongoose.Schema ({
     alairas: String
 });
 
+var horiba = new mongoose.Schema ({
+    mintavetel_datuma: String,
+    mintavetel_helye: String,
+    horiba: {type: String, default: "HORIBA SMA 371"},
+    szondafutes: {type: String, default: "x"},
+    gazelokeszito: {type: String, default: "x"},
+    futottvezetek: {type: String, default: "x"},
+    tomoritett: {type: String, default: "x"},
+    pontossag: {type: String, default: "x"},
+    fujitsu: {type: String, default: "x"},
+    alairas: String
+});
+
 szalloRost.pre('save', function(next){
   now = new Date();
   this.updated_at = now;
@@ -97,3 +110,4 @@ mongoose.model('SzalloRost', szalloRost);
 mongoose.model('AtadottMintak', atadottMintak);
 mongoose.model('GepNaplo', gepNaplo);
 mongoose.model('EgyebGep', egyebGep);
+mongoose.model('Horiba', horiba);

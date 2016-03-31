@@ -5,6 +5,7 @@ var NedvessegMintak = require('mongoose').model('NedvessegMintak');
 var AtadottMintak = require('mongoose').model('AtadottMintak');
 var GepNaplo = require('mongoose').model('GepNaplo');
 var EgyebGep = require('mongoose').model('EgyebGep');  
+var Horiba = require('mongoose').model('Horiba');  
 
 exports.szalloRost = function(req, res) {
     SzalloRost.find({}, function(err, docs) {
@@ -162,6 +163,17 @@ exports.egyebGep = function(req, res) {
         } else {
           console.log(docs);
             res.render('szures-egyeb', { docs: docs });
+      }
+  });
+}
+
+exports.horiba = function(req, res) {
+    Horiba.find({}, function(err, docs) {
+      if(err) {
+            res.json(err);
+        } else {
+          console.log(docs);
+            res.render('szures-horiba', { docs: docs });
       }
   });
 }
