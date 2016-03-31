@@ -67,7 +67,7 @@ exports.save = function(req, res) {
     var szalloporAtadott = 0;
     req.body.szallopor_minta_szama.forEach(function() {
       console.log('###', req.body.szallopor_minta_szama[szalloporAtadott]);
-      if (req.body.szallopor_minta_szama[szalloporAtadott]) {
+      if (req.body.szallopor_minta_szama[szalloporAtadott] && req.body.vizsgalo_lab[szalloporAtadott] ) {
         console.log('logic hit');
 
         var atadott = new AtadottMintak({
