@@ -10,6 +10,7 @@ body {
   position: absolute;
   bottom: 0;
   top: 0;
+  left: auto;
   background: rgba(0, 114, 45, 0.9);
 }
 
@@ -117,4 +118,24 @@ body {
 
 .has-padding {
   padding-left: 50px;
+}
+
+.hide-it {
+  transition: all 1s;
+  width: 0 !important;
+  left: -50px;
+}
+
+#sidebarButton {
+  background: -webkit-gradient(linear, left top, left bottom, from(#d9534f), to(#c12e2a));
+  color: white;
+  padding: 10px;
+  position: absolute;
+  right: 50px;
+}
+
+.fullwidth-content {
+  position: absolute;
+  width: 100%;
+  left: -200px;
 }

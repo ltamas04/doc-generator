@@ -521,3 +521,10 @@ $('body').on('change', '.mintavetel-ido', function() {
   $(this).val(val);
   $(this).trigger('dateChange');
 });
+
+
+$('#form-adder').on('click', function() {
+  $('#sidebar-left').toggleClass('hide-it');
+  $('#sidebarButton').toggleClass('hidden');
+  $('#contentContainer').toggleClass('fullwidth-content');
+});
