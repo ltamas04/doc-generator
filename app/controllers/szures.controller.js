@@ -35,14 +35,14 @@ exports.szalloPorParam = function(req, res, next, id) {
     if(err) {
       return next(err);
     } else {
-      req.docs = doc;
+      req.docx = doc;
       next();
     }
   });
 };
 
 exports.szalloPorEndPoint = function(req, res) {
-  res.render('doc-vegoldal', {docs: req.docs});
+  res.render('doc-vegoldal', {docs: req.docx});
 }
 
 
