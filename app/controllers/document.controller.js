@@ -99,7 +99,7 @@ exports.save = function(req, res) {
 
     var szilardAtadott = 0;
     req.body.szilard_minta_jele.forEach(function() {
-      if (req.body.szilard_minta_jele[szilardAtadott]) {
+      if (req.body.szilard_minta_jele[szilardAtadott] && req.body.vizsgalo_lab[szilardAtadott]) {
 
         var atadott = new AtadottMintak({
             mintavetel_datuma: (req.body.datum.constructor === Array) ? req.body.datum[0] : req.body.datum,
