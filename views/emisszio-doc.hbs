@@ -2,7 +2,7 @@
     <h2 style="text-align: center;">Emissziómérés</h2>
     <table style="width: 100%; margin-bottom: 20px;">
         <tr>
-            <td colspan="2"><strong>Mintavétel helye(név):</strong> <span class="mintavetel_helyszine"></span></td>
+            <td colspan="2"><strong>Mintavétel helye(név):</strong> <span class="mintavetel_helye"></span></td>
         </tr>
         <tr>
             <td colspan="2"><strong>Mintavétel helyszíne(cím):</strong> <span class="mintavetel_helyszine"></span></td>
@@ -31,12 +31,11 @@
             <td><span class="statikus_nyomasa"></span> Pa</td>
         </tr>
         <tr>
-            <td>Mérési keresztmetszet: :</td>
-            <td><span class="meresi_keresztmetszet"></span> Pa</td>
+            <td>Mérési keresztmetszet:</td>
+            <td><span class="meresi_keresztmetszet"></span> mm</td>
         </tr>
     </table>
     <br style="page-break-before: always">
-    <p><strong>Meterolgiai paraméterek: </strong></p>
     <table style="width:100%; border-collapse: collapse; border-bottom: 0; margin-bottom: 20px;">
         <tr>
             <td style="border: 1px solid black; text-align: center;"></td>
@@ -225,6 +224,7 @@
         </table>
     </div>
     <div data-emisszio="szilard" class="hidden">
+        <br style="page-break-before: always">
         <h2>SZILÁRD ANYAG MINTAVÉTEL</h2>
         <table>
             <tr>
@@ -245,7 +245,6 @@
                 <td>Részgázáram 1: <span class="R1"></span> 2: <span class="R2"></span> 3: <span class="R3"></span> 4: <span class="R4"></span> 5: <span class="R5"></span> 6: <span class="R6"></span> m3 / h
             </tr>
         </table>
-        <br style="page-break-before: always">
         <p><strong>Szilárd anyag mintavétel:</strong>
             <table style="width:100%; border-collapse: collapse; border-bottom: 0; margin-bottom: 20px;">
                 <tr>
@@ -348,20 +347,21 @@
     </div>
     <div data-emisszio="elegetlen" class="hidden">
         <h2>ELÉGETLEN SZERVES SZÉNVEGYÜLETEK MÉRÉSE</h2>
-        <table style="width:100%; border-collapse: collapse; border-bottom: 0; margin-bottom: 20px;">
+        <table style="width:100%; border-collapse: collapse; border-bottom: 0; margin-bottom: 20px; border: 1px solid black; text-align: center;">
             <tr>
-                <td>
-                    <strong>Mintavétel kezdete: </strong><span class="e_kezd1"></span>
-                </td>
+                <td style="border: 1px solid black; text-align: center;">Mintavétel kezdete:</td>
+                <td style="border: 1px solid black; text-align: center;">Mintavétel vége:</td>
+                <td style="border: 1px solid black; text-align: center;">Mérési tartomány: </td>
             </tr>
             <tr>
-                <td>
-                    <strong>Mintavétel vége: </strong><span class="e_veg1"></span>
+                <td style="border: 1px solid black; text-align: left; width: 33%;">
+                    <span class="e_kezd1"></span>
                 </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>Mérési tartomány: </strong><span class="meresi_tartomany"></span>
+                <td style="border: 1px solid black; text-align: center; width: 33%;">
+                    <span class="e_veg1"></span>
+                </td>
+                <td style="border: 1px solid black; text-align: right; width: 33%;">
+                    <span class="meresi_tartomany"></span>
                 </td>
             </tr>
         </table>
@@ -407,10 +407,8 @@
     </div>
     </div>
     <strong>Alkalmazott eszközök:</strong>
-    <p>Rotaméter:<span class="rotameter"></span></p>
     <p>Barométer:<span class="barometer"></span></p>
     <p>Hőmérséklet, páratartalom és légsebesség mérő:<span class="paratartalom_mero"></span></p>
-    <p>Mikroszkóp:<span class="mikroszkop"></span></p>
     <p>A mintavétel ideje: <span class="datum"></span></p>
     <p>A mintavételt végző neve és aláírása:</p>
     <table>
