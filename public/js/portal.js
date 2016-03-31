@@ -227,7 +227,7 @@ $(document).ready(function() {
     iDisplayLength: -1
   });
 });
-
+/*
 $('#form-adder').on('click', function() {
   if($('[data-name="mintavetel_helye"]').val()) {
     var nev = $('[data-name="mintavetel_helye"]').val();
@@ -254,7 +254,7 @@ $('body').on('keyup', '[data-name="mintavetel_helye"]',  function() {
     $('[data-name="mintavetel_helyszine"]').val(Cookies.get($(this).val()));
   }
 });
-
+*/
 $(document).ready(function() {
   $(window).keydown(function(event){
     if(event.keyCode == 13) {
