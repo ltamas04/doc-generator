@@ -528,3 +528,11 @@ $('#form-adder').one('click', function() {
   $('#sidebarButton').toggleClass('hidden');
   $('#contentContainer').toggleClass('fullwidth-content');
 });
+var times = 0;
+
+$('#form-adder').on('click', function() {
+  if(times > 0) {
+    $('#saveLocals').modal('show');
+  }
+  times++; 
+});
